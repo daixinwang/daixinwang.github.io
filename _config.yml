@@ -112,7 +112,7 @@ deploy:
   type: git
   repo: https://github.com/daixinwang/daixinwang.github.io
   # example, https://github.com/hexojs/hexojs.github.io
-  branch: gh-pages
+  branch: master
 
 # 中文链接转拼音插件
 permalink_pinyin:
