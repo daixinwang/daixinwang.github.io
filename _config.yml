@@ -16,8 +16,6 @@ socialLink:
   github: https://github.com/daixinwang
   email: mailto:daixinwang@bupt.edu.cn
 
-
-
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://daixinwang.github.io/
@@ -139,3 +137,8 @@ githubEmojis:
 # 添加中文繁简转换
 translate:
   enable: true
+
+# 搜索插件
+search:
+  path: search.xml
+  field: post
