@@ -4,12 +4,21 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="操作系统笔记, learning,life,coding,computer science">
-    <meta name="description" content="第八章 内存管理背景
-CPU能直接访问的存储器：寄存器和内存。
-程序必须（从磁盘）装到内存中才能执行。
-在处理地址空间和内存管理方面，程序员主要关注逻辑地址，操作系统主要关注内存大小、地址绑定以及内存保护。
-寄存器通常在一个CPU时钟周期内">
+    <meta name="keywords" content="大数据技术基础, learning,life,coding,computer science">
+    <meta name="description" content="大数据概述大数据带来的思维转变
+全样而非抽样
+效率而非精确
+相关而非因果
+
+大数据特征
+Value
+Velocity（快速）
+Volume
+Variety
+
+大数据的产生阶段
+运营式系统阶段（数据被动产生）
+用户原创内容阶段（数据主动产生）">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +30,7 @@ CPU能直接访问的存储器：寄存器和内存。
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>操作系统笔记 | Davian&#39;s Blog</title>
+    <title>大数据技术基础 | Davian&#39;s Blog</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
     
     <style>
@@ -297,12 +306,12 @@ CPU能直接访问的存储器：寄存器和内存。
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">操作系统笔记</h1>
+                    <h1 class="description center-align post-title">大数据技术基础</h1>
                 </div>
             </div>
         </div>
@@ -330,8 +339,8 @@ CPU能直接访问的存储器：寄存器和内存。
                                 <span class="chip bg-color">笔记</span>
                             </a>
                         
-                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">操作系统</span>
+                            <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                <span class="chip bg-color">大数据</span>
                             </a>
                         
                     </div>
@@ -362,21 +371,21 @@ CPU能直接访问的存储器：寄存器和内存。
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-27
+                    2023-11-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    11 分
                 </div>
                 
 
@@ -396,251 +405,268 @@ CPU能直接访问的存储器：寄存器和内存。
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第八章-内存管理"><a href="#第八章-内存管理" class="headerlink" title="第八章 内存管理"></a>第八章 内存管理</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
-<li>CPU能直接访问的存储器：<strong>寄存器和内存</strong>。</li>
-<li>程序必须（从磁盘）<strong>装到内存</strong>中才能执行。</li>
-<li>在处理地址空间和内存管理方面，程序员主要关注<strong>逻辑地址</strong>，操作系统主要关注<strong>内存大小</strong>、<strong>地址绑定</strong>以及<strong>内存保护</strong>。</li>
-<li>寄存器通常在一个CPU时钟周期内（或更少）就可以完成访问，而内存通常需要多个CPU时钟周期访问。当CPU已读入指令但尚未从内存中读取完数据时，会暂停导致CPU利用率降低。为解决这个问题，在内存和CPU之间引入了<strong>高速缓存Cache</strong>（将<strong>需要频繁读取的数据从内存暂存到Cache中</strong>），通常位于CPU上。</li>
-<li><strong>内存保护</strong>需要保证执行正确的操作。</li>
+                <h1 id="大数据概述"><a href="#大数据概述" class="headerlink" title="大数据概述"></a>大数据概述</h1><h2 id="大数据带来的思维转变"><a href="#大数据带来的思维转变" class="headerlink" title="大数据带来的思维转变"></a>大数据带来的思维转变</h2><ul>
+<li>全样而非抽样</li>
+<li>效率而非精确</li>
+<li>相关而非因果</li>
 </ul>
-<h2 id="基址寄存器和限址寄存器"><a href="#基址寄存器和限址寄存器" class="headerlink" title="基址寄存器和限址寄存器"></a>基址寄存器和限址寄存器</h2><ol>
-<li><strong>基址寄存器</strong>（Base Register）：存储基址，表示一个可用内存块的<strong>起始地址</strong>。</li>
-<li><strong>限址寄存器</strong>（Limit Register）：存储限址，表示基址寄存器定义的<strong>内存块大小</strong>。</li>
-</ol>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/base&amp;limit.png"></p>
-<h2 id="地址绑定"><a href="#地址绑定" class="headerlink" title="地址绑定"></a>地址绑定</h2><p><strong>地址绑定</strong>：在程序的执行过程中，将程序中的逻辑地址（或虚拟地址）映射到实际的物理地址的过程。这个过程可以在编译时、加载时或运行时发生。</p>
-<p>一个程序运行的流程：<strong>编译（编译成机器码）–&gt;链接（链接外部模块）–&gt;加载（加载进内存）–&gt;执行</strong>。</p>
-<h3 id="地址绑定的时机"><a href="#地址绑定的时机" class="headerlink" title="地址绑定的时机"></a>地址绑定的时机</h3><ul>
-<li><strong>编译时</strong>绑定：若编译时已知进程在内存中驻留的地址，即可生成绝对代码。如果未来地址发送变化，程序需要<strong>重新编译</strong>。（<strong>静态重定位，不需要硬件支持</strong>）</li>
-<li><strong>加载时</strong>绑定：编译时生成可重定位代码。加载时再进行绑定，此时若内存地址发生变化，只需要<strong>重新加载程序</strong>。（<strong>静态重定位，不需要硬件支持</strong>）</li>
-<li><strong>运行时</strong>绑定：如果一个进程在运行时可从一个内存段移到另一个内存段，那么绑定将延迟到运行时进行。如果要改变内存地址，只需要改变基址寄存器的值即可。（<strong>动态重定位，需要硬件支持，如基址寄存器、限址寄存器和MMU，为大多数操作系统采用</strong>）</li>
+<h2 id="大数据特征"><a href="#大数据特征" class="headerlink" title="大数据特征"></a>大数据特征</h2><ul>
+<li>Value</li>
+<li>Velocity（快速）</li>
+<li>Volume</li>
+<li>Variety</li>
 </ul>
-<h2 id="逻辑地址vs-物理地址"><a href="#逻辑地址vs-物理地址" class="headerlink" title="逻辑地址vs.物理地址"></a>逻辑地址vs.物理地址</h2><ol>
-<li>逻辑地址</li>
-</ol>
+<h2 id="大数据的产生阶段"><a href="#大数据的产生阶段" class="headerlink" title="大数据的产生阶段"></a>大数据的产生阶段</h2><ul>
+<li>运营式系统阶段（数据被动产生）</li>
+<li>用户原创内容阶段（数据主动产生）</li>
+<li>感知式系统阶段</li>
+</ul>
+<h2 id="科学研究四范式"><a href="#科学研究四范式" class="headerlink" title="科学研究四范式"></a>科学研究四范式</h2><ul>
+<li>实验</li>
+<li>理论</li>
+<li>计算</li>
+<li>数据探索</li>
+</ul>
+<h2 id="大数据计算模式"><a href="#大数据计算模式" class="headerlink" title="大数据计算模式"></a>大数据计算模式</h2><table>
+<thead>
+<tr>
+<th>大数据计算模式</th>
+<th>解决问题</th>
+<th>代表产品</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>批处理计算</td>
+<td>针对大规模数据的批量处理</td>
+<td>Map Reduce、Spark等</td>
+</tr>
+<tr>
+<td>流计算</td>
+<td>针对流数据的实时计算</td>
+<td>Flume、Storm、Streams等</td>
+</tr>
+<tr>
+<td>图计算</td>
+<td>针对大规模图结构数据的处理</td>
+<td>Pregel、Graphx等</td>
+</tr>
+<tr>
+<td>查询分析计算</td>
+<td>大规模数据的存储管理和查询分析</td>
+<td>Hive等</td>
+</tr>
+</tbody></table>
+<h2 id="大数据技术框架（重要）"><a href="#大数据技术框架（重要）" class="headerlink" title="大数据技术框架（重要）"></a>大数据技术框架（重要）</h2><ul>
+<li>数据收集</li>
+<li>数据存储</li>
+<li>资源管理与服务协调</li>
+<li>计算引擎</li>
+<li>数据分析</li>
+<li>数据可视化</li>
+</ul>
+<p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/bigDataBasicFrame.png"></p>
+<h2 id="大数据技术实现方案"><a href="#大数据技术实现方案" class="headerlink" title="大数据技术实现方案"></a>大数据技术实现方案</h2><h3 id="Hadoop与Spark开源大数据技术栈"><a href="#Hadoop与Spark开源大数据技术栈" class="headerlink" title="Hadoop与Spark开源大数据技术栈"></a>Hadoop与Spark开源大数据技术栈</h3><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/hadoop&amp;spark.png"></p>
+<h2 id="大数据架构"><a href="#大数据架构" class="headerlink" title="大数据架构"></a>大数据架构</h2><p><strong>Lambda架构：</strong><br>将数据处理流程分解成三层：</p>
 <ul>
-<li>程序运行时由CPU产生的<strong>虚拟地址</strong>。</li>
-<li>CPU利用逻辑地址访问内存中的物理地址并获取数据。</li>
-<li>CPU产生的逻辑地址集合被称为<strong>逻辑地址空间</strong>。</li>
+<li>批处理层：利用分布式批处理计算，以批为单位处理数据，并产生一个经预计算产生的只读数据视图。</li>
+<li>流式处理层：采用流式计算技术，降低了数据处理延迟。</li>
+<li>服务层：批处理层和流式处理层结合在一起，可以既保证数据延迟低，也能完成复杂的逻辑计算。</li>
 </ul>
-<ol start="2">
-<li>物理地址</li>
-</ol>
+<p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/Lambda.png"></p>
+<p>案例：推荐系统<br>![[recommandSystem.png]]</p>
+<h1 id="大数据收集"><a href="#大数据收集" class="headerlink" title="大数据收集"></a>大数据收集</h1><h2 id="关系型数据收集"><a href="#关系型数据收集" class="headerlink" title="关系型数据收集"></a>关系型数据收集</h2><p>关系型数据是常见的一种数据类型，通常存储在MySQL、 Oracle等关系型数据库中，为了能够利用大数据技术处理和存储这些关系型数据，将这些数据导入到HDFS、Hbase等大数据存储系统中，以便使用MapReduce、Spark等分布式计算技术进行高效分析和处理。为便于与前端数据可视化系统对接，通常需要将Hadoop大数据系统分析产生的结果导回到关系型数据库中。为解决上述问题，<strong>高效地实现关系型数据库与Hadoop之间数据的导入导出</strong>，Hadoop生态系统提供了<strong>Sqoop</strong>工具。</p>
+<h2 id="Sqoop"><a href="#Sqoop" class="headerlink" title="Sqoop"></a>Sqoop</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Sqoop采用插拔式Connector架构，解决了关系型数据库与Hadoop之间的数据传输问题。</p>
+<p>Sqoop通常完成的任务：</p>
 <ul>
-<li>内存中数据的<strong>实际地址</strong>，由<strong>内存管理单元</strong>（MMU）计算得出。</li>
-<li>物理地址对用户程序<strong>不可见</strong>。</li>
-<li>物理地址的集合被称为<strong>物理地址空间</strong>。</li>
+<li>数据迁移</li>
+<li>可视化分析结果</li>
+<li>数据增量导入</li>
 </ul>
-<h2 id="内存管理单元（MMU）"><a href="#内存管理单元（MMU）" class="headerlink" title="内存管理单元（MMU）"></a>内存管理单元（MMU）</h2><ul>
-<li>完成从逻辑地址到物理地址的映射。</li>
-<li>逻辑地址 + 重定位寄存器中的值 = 物理地址。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/MMU.png"></p>
-<h2 id="动态加载和动态链接"><a href="#动态加载和动态链接" class="headerlink" title="动态加载和动态链接"></a>动态加载和动态链接</h2><p>一个程序运行的流程：<strong>编译（编译成机器码）–&gt;链接（链接外部模块）–&gt;加载（加载进内存）–&gt;执行</strong>。但链接和加载有时也可以在执行时动态进行。</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/link&amp;load.png"></p>
+<p>Sqoop具备的特点：</p>
 <ul>
-<li>动态链接（运行时链接）：将链接的过程推迟到程序实际执行的时候，利用<strong>存根</strong>（stub）定位内存中的库历程并执行，允许多个程序共享相同的库(被称为<strong>共享库</strong>)，减少了重复的代码和内存占用。需要操作系统的支持。</li>
-<li>动态加载（运行时加载）：将不常用的代码（例如用于异常处理的代码）写入到模块程序中，只有当需要时才会加载进入内存。<strong>提高了内存空间利用率</strong>。不需要系统提供特别的支持，通常是程序员实现。例子：<strong>Windows操作系统的各种DLL库</strong>。</li>
+<li>性能高</li>
+<li>自动类型转换</li>
+<li>自动传播元信息</li>
 </ul>
-<h2 id="交换（Swapping）"><a href="#交换（Swapping）" class="headerlink" title="交换（Swapping）"></a>交换（Swapping）</h2><p>一个进程可以<strong>暂时</strong>从内存中交换到<strong>备份区</strong>，之后再被换回内存中继续执行。允许操作系统更有效地利用有限的物理内存资源，类似于进程调度中的<strong>中期调度</strong>。</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/Swapping.png"></p>
+<h3 id="Sqoop基本架构"><a href="#Sqoop基本架构" class="headerlink" title="Sqoop基本架构"></a>Sqoop基本架构</h3><h4 id="Sqoop1架构"><a href="#Sqoop1架构" class="headerlink" title="Sqoop1架构"></a>Sqoop1架构</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/Sqoop1.png"></p>
+<h4 id="Sqoop2架构"><a href="#Sqoop2架构" class="headerlink" title="Sqoop2架构"></a>Sqoop2架构</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/Sqoop2.png"></p>
+<h4 id="Sqoop1与Sqoop2对比"><a href="#Sqoop1与Sqoop2对比" class="headerlink" title="Sqoop1与Sqoop2对比"></a>Sqoop1与Sqoop2对比</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/SqoopVSSqoop2.png"></p>
+<h3 id="Sqoop使用方式"><a href="#Sqoop使用方式" class="headerlink" title="Sqoop使用方式"></a>Sqoop使用方式</h3><h4 id="Sqoop1使用方式"><a href="#Sqoop1使用方式" class="headerlink" title="Sqoop1使用方式"></a>Sqoop1使用方式</h4><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697727069806-87e8eea3-e247-4eac-9664-2e0812d8bfcd.png#averageHue=%23f1eeeb&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=293&amp;id=uf2701d70&amp;originHeight=403&amp;originWidth=1094&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=185220&amp;status=done&amp;style=none&amp;taskId=u128fce70-4a36-44b9-a89f-9ae07fa96f3&amp;title=&amp;width=795.6363636363636" alt="image.png"></p>
+<h4 id="Sqoop2使用方式"><a href="#Sqoop2使用方式" class="headerlink" title="Sqoop2使用方式"></a>Sqoop2使用方式</h4><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697727091744-8861bf1f-c6ac-4495-941d-81bdb03f31c8.png#averageHue=%23f3f0ed&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=366&amp;id=u9a6b147e&amp;originHeight=503&amp;originWidth=1138&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=231982&amp;status=done&amp;style=none&amp;taskId=u7b4f8822-f12e-494f-b08a-738a49ad539&amp;title=&amp;width=827.6363636363636" alt="image.png"></p>
+<h2 id="数据增量收集CDC"><a href="#数据增量收集CDC" class="headerlink" title="数据增量收集CDC"></a>数据增量收集CDC</h2><p> 捕获数据源中数据的更新，进而获取增量数据的过程，被称为 **CDC(Change Data Capture)**。<br> CDC 系统主要功能是捕获数据库中的数据更新，将增量数据发送给各个订阅者和消费者；<br> CDC 系统应用非常广泛，主要包括：</p>
 <ul>
-<li><strong>备份区</strong>：一个足够大的<strong>可以容纳所有用户内存映像拷贝的快速磁盘</strong>，提供对这些内存映像的直接访问。</li>
-<li><strong>换入，换出</strong>（Roll out，roll in）：换出低优先级的进程，以装入执行高优先级的进程。</li>
-<li>交换时间的<strong>主要部分是传输时间</strong>。</li>
-<li>系统维护一个<strong>已准备运行的进程队列</strong>，这些进程在磁盘上有内存映像。</li>
+<li>异地机房同步：实现数据异地机房容灾；</li>
+<li>数据库实时备份：类似于master/slave架构，实时对数据库进行备份； </li>
+<li>业务Cache刷新：更新数据库成功的同时，刷新 Cache 中的值；</li>
+<li>数据全库迁移：创建任务队列表，逐步完成全库所有表的迁移。</li>
 </ul>
-<h2 id="连续内存分配"><a href="#连续内存分配" class="headerlink" title="连续内存分配"></a>连续内存分配</h2><h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><p>内存通常分为两个部分：</p>
+<h2 id="CDC开源实现Canal"><a href="#CDC开源实现Canal" class="headerlink" title="CDC开源实现Canal"></a>CDC开源实现Canal</h2><h3 id="Canal主要原理"><a href="#Canal主要原理" class="headerlink" title="Canal主要原理"></a>Canal主要原理</h3><p>Canal主要定位是<strong>基于数据库增量日志解析，提供增量数据订阅和消费</strong>，目前主要支持了MySQL等关系型数据库。<br>Canal的主要原理是，模拟数据库的主备复制协议，接受主数据库产生的binary log，进而捕获更新数据。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697727596459-0e721b2d-8a55-4bbd-9201-bfae5fa3ba39.png#averageHue=%23f4f3f3&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=312&amp;id=ue281518a&amp;originHeight=429&amp;originWidth=856&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=100400&amp;status=done&amp;style=none&amp;taskId=u0703fd01-8157-4c78-afc3-a8e952a04a9&amp;title=&amp;width=622.5454545454545" alt="image.png"></p>
+<h3 id="Canal基本架构"><a href="#Canal基本架构" class="headerlink" title="Canal基本架构"></a>Canal基本架构</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697727670892-e0d601a9-c029-4f24-bb14-7d0d5f4fa332.png#averageHue=%23f5f4f3&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=447&amp;id=ud64011e6&amp;originHeight=615&amp;originWidth=1177&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=146351&amp;status=done&amp;style=none&amp;taskId=u5eb6af15-3ac2-47d8-a6cc-87560ec9849&amp;title=&amp;width=856" alt="image.png"></p>
+<h2 id="多机房数据同步系统Otter"><a href="#多机房数据同步系统Otter" class="headerlink" title="多机房数据同步系统Otter"></a>多机房数据同步系统Otter</h2><h3 id="Otter基本架构"><a href="#Otter基本架构" class="headerlink" title="Otter基本架构"></a>Otter基本架构</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728046633-74539bbc-e6ce-4a69-b912-914365b077b1.png#averageHue=%23f0efee&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=471&amp;id=u2344ea3c&amp;originHeight=648&amp;originWidth=1173&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=203941&amp;status=done&amp;style=none&amp;taskId=uc5776525-893e-4597-94d1-1c37a80557c&amp;title=&amp;width=853.0909090909091" alt="image.png"></p>
+<h3 id="Otter-S、E、T、L阶段模型"><a href="#Otter-S、E、T、L阶段模型" class="headerlink" title="Otter S、E、T、L阶段模型"></a>Otter S、E、T、L阶段模型</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728115654-364f02ed-3483-4b56-8239-58fa62b9b348.png#averageHue=%23f2f0ef&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=403&amp;id=u09e013b1&amp;originHeight=554&amp;originWidth=1130&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=188596&amp;status=done&amp;style=none&amp;taskId=u7f39c631-579b-4743-b31d-43449a5e1a6&amp;title=&amp;width=821.8181818181819" alt="image.png"></p>
+<h3 id="Otter跨机房数据同步"><a href="#Otter跨机房数据同步" class="headerlink" title="Otter跨机房数据同步"></a>Otter跨机房数据同步</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728138093-13a87f50-ccc1-474f-88ab-277eac32f4b0.png#averageHue=%23f0efee&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=470&amp;id=u01c39387&amp;originHeight=646&amp;originWidth=1039&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=193724&amp;status=done&amp;style=none&amp;taskId=u6470a719-f056-432a-b24b-a187276e767&amp;title=&amp;width=755.6363636363636" alt="image.png"></p>
+<h2 id="非关系型数据收集"><a href="#非关系型数据收集" class="headerlink" title="非关系型数据收集"></a>非关系型数据收集</h2><ul>
+<li>非关系型数据种类繁多，包括网页、视频、图片、用户行为日志等，其中日志类数据直接反映了生产者的现状和行为特征， 通常用在行为分析系统、推荐系统、广告系统中；  </li>
+<li>日志数据具有流式、数据量大等特点，通常分散在各种设备上， 由不同服务和组件产生，为了高效地收集这些流式日志，需要采用具有良好扩展性、伸缩性和容错性的分布式系统；  </li>
+<li>为了帮助用户解决日志收集问题，Hadoop生态系统提供了 Flume，它是Cloudera公司开源的一个分布式高可靠系统，能够<strong>对不同数据源的海量日志数据进行高效收集、聚合、移动</strong>，最后存储到一个中心化的数据存储系统中。</li>
+</ul>
+<h2 id="Flume概述"><a href="#Flume概述" class="headerlink" title="Flume概述"></a>Flume概述</h2><h3 id="Flume设计动机"><a href="#Flume设计动机" class="headerlink" title="Flume设计动机"></a>Flume设计动机</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728312738-479789d1-f6f2-4cef-9225-2aa680867332.png#averageHue=%23f0edeb&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=345&amp;id=u323a0f5d&amp;originHeight=474&amp;originWidth=1132&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=236716&amp;status=done&amp;style=none&amp;taskId=u05bb7534-e4ae-4d5a-b6ec-65bd7cd58f4&amp;title=&amp;width=823.2727272727273" alt="image.png"></p>
+<h3 id="Flume基本思想及特点"><a href="#Flume基本思想及特点" class="headerlink" title="Flume基本思想及特点"></a>Flume基本思想及特点</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728335167-25373eeb-c862-4306-9620-8202743274c7.png#averageHue=%23f3f1ef&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=409&amp;id=uc20e96eb&amp;originHeight=562&amp;originWidth=1134&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=233426&amp;status=done&amp;style=none&amp;taskId=u274ce792-e62b-4fb0-adfb-3c71b82dd8a&amp;title=&amp;width=824.7272727272727" alt="image.png"></p>
+<h2 id="Flume基本架构"><a href="#Flume基本架构" class="headerlink" title="Flume基本架构"></a>Flume基本架构</h2><h3 id="Flume基本构成"><a href="#Flume基本构成" class="headerlink" title="Flume基本构成"></a>Flume基本构成</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728752395-4b52443f-f435-430f-adc2-844c9e655139.png#averageHue=%23f5f4f2&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=415&amp;id=u41f06469&amp;originHeight=570&amp;originWidth=1092&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=231712&amp;status=done&amp;style=none&amp;taskId=u292d8b39-8af2-4ff3-8243-7dd0beaf49e&amp;title=&amp;width=794.1818181818181" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728805958-19999312-e06d-4454-bd5e-8f12b8ac4ed5.png#averageHue=%23f2efed&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=443&amp;id=u02fb9d90&amp;originHeight=609&amp;originWidth=1132&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=299703&amp;status=done&amp;style=none&amp;taskId=u02b2a549-e38b-4eb9-8115-2f906858e76&amp;title=&amp;width=823.2727272727273" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728815238-483e928e-023d-4732-a89d-232f36aee8bb.png#averageHue=%23f8f7f6&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=452&amp;id=u207bc9a8&amp;originHeight=622&amp;originWidth=1115&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=184471&amp;status=done&amp;style=none&amp;taskId=u6c35833f-720a-46d9-a556-1b349a723bb&amp;title=&amp;width=810.9090909090909" alt="image.png"></p>
+<h3 id="Flume-NG高级组件"><a href="#Flume-NG高级组件" class="headerlink" title="Flume NG高级组件"></a>Flume NG高级组件</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728861575-68887aeb-8692-457d-a807-4ed5e1de205d.png#averageHue=%23f1eeeb&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=398&amp;id=u59984716&amp;originHeight=547&amp;originWidth=1112&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=272068&amp;status=done&amp;style=none&amp;taskId=u2fb05f7e-4557-4b19-8408-cb4f2e3cac6&amp;title=&amp;width=808.7272727272727" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697728867945-994da6bf-c58c-4d8e-bbc6-4e851d1ba989.png#averageHue=%23f6f4f3&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=457&amp;id=u33c6df00&amp;originHeight=629&amp;originWidth=1123&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=231933&amp;status=done&amp;style=none&amp;taskId=u8ee2fdd9-5393-4d39-93c3-7595beb9109&amp;title=&amp;width=816.7272727272727" alt="image.png"></p>
+<h2 id="Flume-NG数据流拓扑"><a href="#Flume-NG数据流拓扑" class="headerlink" title="Flume NG数据流拓扑"></a>Flume NG数据流拓扑</h2><h3 id="构建数据流拓扑"><a href="#构建数据流拓扑" class="headerlink" title="构建数据流拓扑"></a>构建数据流拓扑</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697729087900-9c142b3e-7028-4b13-90f5-d5779d1b6f85.png#averageHue=%23f2f0ed&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=324&amp;id=uf45de7ed&amp;originHeight=446&amp;originWidth=1105&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=201864&amp;status=done&amp;style=none&amp;taskId=uf3bdff6d-ce5b-4d06-ab86-cc4323c9cf6&amp;title=&amp;width=803.6363636363636" alt="image.png"></p>
+<h3 id="多路合并拓扑架构"><a href="#多路合并拓扑架构" class="headerlink" title="多路合并拓扑架构"></a>多路合并拓扑架构</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697729148825-f0b14aef-259c-44b0-94dd-755bb42640a8.png#averageHue=%23f7f6f5&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=452&amp;id=u4996df74&amp;originHeight=622&amp;originWidth=1125&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=208668&amp;status=done&amp;style=none&amp;taskId=u39dc8bbe-1de7-4190-89e6-316f2112519&amp;title=&amp;width=818.1818181818181" alt="image.png"></p>
+<h3 id="多路复用拓扑架构"><a href="#多路复用拓扑架构" class="headerlink" title="多路复用拓扑架构"></a>多路复用拓扑架构</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697729174871-82e19441-bfad-428e-aab6-bd8d2ceeb170.png#averageHue=%23f7f6f6&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=450&amp;id=uf2f2136d&amp;originHeight=619&amp;originWidth=1102&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=187009&amp;status=done&amp;style=none&amp;taskId=u7fb03ada-c02e-4917-baa6-f90007a3e67&amp;title=&amp;width=801.4545454545455" alt="image.png"></p>
+<h1 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h1><h2 id="Kafka概述"><a href="#Kafka概述" class="headerlink" title="Kafka概述"></a>Kafka概述</h2><ul>
+<li>实际应用中，不同服务器(数据生产者)产生的日志，比如指标监控数据、用户搜索日志、用点击日志等，需要同 时传送到多个系统中以便进行相应的逻辑处理和挖掘， 比如指标监控数据可能被同时写入Hadoop和Storm集群 (数据消费者)进行离线和实时分析。</li>
+<li>消息队列的出现是为了<strong>降低数据生产者和消费者之间的耦合性、平衡两者处理能力的不对等</strong>。 </li>
+<li><strong>消息队列是位于生产者和消费者之间的“中间件”</strong>，它解除了生产者和消费者的直接依赖关系，使得软件架构更 容易扩展和伸缩；它能够缓冲生产者产生的数据，防止 消费者无法及时处理生产者产生的数据。</li>
+</ul>
+<h3 id="Kafka设计动机"><a href="#Kafka设计动机" class="headerlink" title="Kafka设计动机"></a>Kafka设计动机</h3><p>存在问题：</p>
 <ul>
-<li><strong>操作系统和中断向量</strong>通常放在<strong>低内存</strong>中。</li>
-<li><strong>用户进程</strong>放在<strong>高内存</strong>中。</li>
+<li><strong>数据生产者和消费者耦合度过高</strong>：需要增加一种新的消费者时，所有数据生产者均需要被改动，扩展性非常差。</li>
+<li><strong>生产者和消费者间数据处理速率不对等</strong></li>
+<li><strong>大量并发的网络连接对后端消费者不够友好</strong></li>
 </ul>
-<p>再分配寄存器用于<strong>防止用户进程相互越界访问</strong>，并且<strong>避免它们修改操作系统</strong>的代码和数据。</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/addressProtection.png"></p>
+<p>解决方法：引入一层”中间件”</p>
 <ul>
-<li><strong>基址寄存器</strong>存储物理地址的最小值。</li>
-<li><strong>限址寄存器</strong>存储逻辑地址的范围——所有逻辑地址都要比这个值小。</li>
-<li><strong>MMU</strong>实现逻辑地址的动态映射。</li>
+<li><strong>消息中间件</strong>：避免生产者和消费者直接互通产生的彼此高度依赖，两者中任何一个有变化都不会 影响另一方。  </li>
+<li><strong>消息队列</strong>：缓存生产者产生的数据，使得消费者可以重复消费历史数据；平滑生产者产生数据速度和消费者处理数据速度的不对等。</li>
+<li><strong>发布订阅系统</strong>：消费者可订阅某类主题的数据，当生产者产生对应主题的数据后，所有订阅者会快速获取到的数据，即消费者可快速获取新增数据。</li>
+<li><strong>信息总线</strong>：所有收集到的数据会流经Kafka，之后由Kafka分流后，进入各个消费者系统。</li>
 </ul>
-<h3 id="多区分配"><a href="#多区分配" class="headerlink" title="多区分配"></a>多区分配</h3><ul>
-<li><strong>空闲块（hole）</strong>——可用的内存块。</li>
-<li>当一个进程到达时，从足<strong>够容纳该进程的空闲块</strong>中分配内存。</li>
-<li>操作系统维护有关<strong>已分配分区和空闲分区</strong>的信息。</li>
+<h3 id="Kafka特点"><a href="#Kafka特点" class="headerlink" title="Kafka特点"></a>Kafka特点</h3><ul>
+<li><strong>高吞吐量</strong></li>
+<li><strong>良好的扩展性</strong></li>
+<li><strong>持久性和可靠性</strong></li>
 </ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/Contiguous%20Allocation.png"></p>
-<p>分配策略：</p>
+<h3 id="Flume与Kafka的区别"><a href="#Flume与Kafka的区别" class="headerlink" title="Flume与Kafka的区别"></a>Flume与Kafka的区别</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1698378163478-ab9ad77e-2c50-4d24-a893-9ffa2d158a0b.png#averageHue=%23f5f3f0&amp;clientId=ub9045351-1b5f-4&amp;from=paste&amp;height=278&amp;id=uc93c905c&amp;originHeight=347&amp;originWidth=931&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=125522&amp;status=done&amp;style=none&amp;taskId=u04ba6821-7eb5-421d-8778-53981c962a5&amp;title=&amp;width=744.8" alt="image.png"></p>
+<h2 id="Kafka设计架构"><a href="#Kafka设计架构" class="headerlink" title="Kafka设计架构"></a>Kafka设计架构</h2><h3 id="Kafka基本架构"><a href="#Kafka基本架构" class="headerlink" title="Kafka基本架构"></a>Kafka基本架构</h3><p>Kafka是一个分布式消息队列，它将数据分区保存，并将每个分区保存成多份以提高数据可靠性。</p>
 <ul>
-<li><strong>首次适应</strong>：分配首个足够大的孔。</li>
-<li><strong>最优适应</strong>：分配最小的足够大的孔。</li>
-<li><strong>最差适应</strong>：分配最大的足够大的孔。<br>在速度和空间利用率上，首次适应和最优适应要优于最差适应。</li>
-</ul>
-<h2 id="碎片"><a href="#碎片" class="headerlink" title="碎片"></a>碎片</h2><ul>
-<li><strong>外部碎片</strong>：全部的可用空间可以满足一个进程的请求但<strong>不连续</strong>。</li>
-<li><strong>内部碎片</strong>：<strong>分配给进程的内存大于进程申请的内存</strong>，造成内存浪费。</li>
-</ul>
-<p>通过<strong>压缩</strong>（compaction）可以减少外部碎片：</p>
-<ul>
-<li>重新排列内存内容，将所有的空闲内存拼成一个大的空闲块。</li>
-<li>需要满足动态重定位，且在执行时才能发生。</li>
-</ul>
-<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
-<li><p>把<strong>物理内存</strong>分为等大小（2的幂次）的块，叫做<strong>帧或页帧</strong>。</p>
-</li>
-<li><p>把<strong>逻辑内存</strong>分为等大小的块，叫做页<strong>或页面</strong>。</p>
-</li>
-<li><p>当执行一个<strong>n页</strong>的进程时，需要找到<strong>n个空闲帧</strong>加载程序。</p>
-</li>
-<li><p>系统通过<strong>帧表</strong>保留所有的空闲帧，通过<strong>页表</strong>实现逻辑内存到物理内存的映射。</p>
-</li>
-<li><p>每个进程都拥有一个页表，存放着自己的<strong>逻辑地址空间（页）与物理地址空间（帧）的映射</strong>。</p>
-</li>
-<li><p>分页使分页内存完全独立于物理内存，<strong>解决了外部碎片</strong>（内存和进程都被分成碎片，内存碎片可以被利用而不是浪费），<strong>但仍有内部碎片</strong>。</p>
-</li>
-</ul>
-<h3 id="地址转换机制"><a href="#地址转换机制" class="headerlink" title="地址转换机制"></a>地址转换机制</h3><ul>
-<li>逻辑地址表示为：<strong>页码</strong>（page number）+<strong>页偏移</strong>（page offset）。</li>
-<li>页码：页表的索引，通过页码在页表中找到对应的帧号。</li>
-<li>页偏移：数据在页内的偏移值。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/pageNumberOffset.png"><br>逻辑地址空间 $2^m$     页大小$2^n$</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/Paging%20Hardware.png"></p>
-<ul>
-<li>在页表中根据页号找到帧号。</li>
-<li>帧号和页内偏移构成物理地址。</li>
-</ul>
-<h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><h4 id="页表的实现"><a href="#页表的实现" class="headerlink" title="页表的实现"></a>页表的实现</h4><ul>
-<li>页表存放在内存中，<strong>页表基地址寄存器</strong>（PTBR）指向页表的基地址，<strong>页表限长寄存器</strong>（PTLR）表示页表的长度。</li>
-<li>这种模式下<strong>每次数据/指令访问需要两次内存访问</strong>：先访问页表获取帧号，再访问数据/指令。使用<strong>转换表缓冲区</strong>（TLBs，也称联想寄存器）解决两次访问的问题：是<strong>高速硬件Cache</strong>，存储少数频繁访问的页表条目，访问几乎不需要额外开销。<ul>
-<li>所需条目在TLB中，直接读取帧号，计算物理地址并访问。</li>
-<li>所需条目不在TLB中：从内存中的页表读取帧号，并将页码和帧号存入TLB，若TLB已满则采用相应的替换策略。</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/PagingHardwareWithTLB.png"></p>
-<h4 id="有效访问时间"><a href="#有效访问时间" class="headerlink" title="有效访问时间"></a>有效访问时间</h4><ul>
-<li>关联查找时间：ε</li>
-<li>假设内存访问时间是1ms</li>
-<li>命中率：α<br><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/EATofTLB.png"></li>
-</ul>
-<h4 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h4><p>页表中的每一个表项都有一个有效-无效位。</p>
-<ul>
-<li>有效表示页面合法且在进程的逻辑地址空间内。</li>
-<li>无效表示不在进程的逻辑地址空间内。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/Valid-InvalidBit.png"></p>
-<h1 id="第九章-虚拟内存"><a href="#第九章-虚拟内存" class="headerlink" title="第九章 虚拟内存"></a>第九章 虚拟内存</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>虚拟内存是计算机操作系统中的一种技术，它<strong>定义了一个连续的虚拟地址空间，并且将部分硬盘空间用作内存的扩展</strong>。</p>
-<h3 id="概念区分"><a href="#概念区分" class="headerlink" title="概念区分"></a>概念区分</h3><ul>
-<li>虚拟地址空间：分配给进程的虚拟内存。</li>
-<li>虚拟地址：在虚拟内存中指令或数据的位置。</li>
-<li>虚拟内存：把内存和磁盘结合起来使用，得到一个容量很大的虚存。物理内存上的数据可以通过页表直接访问，但<strong>如果访问到磁盘上的数据，要先调入到内存上的空闲帧（无空闲帧时先利用置换算法与内存中某个帧交换再访问）</strong>。</li>
-</ul>
-<h3 id="虚拟内存的大小决定因素"><a href="#虚拟内存的大小决定因素" class="headerlink" title="虚拟内存的大小决定因素"></a>虚拟内存的大小决定因素</h3><ul>
-<li><strong>操作系统字长</strong>：决定了逻辑地址的最大长度，也决定了虚拟内存的大小（超出部分无法正确寻址使用）。</li>
-<li><strong>内存外存容量和</strong></li>
-</ul>
-<h3 id="两种实现方式"><a href="#两种实现方式" class="headerlink" title="两种实现方式"></a>两种实现方式</h3><ul>
-<li>请求分页</li>
-<li>请求分段</li>
-</ul>
-<h2 id="请求分页"><a href="#请求分页" class="headerlink" title="请求分页"></a>请求分页</h2><p>进程运行开始时，<strong>仅装入一个或零个页面</strong>，所有的数据和指令大都存放在外存中。进程执行过程中，<strong>根据进程的需求动态装入页面</strong>（将外存中固定块的内容装入内存中的某一帧，并更新页表）。内存已满时，要利用<strong>页面置换算法</strong>将低优先级的页面置换出去。<br><strong>使用惰性的调页程序</strong>，即只在页面被需要时调入。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>减少I/O操作</li>
-<li>减少内存需求</li>
-<li>更快的响应速度</li>
-<li>支持更多用户</li>
-</ul>
-<h3 id="有效-无效位"><a href="#有效-无效位" class="headerlink" title="有效-无效位"></a>有效-无效位</h3><p>每一个页表的表项有一个有效-无效位<br><strong>v/1</strong>-&gt;valid-&gt;<strong>页面在内存中并且合法</strong><br><strong>i/0</strong>-&gt;invalid-&gt;<strong>页面合法但不在内存中/页面不合法</strong></p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/demandpaging.png"></p>
-<h3 id="页错误"><a href="#页错误" class="headerlink" title="页错误"></a>页错误</h3><p>对一个页面的首次访问，会陷入操作系统的缺页中断。<br><strong>六步过程</strong></p>
-<ol>
-<li>访问指令/数据，有效-无效位为1-&gt;直接访问，否则继续。</li>
-<li>页面不合法-&gt;终止，报错，<br> 页面合法但不在内存中-&gt;继续。</li>
-<li>找到页在磁盘中的位置。</li>
-<li>有空闲帧-&gt;直接调入<br> 无空闲帧-&gt;换出一个低优先级的帧<br>         没修改过-&gt;直接覆盖<br>         修改过-&gt;先写入到磁盘，再覆盖</li>
-<li>更新页表。</li>
-<li>重启指令。</li>
-</ol>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/pageFault.png"></p>
-<h3 id="有效访问时间-1"><a href="#有效访问时间-1" class="headerlink" title="有效访问时间"></a>有效访问时间</h3><ul>
-<li>缺页率：0&lt;=p&lt;=1.0</li>
-<li><strong>有效访问时间 EAT = （1 - p） * 内存访问时间 + p * 缺页错误处理时间</strong></li>
-<li><strong>缺页错误处理时间 = 处理缺页中断 + 页交换出去时间（不一定需要） + 读入页时间 + 重启进程开销</strong></li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/computingOfEAT.png"></p>
-<h3 id="在进程创建中的两个重要方面"><a href="#在进程创建中的两个重要方面" class="headerlink" title="在进程创建中的两个重要方面"></a>在进程创建中的两个重要方面</h3><ol>
-<li>写时复制（Copy-on-Write）</li>
-</ol>
-<ul>
-<li>写时复制允许父进程和子进程最初共享相同的内存页，只有当其中一个进程修改了共享的页时，该页才会被复制。</li>
-<li>使进程创建更高效。</li>
-</ul>
-<ol start="2">
-<li>内存映射文件（Memory-Mapped Files）<em>后续讲解</em></li>
-</ol>
-<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>页面置换：当需要调入新的页面而没有空闲帧时，找到内存中某些页面换出。<br>页面置换算法性能目标：<strong>最小缺页率</strong></p>
-<p>如果发生了页面置换，缺页处理时间会加倍，使用<strong>修改位modify bit或者脏位dirty bit</strong>来减少页面传输的开销：<strong>只有修改过的页面才会被写入磁盘（违背修改的页面直接丢弃）</strong>。</p>
-<p>页面置换完成了逻辑内存和物理内存之间的分离–<strong>可以在较小的物理内存上提供大量的虚拟内存</strong>。</p>
-<h4 id="先进先出（FIFO）算法"><a href="#先进先出（FIFO）算法" class="headerlink" title="先进先出（FIFO）算法"></a>先进先出（FIFO）算法</h4><ul>
-<li>置换在内存中<strong>停留时间最久</strong>的页面。</li>
-<li>可能出现<strong>Belady’s Anomaly</strong>: more frames -&gt; more page faults</li>
-</ul>
-<h4 id="最优置换选择（OPT）算法"><a href="#最优置换选择（OPT）算法" class="headerlink" title="最优置换选择（OPT）算法"></a>最优置换选择（OPT）算法</h4><ul>
-<li>置换在<strong>最远的将来才会使用</strong>的页面。</li>
-<li>缺页错误率最低，不会产生<strong>Belady’s Anomaly</strong>，但需要未来知识才能实现。</li>
-</ul>
-<h4 id="最近最少使用（LRU）算法"><a href="#最近最少使用（LRU）算法" class="headerlink" title="最近最少使用（LRU）算法"></a>最近最少使用（LRU）算法</h4><ul>
-<li>置换<strong>最长时间没有被使用</strong>的页面。</li>
-<li>性能接近OPT，需要硬件（<strong>计数器或堆栈</strong>）支持。</li>
-</ul>
-<h4 id="近似LRU算法-二次机会法"><a href="#近似LRU算法-二次机会法" class="headerlink" title="近似LRU算法/二次机会法"></a>近似LRU算法/二次机会法</h4><ul>
-<li>无硬件支持时使用<strong>引用位</strong>实现近似LRU算法。<ul>
-<li>初始时，将内存中每一页的引用位都初始化为0。</li>
-<li>当某个页面被引用时，引用位设置为1。</li>
-<li>当需要置换时，顺时针遍历内存中所有页面。如果找到一个页的引用位为0，那么将其置换；引用位为1，则将其改为0，继续遍历。（给它一次做人的机会）</li>
+<li>Kafka架构由<strong>Producer、Broker和Consumer</strong>三类组件构成，其中Producer将数据写入Broker，Consumer则从Broker上读取数据进行处理；Broker构成了连接Producer和Consumer的”缓冲区”，Broker和Consumer通过ZooKeeper做协调和服务发现。</li>
+<li>Kafka架构采用<strong>Push-Pull架构（生产者将消息推送到队列中，但消费者不会立即接收消息。相反，消费者在自己的节奏下拉（pull）消息）</strong>，即Producer将数据直接”push”给Broker，而Consumer从Broker端”pull”数据，这种架构优势主要体现在以下两点:<ul>
+<li>Consumer可根据自己的实际负载和需求获取数据，避免采用”push”方式给Consumer带来较大压力。</li>
+<li>Consumer自己维护已读取消息的offset而不是由Broker端维护，大大缓解了Broker的压力。</li>
 </ul>
 </li>
 </ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/secondChance.png"></p>
-<h4 id="计数算法"><a href="#计数算法" class="headerlink" title="计数算法"></a>计数算法</h4><ul>
-<li>用一个计数器<strong>记录每个页面被引用的次数</strong>。</li>
-<li>LFU 算法：替换被引用次数最小的也页面。</li>
-<li>MFU 算法</li>
-</ul>
-<h3 id="页框分配"><a href="#页框分配" class="headerlink" title="页框分配"></a>页框分配</h3><p>每个进程需要的最小帧数由<strong>计算机架构</strong>决定：</p>
+<h3 id="Kafka各组件详解"><a href="#Kafka各组件详解" class="headerlink" title="Kafka各组件详解"></a>Kafka各组件详解</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1698379811033-620d3f96-713f-4bd3-8820-d3691fff23b4.png#averageHue=%23f6f3f1&amp;clientId=ub9045351-1b5f-4&amp;from=paste&amp;height=298&amp;id=udb05c2e3&amp;originHeight=373&amp;originWidth=887&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=134602&amp;status=done&amp;style=none&amp;taskId=uc6031cbe-fe23-4836-945d-17042db6629&amp;title=&amp;width=709.6" alt="image.png"></p>
 <ul>
-<li>例子：IBM370的SS-MOV指令：<ul>
-<li>指令是6个字节，并可能跨越2个页面</li>
-<li>存储来源（from）可能需要2个页面</li>
-<li>目的区域（to）可能需要2个页面</li>
-<li>所以这个指令需要的最小帧数为6</li>
+<li>Kafka Producer发送信息时，不需要指定所有Broker的地址，只需给定一个或几个初始化Broker的地址即可，Producer可通过指定的Broker获取其他所有Broker的位置信息，并自动实现负载均衡。</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1700188977865-477435f5-bb1c-490b-9187-22abb594e0b4.png#averageHue=%23f4f2ef&amp;clientId=u439df397-55e9-4&amp;from=paste&amp;height=339&amp;id=u9abff1e4&amp;originHeight=424&amp;originWidth=802&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=193175&amp;status=done&amp;style=none&amp;taskId=u1e0b21fe-c42c-40d4-9fbf-ba0e8f42ec1&amp;title=&amp;width=641.6" alt="image.png"></p>
+<h1 id="大数据存储"><a href="#大数据存储" class="headerlink" title="大数据存储"></a>大数据存储</h1><h2 id="数据序列化"><a href="#数据序列化" class="headerlink" title="数据序列化"></a>数据序列化</h2><h2 id="数据序列化方案"><a href="#数据序列化方案" class="headerlink" title="数据序列化方案"></a>数据序列化方案</h2><h2 id="文件存储格式"><a href="#文件存储格式" class="headerlink" title="文件存储格式"></a>文件存储格式</h2><h2 id="行式存储格式"><a href="#行式存储格式" class="headerlink" title="行式存储格式"></a>行式存储格式</h2><h2 id="列式存储格式"><a href="#列式存储格式" class="headerlink" title="列式存储格式"></a>列式存储格式</h2><h1 id="分布式存储"><a href="#分布式存储" class="headerlink" title="分布式存储"></a>分布式存储</h1><p>文件存储的方式：</p>
+<ul>
+<li>文件系统<ul>
+<li>NTFS(New Technology File System)：Windows常用的高级文件系统</li>
+<li>Ext4(Extended File System4)：Android常用的文件系统</li>
+<li>HFS(Hierarchical File System)、HFS+、APFS(Apple File System)：IOS</li>
+</ul>
+</li>
+<li>数据库</li>
+</ul>
+<p>数据存储扩容问题的两种解决方案：</p>
+<ul>
+<li><strong>纵向扩展(scale-up)</strong></li>
+<li><strong>横向扩展(scale-out)</strong></li>
+</ul>
+<p>横向扩展存在的难点：</p>
+<ul>
+<li><strong>因故障丢失数据</strong></li>
+<li><strong>文件通常较大</strong></li>
+<li><strong>一次写入多次读取</strong></li>
+</ul>
+<h2 id="分布式文件系统"><a href="#分布式文件系统" class="headerlink" title="分布式文件系统"></a>分布式文件系统</h2><h2 id="文件级别和块级别的分布式文件系统"><a href="#文件级别和块级别的分布式文件系统" class="headerlink" title="文件级别和块级别的分布式文件系统"></a>文件级别和块级别的分布式文件系统</h2><h2 id="HDFS关键技术"><a href="#HDFS关键技术" class="headerlink" title="HDFS关键技术"></a>HDFS关键技术</h2><p>主从软件架构，主服务被称为NameNode，管理文件系统的元信息和从节点，从服务被称为DataNode，存储实际的数据块；DataNode与NameNode维护了周期性的心跳，为防止</p>
+<h3 id="容错性设计（考）"><a href="#容错性设计（考）" class="headerlink" title="容错性设计（考）"></a>容错性设计（考）</h3><p>NameNode故障：为每个Active NameNode分配一个Standby NameNode<br>DataNode故障：冗余备份、心跳机制<br>数据块损坏：保存DataNode时生成校验码，读取数据时比较校验码</p>
+<h3 id="副本放置策略"><a href="#副本放置策略" class="headerlink" title="副本放置策略"></a>副本放置策略</h3><p>HDFS默认采用三副本放置策略</p>
+<h3 id="集中式缓存管理"><a href="#集中式缓存管理" class="headerlink" title="集中式缓存管理"></a>集中式缓存管理</h3><p>允许用户将一部分目录会文件缓存在off-heap内存中，以加速对这些数据的访问效率，该机制被称为集中式缓存管理。<br>优势：</p>
+<ul>
+<li>提高集群的内存利用率</li>
+<li>防止被频繁使用的数据从内存中清除</li>
+<li>提高数据读取的效率</li>
+</ul>
+<h2 id="HDFS访问方式"><a href="#HDFS访问方式" class="headerlink" title="HDFS访问方式"></a>HDFS访问方式</h2><h2 id="NoSQL数据库"><a href="#NoSQL数据库" class="headerlink" title="NoSQL数据库"></a>NoSQL数据库</h2><p>关系型数据库（如MySQL、Oracle）通过了严格的ACID测试。</p>
+<ul>
+<li>原子性（Atomicity）：单个事务为一个不可分割的最小工作单元</li>
+<li>一致性（Consistency）</li>
+<li>隔离性（Isolation）：一个事务所做的修改在最终提交以前，对其他事务是不可见的</li>
+<li>持久性（Durability）：一旦事务提交，所作的修改就会永久保存到数据库中。</li>
+</ul>
+<h2 id="NoSQL与关系数据库的对比"><a href="#NoSQL与关系数据库的对比" class="headerlink" title="NoSQL与关系数据库的对比"></a>NoSQL与关系数据库的对比</h2><table>
+<thead>
+<tr>
+<th>比较标准</th>
+<th>关系型数据库</th>
+<th>NoSQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查询方式</td>
+<td>SQL</td>
+<td>UnQL</td>
+</tr>
+<tr>
+<td>数据完整性</td>
+<td>容易实现</td>
+<td>很难实现</td>
+</tr>
+<tr>
+<td>一致性</td>
+<td>强一致性</td>
+<td>弱一致性</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="NoSQL的三大基石"><a href="#NoSQL的三大基石" class="headerlink" title="NoSQL的三大基石"></a>NoSQL的三大基石</h2><h3 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h3><p>C（Consistency）：一致性，任何一个读操作总是能读到之前完成的写操作的结果。<br>A（Availability）：可用性，是指快速获取数据，可以再确定的时间内返回操作结果，保证每个请求不管成功或者失败都有相应。<br>P（Partition Tolerance）：分区容错性，</p>
+<h3 id="BASE模型"><a href="#BASE模型" class="headerlink" title="BASE模型"></a>BASE模型</h3><p>BASE模型反ACID模型，基本含义是本基本可用（Basically Availability）、软状态和最终一致性。</p>
+<h3 id="最终一致性"><a href="#最终一致性" class="headerlink" title="最终一致性"></a>最终一致性</h3><ul>
+<li>N——数据复制的份数</li>
+<li>W——更新数据时需要保证写完成的节点数</li>
+<li>R——读取数据时</li>
+</ul>
+<h2 id="NoSQL数据库类型"><a href="#NoSQL数据库类型" class="headerlink" title="NoSQL数据库类型"></a>NoSQL数据库类型</h2><ul>
+<li>Key-Value型（Redis、Riak、SimpleDB、Chordless、Scalaris、Memcached）<ul>
+<li>key-value store</li>
+</ul>
+</li>
+<li>Key-Column型</li>
+<li>Key-Document模型</li>
+<li>图模型</li>
+</ul>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><ul>
+<li>STRING</li>
+<li>LIST</li>
+<li>SET</li>
+<li>HASH</li>
+<li>ZSET</li>
+</ul>
+<p>两种不同的持久化方法：</p>
+<ul>
+<li>快照</li>
+<li>只追加文件</li>
+</ul>
+<h2 id="分布式结构化存储系统"><a href="#分布式结构化存储系统" class="headerlink" title="分布式结构化存储系统"></a>分布式结构化存储系统</h2><h2 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h2><h3 id="HBase数据模型"><a href="#HBase数据模型" class="headerlink" title="HBase数据模型"></a>HBase数据模型</h3><h3 id="HBase基本架构"><a href="#HBase基本架构" class="headerlink" title="HBase基本架构"></a>HBase基本架构</h3><h3 id="HBase内部原理"><a href="#HBase内部原理" class="headerlink" title="HBase内部原理"></a>HBase内部原理</h3><h3 id="HBase实例"><a href="#HBase实例" class="headerlink" title="HBase实例"></a>HBase实例</h3><h3 id="HBase访问方式"><a href="#HBase访问方式" class="headerlink" title="HBase访问方式"></a>HBase访问方式</h3><h2 id="时间序列数据库OpenTSDB"><a href="#时间序列数据库OpenTSDB" class="headerlink" title="时间序列数据库OpenTSDB"></a>时间序列数据库OpenTSDB</h2><p>不需要具体了解</p>
+<h2 id="分布式列式存储系统Kudu"><a href="#分布式列式存储系统Kudu" class="headerlink" title="分布式列式存储系统Kudu"></a>分布式列式存储系统Kudu</h2><ul>
+<li>HDFS使用列式存储格式，适合离线分析，不支持单条记录级别的update操作，随机读写性能差。</li>
+<li>HBase可以进行高效随机读写，却并不适用于基于SQL的数据分析方向，大批量数据获取时的性能较差。</li>
+<li>Kudu介于HDFS和HBase之间，比HBase批处理快，比HDFS随机读写性能强。</li>
+</ul>
+<p>Kudu是一个强类型的<strong>纯列式存储数据库</strong>。</p>
+<ul>
+<li>Kudu Master</li>
+<li>Table Server<ul>
+<li>通常有3个副本存放在不同的Table Server上</li>
+<li>同一个副本分为leader和follower</li>
 </ul>
 </li>
 </ul>
-<p>两种主流分配方式：</p>
-<ul>
-<li>固定分配<ul>
-<li><strong>平均分配</strong>：例如，100个帧，5个进程，则每个进程分给20个帧。</li>
-<li><strong>比例分配</strong>：按照每个进程的大小（分配比例=进程大小/总进程大小）进行分配。</li>
-</ul>
-</li>
-<li><strong>优先级分配</strong>：根据优先级而不是进程大小按比例分配。</li>
-</ul>
-<h3 id="全局置换vs-局部置换"><a href="#全局置换vs-局部置换" class="headerlink" title="全局置换vs.局部置换"></a>全局置换vs.局部置换</h3><ul>
-<li><strong>全局置换</strong>：每个进程可以从<strong>所有帧的集合</strong>中选择一个进行页面置换，而不用管该帧是否已经分配给其它进程。<strong>高优先级进程可以选择低优先级进程的帧来置换</strong>。（具有<strong>更好的系统吞吐量</strong>）</li>
-<li><strong>局部置换</strong>：每个进程只能从<strong>自己的帧中</strong>选择页面进行置换。</li>
-</ul>
-<h3 id="颠簸（Thrashing）"><a href="#颠簸（Thrashing）" class="headerlink" title="颠簸（Thrashing）"></a>颠簸（Thrashing）</h3><p>颠簸：一个进程的页面被<strong>频繁换入换出</strong>。</p>
-<p>原因：</p>
-<ul>
-<li>进程分配的<strong>帧数不足</strong>。</li>
-<li>页面<strong>置换算法不合理</strong>。</li>
-</ul>
-<p>后果：</p>
-<ul>
-<li><strong>CPU利用率低</strong>（频繁进行页面置换，CPU等待时间长）</li>
-<li>操作系统认为需要增加多道程序的道数（CPU利用率低），<strong>调入新的进程，造成更多的缺页错误和更长的调页设备队列，造成恶性循环</strong>。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/thrashing.png"></p>
+<p>完全的列式存储引擎，表中的每一列数据都是存放在一起，列与列之间都是分开的。</p>
+<h2 id="云数据库"><a href="#云数据库" class="headerlink" title="云数据库"></a>云数据库</h2><p>为什么zookeeper通常由奇数个实例构成<br>2n+1个节点和2n+2个节点的容错数均为n个节点</p>
+<p>observer不参与投票过程</p>
 
                 
             </div>
@@ -667,7 +693,7 @@ CPU能直接访问的存储器：寄存器和内存。
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://daixinwang.github.io/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/">https://daixinwang.github.io/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/</a>
+                    <a href="https://daixinwang.github.io/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/">https://daixinwang.github.io/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -709,8 +735,8 @@ CPU能直接访问的存储器：寄存器和内存。
                                     <span class="chip bg-color">笔记</span>
                                 </a>
                             
-                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">操作系统</span>
+                                <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                    <span class="chip bg-color">大数据</span>
                                 </a>
                             
                         </div>
@@ -756,12 +782,11 @@ CPU能直接访问的存储器：寄存器和内存。
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/">
+                <a href="/2023/11/25/cao-zuo-xi-tong-bi-ji/">
                     <div class="card-image">
                         
                         
@@ -777,9 +802,9 @@ CPU能直接访问的存储器：寄存器和内存。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-25
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -792,7 +817,6 @@ CPU能直接访问的存储器：寄存器和内存。
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -812,10 +836,10 @@ CPU能直接访问的存储器：寄存器和内存。
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/da-shu-ju-ji-zhu-ji-chu-bi-ji/">
+                <a href="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/">
                     <div class="card-image">
                         
                         
@@ -846,6 +870,7 @@ CPU能直接访问的存储器：寄存器和内存。
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
