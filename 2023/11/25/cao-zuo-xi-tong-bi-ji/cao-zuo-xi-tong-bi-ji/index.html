@@ -407,7 +407,7 @@ CPU能直接访问的存储器：寄存器和内存。
 <li><strong>基址寄存器</strong>（Base Register）：存储基址，表示一个可用内存块的<strong>起始地址</strong>。</li>
 <li><strong>限址寄存器</strong>（Limit Register）：存储限址，表示基址寄存器定义的<strong>内存块大小</strong>。</li>
 </ol>
-<p><img src="/.io//base&amp;limit.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/base&amp;limit.png"></p>
 <h2 id="地址绑定"><a href="#地址绑定" class="headerlink" title="地址绑定"></a>地址绑定</h2><p><strong>地址绑定</strong>：在程序的执行过程中，将程序中的逻辑地址（或虚拟地址）映射到实际的物理地址的过程。这个过程可以在编译时、加载时或运行时发生。</p>
 <p>一个程序运行的流程：<strong>编译（编译成机器码）–&gt;链接（链接外部模块）–&gt;加载（加载进内存）–&gt;执行</strong>。</p>
 <h3 id="地址绑定的时机"><a href="#地址绑定的时机" class="headerlink" title="地址绑定的时机"></a>地址绑定的时机</h3><ul>
@@ -435,15 +435,15 @@ CPU能直接访问的存储器：寄存器和内存。
 <li>完成从逻辑地址到物理地址的映射。</li>
 <li>逻辑地址 + 重定位寄存器中的值 = 物理地址。</li>
 </ul>
-<p><img src="/.io//MMU.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/MMU.png"></p>
 <h2 id="动态加载和动态链接"><a href="#动态加载和动态链接" class="headerlink" title="动态加载和动态链接"></a>动态加载和动态链接</h2><p>一个程序运行的流程：<strong>编译（编译成机器码）–&gt;链接（链接外部模块）–&gt;加载（加载进内存）–&gt;执行</strong>。但链接和加载有时也可以在执行时动态进行。</p>
-<p><img src="/.io//link&amp;load.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/link&amp;load.png"></p>
 <ul>
 <li>动态链接（运行时链接）：将链接的过程推迟到程序实际执行的时候，利用<strong>存根</strong>（stub）定位内存中的库历程并执行，允许多个程序共享相同的库(被称为<strong>共享库</strong>)，减少了重复的代码和内存占用。需要操作系统的支持。</li>
 <li>动态加载（运行时加载）：将不常用的代码（例如用于异常处理的代码）写入到模块程序中，只有当需要时才会加载进入内存。<strong>提高了内存空间利用率</strong>。不需要系统提供特别的支持，通常是程序员实现。例子：<strong>Windows操作系统的各种DLL库</strong>。</li>
 </ul>
 <h2 id="交换（Swapping）"><a href="#交换（Swapping）" class="headerlink" title="交换（Swapping）"></a>交换（Swapping）</h2><p>一个进程可以<strong>暂时</strong>从内存中交换到<strong>备份区</strong>，之后再被换回内存中继续执行。允许操作系统更有效地利用有限的物理内存资源，类似于进程调度中的<strong>中期调度</strong>。</p>
-<p><img src="/.io//Swapping.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/Swapping.png"></p>
 <ul>
 <li><strong>备份区</strong>：一个足够大的<strong>可以容纳所有用户内存映像拷贝的快速磁盘</strong>，提供对这些内存映像的直接访问。</li>
 <li><strong>换入，换出</strong>（Roll out，roll in）：换出低优先级的进程，以装入执行高优先级的进程。</li>
@@ -456,7 +456,7 @@ CPU能直接访问的存储器：寄存器和内存。
 <li><strong>用户进程</strong>放在<strong>高内存</strong>中。</li>
 </ul>
 <p>再分配寄存器用于<strong>防止用户进程相互越界访问</strong>，并且<strong>避免它们修改操作系统</strong>的代码和数据。</p>
-<p><img src="/.io//addressProtection.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/addressProtection.png"></p>
 <ul>
 <li><strong>基址寄存器</strong>存储物理地址的最小值。</li>
 <li><strong>限址寄存器</strong>存储逻辑地址的范围——所有逻辑地址都要比这个值小。</li>
@@ -467,7 +467,7 @@ CPU能直接访问的存储器：寄存器和内存。
 <li>当一个进程到达时，从足<strong>够容纳该进程的空闲块</strong>中分配内存。</li>
 <li>操作系统维护有关<strong>已分配分区和空闲分区</strong>的信息。</li>
 </ul>
-<p><img src="/.io//Contiguous%20Allocation.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/Contiguous%20Allocation.png"></p>
 <p>分配策略：</p>
 <ul>
 <li><strong>首次适应</strong>：分配首个足够大的孔。</li>
@@ -502,8 +502,8 @@ CPU能直接访问的存储器：寄存器和内存。
 <li>页码：页表的索引，通过页码在页表中找到对应的帧号。</li>
 <li>页偏移：数据在页内的偏移值。</li>
 </ul>
-<p><img src="/.io//pageNumberOffset.png"><br>逻辑地址空间 $2^m$     页大小$2^n$</p>
-<p><img src="/.io//Paging%20Hardware.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/pageNumberOffset.png"><br>逻辑地址空间 $2^m$     页大小$2^n$</p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/Paging%20Hardware.png"></p>
 <ul>
 <li>在页表中根据页号找到帧号。</li>
 <li>帧号和页内偏移构成物理地址。</li>
@@ -516,18 +516,18 @@ CPU能直接访问的存储器：寄存器和内存。
 </ul>
 </li>
 </ul>
-<p><img src="/.io//PagingHardwareWithTLB.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/PagingHardwareWithTLB.png"></p>
 <h4 id="有效访问时间"><a href="#有效访问时间" class="headerlink" title="有效访问时间"></a>有效访问时间</h4><ul>
 <li>关联查找时间：ε</li>
 <li>假设内存访问时间是1ms</li>
-<li>命中率：α<br><img src="/.io//EATofTLB.png"></li>
+<li>命中率：α<br><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/EATofTLB.png"></li>
 </ul>
 <h4 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h4><p>页表中的每一个表项都有一个有效-无效位。</p>
 <ul>
 <li>有效表示页面合法且在进程的逻辑地址空间内。</li>
 <li>无效表示不在进程的逻辑地址空间内。</li>
 </ul>
-<p><img src="/.io//Valid-InvalidBit.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/Valid-InvalidBit.png"></p>
 <h1 id="第九章-虚拟内存"><a href="#第九章-虚拟内存" class="headerlink" title="第九章 虚拟内存"></a>第九章 虚拟内存</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>虚拟内存是计算机操作系统中的一种技术，它<strong>定义了一个连续的虚拟地址空间，并且将部分硬盘空间用作内存的扩展</strong>。</p>
 <h3 id="概念区分"><a href="#概念区分" class="headerlink" title="概念区分"></a>概念区分</h3><ul>
 <li>虚拟地址空间：分配给进程的虚拟内存。</li>
@@ -550,7 +550,7 @@ CPU能直接访问的存储器：寄存器和内存。
 <li>支持更多用户</li>
 </ul>
 <h3 id="有效-无效位"><a href="#有效-无效位" class="headerlink" title="有效-无效位"></a>有效-无效位</h3><p>每一个页表的表项有一个有效-无效位<br><strong>v/1</strong>-&gt;valid-&gt;<strong>页面在内存中并且合法</strong><br><strong>i/0</strong>-&gt;invalid-&gt;<strong>页面合法但不在内存中/页面不合法</strong></p>
-<p><img src="/.io//demandpaging.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/demandpaging.png"></p>
 <h3 id="页错误"><a href="#页错误" class="headerlink" title="页错误"></a>页错误</h3><p>对一个页面的首次访问，会陷入操作系统的缺页中断。<br><strong>六步过程</strong></p>
 <ol>
 <li>访问指令/数据，有效-无效位为1-&gt;直接访问，否则继续。</li>
@@ -560,13 +560,13 @@ CPU能直接访问的存储器：寄存器和内存。
 <li>更新页表。</li>
 <li>重启指令。</li>
 </ol>
-<p><img src="/.io//pageFault.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/pageFault.png"></p>
 <h3 id="有效访问时间-1"><a href="#有效访问时间-1" class="headerlink" title="有效访问时间"></a>有效访问时间</h3><ul>
 <li>缺页率：0&lt;=p&lt;=1.0</li>
 <li><strong>有效访问时间 EAT = （1 - p） * 内存访问时间 + p * 缺页错误处理时间</strong></li>
 <li><strong>缺页错误处理时间 = 处理缺页中断 + 页交换出去时间（不一定需要） + 读入页时间 + 重启进程开销</strong></li>
 </ul>
-<p><img src="/.io//computingOfEAT.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/computingOfEAT.png"></p>
 <h3 id="在进程创建中的两个重要方面"><a href="#在进程创建中的两个重要方面" class="headerlink" title="在进程创建中的两个重要方面"></a>在进程创建中的两个重要方面</h3><ol>
 <li>写时复制（Copy-on-Write）</li>
 </ol>
@@ -600,7 +600,7 @@ CPU能直接访问的存储器：寄存器和内存。
 </ul>
 </li>
 </ul>
-<p><img src="/.io//secondChance.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/secondChance.png"></p>
 <h4 id="计数算法"><a href="#计数算法" class="headerlink" title="计数算法"></a>计数算法</h4><ul>
 <li>用一个计数器<strong>记录每个页面被引用的次数</strong>。</li>
 <li>LFU 算法：替换被引用次数最小的也页面。</li>
@@ -640,7 +640,7 @@ CPU能直接访问的存储器：寄存器和内存。
 <li><strong>CPU利用率低</strong>（频繁进行页面置换，CPU等待时间长）</li>
 <li>操作系统认为需要增加多道程序的道数（CPU利用率低），<strong>调入新的进程，造成更多的缺页错误和更长的调页设备队列，造成恶性循环</strong>。</li>
 </ul>
-<p><img src="/.io//thrashing.png"></p>
+<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/cao-zuo-xi-tong-bi-ji/thrashing.png"></p>
 
                 
             </div>

@@ -464,15 +464,15 @@ Variety
 <li>数据分析</li>
 <li>数据可视化</li>
 </ul>
-<p><img src="/.io//bigDataBasicFrame.png"></p>
-<h2 id="大数据技术实现方案"><a href="#大数据技术实现方案" class="headerlink" title="大数据技术实现方案"></a>大数据技术实现方案</h2><h3 id="Hadoop与Spark开源大数据技术栈"><a href="#Hadoop与Spark开源大数据技术栈" class="headerlink" title="Hadoop与Spark开源大数据技术栈"></a>Hadoop与Spark开源大数据技术栈</h3><p><img src="/.io//hadoop&amp;spark.png"></p>
+<p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/da-shu-ju-ji-zhu-ji-chu-bi-ji/bigDataBasicFrame.png"></p>
+<h2 id="大数据技术实现方案"><a href="#大数据技术实现方案" class="headerlink" title="大数据技术实现方案"></a>大数据技术实现方案</h2><h3 id="Hadoop与Spark开源大数据技术栈"><a href="#Hadoop与Spark开源大数据技术栈" class="headerlink" title="Hadoop与Spark开源大数据技术栈"></a>Hadoop与Spark开源大数据技术栈</h3><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/da-shu-ju-ji-zhu-ji-chu-bi-ji/hadoop&amp;spark.png"></p>
 <h2 id="大数据架构"><a href="#大数据架构" class="headerlink" title="大数据架构"></a>大数据架构</h2><p><strong>Lambda架构：</strong><br>将数据处理流程分解成三层：</p>
 <ul>
 <li>批处理层：利用分布式批处理计算，以批为单位处理数据，并产生一个经预计算产生的只读数据视图。</li>
 <li>流式处理层：采用流式计算技术，降低了数据处理延迟。</li>
 <li>服务层：批处理层和流式处理层结合在一起，可以既保证数据延迟低，也能完成复杂的逻辑计算。</li>
 </ul>
-<p><img src="/.io//Lambda.png"></p>
+<p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/da-shu-ju-ji-zhu-ji-chu-bi-ji/Lambda.png"></p>
 <p>案例：推荐系统<br>![[recommandSystem.png]]</p>
 <h1 id="大数据收集"><a href="#大数据收集" class="headerlink" title="大数据收集"></a>大数据收集</h1><h2 id="关系型数据收集"><a href="#关系型数据收集" class="headerlink" title="关系型数据收集"></a>关系型数据收集</h2><p>关系型数据是常见的一种数据类型，通常存储在MySQL、 Oracle等关系型数据库中，为了能够利用大数据技术处理和存储这些关系型数据，将这些数据导入到HDFS、Hbase等大数据存储系统中，以便使用MapReduce、Spark等分布式计算技术进行高效分析和处理。为便于与前端数据可视化系统对接，通常需要将Hadoop大数据系统分析产生的结果导回到关系型数据库中。为解决上述问题，<strong>高效地实现关系型数据库与Hadoop之间数据的导入导出</strong>，Hadoop生态系统提供了<strong>Sqoop</strong>工具。</p>
 <h2 id="Sqoop"><a href="#Sqoop" class="headerlink" title="Sqoop"></a>Sqoop</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Sqoop采用插拔式Connector架构，解决了关系型数据库与Hadoop之间的数据传输问题。</p>
@@ -488,9 +488,9 @@ Variety
 <li>自动类型转换</li>
 <li>自动传播元信息</li>
 </ul>
-<h3 id="Sqoop基本架构"><a href="#Sqoop基本架构" class="headerlink" title="Sqoop基本架构"></a>Sqoop基本架构</h3><h4 id="Sqoop1架构"><a href="#Sqoop1架构" class="headerlink" title="Sqoop1架构"></a>Sqoop1架构</h4><p><img src="/.io//Sqoop1.png"></p>
-<h4 id="Sqoop2架构"><a href="#Sqoop2架构" class="headerlink" title="Sqoop2架构"></a>Sqoop2架构</h4><p><img src="/.io//Sqoop2.png"></p>
-<h4 id="Sqoop1与Sqoop2对比"><a href="#Sqoop1与Sqoop2对比" class="headerlink" title="Sqoop1与Sqoop2对比"></a>Sqoop1与Sqoop2对比</h4><p><img src="/.io//SqoopVSSqoop2.png"></p>
+<h3 id="Sqoop基本架构"><a href="#Sqoop基本架构" class="headerlink" title="Sqoop基本架构"></a>Sqoop基本架构</h3><h4 id="Sqoop1架构"><a href="#Sqoop1架构" class="headerlink" title="Sqoop1架构"></a>Sqoop1架构</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/da-shu-ju-ji-zhu-ji-chu-bi-ji/Sqoop1.png"></p>
+<h4 id="Sqoop2架构"><a href="#Sqoop2架构" class="headerlink" title="Sqoop2架构"></a>Sqoop2架构</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/da-shu-ju-ji-zhu-ji-chu-bi-ji/Sqoop2.png"></p>
+<h4 id="Sqoop1与Sqoop2对比"><a href="#Sqoop1与Sqoop2对比" class="headerlink" title="Sqoop1与Sqoop2对比"></a>Sqoop1与Sqoop2对比</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/da-shu-ju-ji-zhu-ji-chu-bi-ji/SqoopVSSqoop2.png"></p>
 <h3 id="Sqoop使用方式"><a href="#Sqoop使用方式" class="headerlink" title="Sqoop使用方式"></a>Sqoop使用方式</h3><h4 id="Sqoop1使用方式"><a href="#Sqoop1使用方式" class="headerlink" title="Sqoop1使用方式"></a>Sqoop1使用方式</h4><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697727069806-87e8eea3-e247-4eac-9664-2e0812d8bfcd.png#averageHue=%23f1eeeb&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=293&amp;id=uf2701d70&amp;originHeight=403&amp;originWidth=1094&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=185220&amp;status=done&amp;style=none&amp;taskId=u128fce70-4a36-44b9-a89f-9ae07fa96f3&amp;title=&amp;width=795.6363636363636" alt="image.png"></p>
 <h4 id="Sqoop2使用方式"><a href="#Sqoop2使用方式" class="headerlink" title="Sqoop2使用方式"></a>Sqoop2使用方式</h4><p><img src="https://cdn.nlark.com/yuque/0/2023/png/29550710/1697727091744-8861bf1f-c6ac-4495-941d-81bdb03f31c8.png#averageHue=%23f3f0ed&amp;clientId=ua9edeed5-70db-4&amp;from=paste&amp;height=366&amp;id=u9a6b147e&amp;originHeight=503&amp;originWidth=1138&amp;originalType=binary&amp;ratio=1.375&amp;rotation=0&amp;showTitle=false&amp;size=231982&amp;status=done&amp;style=none&amp;taskId=u7b4f8822-f12e-494f-b08a-738a49ad539&amp;title=&amp;width=827.6363636363636" alt="image.png"></p>
 <h2 id="数据增量收集CDC"><a href="#数据增量收集CDC" class="headerlink" title="数据增量收集CDC"></a>数据增量收集CDC</h2><p> 捕获数据源中数据的更新，进而获取增量数据的过程，被称为 **CDC(Change Data Capture)**。<br> CDC 系统主要功能是捕获数据库中的数据更新，将增量数据发送给各个订阅者和消费者；<br> CDC 系统应用非常广泛，主要包括：</p>
