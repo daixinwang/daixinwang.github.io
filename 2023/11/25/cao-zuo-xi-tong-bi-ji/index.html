@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="操作系统笔记, learning,life,coding,computer science">
-    <meta name="description" content="第九章 虚拟内存概述虚拟内存是计算机操作系统中的一种技术，它定义了一个连续的虚拟地址空间，并且将部分硬盘空间用作内存的扩展。
-概念区分
-虚拟地址空间：分配给进程的虚拟内存。
-虚拟地址：在虚拟内存中指令或数据的位置。
-虚拟内存：把内存和磁盘结">
+    <meta name="description" content="第八章 内存管理背景
+CPU能直接访问的存储器：寄存器和内存。
+程序必须（从磁盘）装到内存中才能执行。
+在处理地址空间和内存管理方面，程序员主要关注逻辑地址，操作系统主要关注内存大小、地址绑定以及内存保护。
+寄存器通常在一个CPU时钟周期内">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -369,14 +369,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    12 分
                 </div>
                 
 
@@ -396,7 +396,139 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第九章-虚拟内存"><a href="#第九章-虚拟内存" class="headerlink" title="第九章 虚拟内存"></a>第九章 虚拟内存</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>虚拟内存是计算机操作系统中的一种技术，它<strong>定义了一个连续的虚拟地址空间，并且将部分硬盘空间用作内存的扩展</strong>。</p>
+                <h1 id="第八章-内存管理"><a href="#第八章-内存管理" class="headerlink" title="第八章 内存管理"></a>第八章 内存管理</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+<li>CPU能直接访问的存储器：<strong>寄存器和内存</strong>。</li>
+<li>程序必须（从磁盘）<strong>装到内存</strong>中才能执行。</li>
+<li>在处理地址空间和内存管理方面，程序员主要关注<strong>逻辑地址</strong>，操作系统主要关注<strong>内存大小</strong>、<strong>地址绑定</strong>以及<strong>内存保护</strong>。</li>
+<li>寄存器通常在一个CPU时钟周期内（或更少）就可以完成访问，而内存通常需要多个CPU时钟周期访问。当CPU已读入指令但尚未从内存中读取完数据时，会暂停导致CPU利用率降低。为解决这个问题，在内存和CPU之间引入了<strong>高速缓存Cache</strong>（将<strong>需要频繁读取的数据从内存暂存到Cache中</strong>），通常位于CPU上。</li>
+<li><strong>内存保护</strong>需要保证执行正确的操作。</li>
+</ul>
+<h2 id="基址寄存器和限址寄存器"><a href="#基址寄存器和限址寄存器" class="headerlink" title="基址寄存器和限址寄存器"></a>基址寄存器和限址寄存器</h2><ol>
+<li><strong>基址寄存器</strong>（Base Register）：存储基址，表示一个可用内存块的<strong>起始地址</strong>。</li>
+<li><strong>限址寄存器</strong>（Limit Register）：存储限址，表示基址寄存器定义的<strong>内存块大小</strong>。</li>
+</ol>
+<p><img src="/base&amp;limit.png"></p>
+<h2 id="地址绑定"><a href="#地址绑定" class="headerlink" title="地址绑定"></a>地址绑定</h2><p><strong>地址绑定</strong>：在程序的执行过程中，将程序中的逻辑地址（或虚拟地址）映射到实际的物理地址的过程。这个过程可以在编译时、加载时或运行时发生。</p>
+<p>一个程序运行的流程：<strong>编译（编译成机器码）–&gt;链接（链接外部模块）–&gt;加载（加载进内存）–&gt;执行</strong>。</p>
+<h3 id="地址绑定的时机"><a href="#地址绑定的时机" class="headerlink" title="地址绑定的时机"></a>地址绑定的时机</h3><ul>
+<li><strong>编译时</strong>绑定：若编译时已知进程在内存中驻留的地址，即可生成绝对代码。如果未来地址发送变化，程序需要<strong>重新编译</strong>。（<strong>静态重定位，不需要硬件支持</strong>）</li>
+<li><strong>加载时</strong>绑定：编译时生成可重定位代码。加载时再进行绑定，此时若内存地址发生变化，只需要<strong>重新加载程序</strong>。（<strong>静态重定位，不需要硬件支持</strong>）</li>
+<li><strong>运行时</strong>绑定：如果一个进程在运行时可从一个内存段移到另一个内存段，那么绑定将延迟到运行时进行。如果要改变内存地址，只需要改变基址寄存器的值即可。（<strong>动态重定位，需要硬件支持，如基址寄存器、限址寄存器和MMU，为大多数操作系统采用</strong>）</li>
+</ul>
+<h2 id="逻辑地址vs-物理地址"><a href="#逻辑地址vs-物理地址" class="headerlink" title="逻辑地址vs.物理地址"></a>逻辑地址vs.物理地址</h2><ol>
+<li>逻辑地址</li>
+</ol>
+<ul>
+<li>程序运行时由CPU产生的<strong>虚拟地址</strong>。</li>
+<li>CPU利用逻辑地址访问内存中的物理地址并获取数据。</li>
+<li>CPU产生的逻辑地址集合被称为<strong>逻辑地址空间</strong>。</li>
+</ul>
+<ol start="2">
+<li>物理地址</li>
+</ol>
+<ul>
+<li>内存中数据的<strong>实际地址</strong>，由<strong>内存管理单元</strong>（MMU）计算得出。</li>
+<li>物理地址对用户程序<strong>不可见</strong>。</li>
+<li>物理地址的集合被称为<strong>物理地址空间</strong>。</li>
+</ul>
+<h2 id="内存管理单元（MMU）"><a href="#内存管理单元（MMU）" class="headerlink" title="内存管理单元（MMU）"></a>内存管理单元（MMU）</h2><ul>
+<li>完成从逻辑地址到物理地址的映射。</li>
+<li>逻辑地址 + 重定位寄存器中的值 = 物理地址。</li>
+</ul>
+<p>![[MMU.png]]</p>
+<h2 id="动态加载和动态链接"><a href="#动态加载和动态链接" class="headerlink" title="动态加载和动态链接"></a>动态加载和动态链接</h2><p>一个程序运行的流程：<strong>编译（编译成机器码）–&gt;链接（链接外部模块）–&gt;加载（加载进内存）–&gt;执行</strong>。但链接和加载有时也可以在执行时动态进行。</p>
+<p><img src="/link&amp;load.png"></p>
+<ul>
+<li>动态链接（运行时链接）：将链接的过程推迟到程序实际执行的时候，利用<strong>存根</strong>（stub）定位内存中的库历程并执行，允许多个程序共享相同的库(被称为<strong>共享库</strong>)，减少了重复的代码和内存占用。需要操作系统的支持。</li>
+<li>动态加载（运行时加载）：将不常用的代码（例如用于异常处理的代码）写入到模块程序中，只有当需要时才会加载进入内存。<strong>提高了内存空间利用率</strong>。不需要系统提供特别的支持，通常是程序员实现。例子：<strong>Windows操作系统的各种DLL库</strong>。</li>
+</ul>
+<h2 id="交换（Swapping）"><a href="#交换（Swapping）" class="headerlink" title="交换（Swapping）"></a>交换（Swapping）</h2><p>一个进程可以<strong>暂时</strong>从内存中交换到<strong>备份区</strong>，之后再被换回内存中继续执行。允许操作系统更有效地利用有限的物理内存资源，类似于进程调度中的<strong>中期调度</strong>。</p>
+<p><img src="/Swapping.png"></p>
+<ul>
+<li><strong>备份区</strong>：一个足够大的<strong>可以容纳所有用户内存映像拷贝的快速磁盘</strong>，提供对这些内存映像的直接访问。</li>
+<li><strong>换入，换出</strong>（Roll out，roll in）：换出低优先级的进程，以装入执行高优先级的进程。</li>
+<li>交换时间的<strong>主要部分是传输时间</strong>。</li>
+<li>系统维护一个<strong>已准备运行的进程队列</strong>，这些进程在磁盘上有内存映像。</li>
+</ul>
+<h2 id="连续内存分配"><a href="#连续内存分配" class="headerlink" title="连续内存分配"></a>连续内存分配</h2><h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><p>内存通常分为两个部分：</p>
+<ul>
+<li><strong>操作系统和中断向量</strong>通常放在<strong>低内存</strong>中。</li>
+<li><strong>用户进程</strong>放在<strong>高内存</strong>中。</li>
+</ul>
+<p>再分配寄存器用于<strong>防止用户进程相互越界访问</strong>，并且<strong>避免它们修改操作系统</strong>的代码和数据。</p>
+<p><img src="/addressProtection.png"></p>
+<ul>
+<li><strong>基址寄存器</strong>存储物理地址的最小值。</li>
+<li><strong>限址寄存器</strong>存储逻辑地址的范围——所有逻辑地址都要比这个值小。</li>
+<li><strong>MMU</strong>实现逻辑地址的动态映射。</li>
+</ul>
+<h3 id="多区分配"><a href="#多区分配" class="headerlink" title="多区分配"></a>多区分配</h3><ul>
+<li><strong>空闲块（hole）</strong>——可用的内存块。</li>
+<li>当一个进程到达时，从足<strong>够容纳该进程的空闲块</strong>中分配内存。</li>
+<li>操作系统维护有关<strong>已分配分区和空闲分区</strong>的信息。</li>
+</ul>
+<p><img src="/Contiguous%20Allocation.png"></p>
+<p>分配策略：</p>
+<ul>
+<li><strong>首次适应</strong>：分配首个足够大的孔。</li>
+<li><strong>最优适应</strong>：分配最小的足够大的孔。</li>
+<li><strong>最差适应</strong>：分配最大的足够大的孔。<br>在速度和空间利用率上，首次适应和最优适应要优于最差适应。</li>
+</ul>
+<h2 id="碎片"><a href="#碎片" class="headerlink" title="碎片"></a>碎片</h2><ul>
+<li><strong>外部碎片</strong>：全部的可用空间可以满足一个进程的请求但<strong>不连续</strong>。</li>
+<li><strong>内部碎片</strong>：<strong>分配给进程的内存大于进程申请的内存</strong>，造成内存浪费。</li>
+</ul>
+<p>通过<strong>压缩</strong>（compaction）可以减少外部碎片：</p>
+<ul>
+<li>重新排列内存内容，将所有的空闲内存拼成一个大的空闲块。</li>
+<li>需要满足动态重定位，且在执行时才能发生。</li>
+</ul>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li><p>把<strong>物理内存</strong>分为等大小（2的幂次）的块，叫做<strong>帧或页帧</strong>。</p>
+</li>
+<li><p>把<strong>逻辑内存</strong>分为等大小的块，叫做页<strong>或页面</strong>。</p>
+</li>
+<li><p>当执行一个<strong>n页</strong>的进程时，需要找到<strong>n个空闲帧</strong>加载程序。</p>
+</li>
+<li><p>系统通过<strong>帧表</strong>保留所有的空闲帧，通过<strong>页表</strong>实现逻辑内存到物理内存的映射。</p>
+</li>
+<li><p>每个进程都拥有一个页表，存放着自己的<strong>逻辑地址空间（页）与物理地址空间（帧）的映射</strong>。</p>
+</li>
+<li><p>分页使分页内存完全独立于物理内存，<strong>解决了外部碎片</strong>（内存和进程都被分成碎片，内存碎片可以被利用而不是浪费），<strong>但仍有内部碎片</strong>。</p>
+</li>
+</ul>
+<h3 id="地址转换机制"><a href="#地址转换机制" class="headerlink" title="地址转换机制"></a>地址转换机制</h3><ul>
+<li>逻辑地址表示为：<strong>页码</strong>（page number）+<strong>页偏移</strong>（page offset）。</li>
+<li>页码：页表的索引，通过页码在页表中找到对应的帧号。</li>
+<li>页偏移：数据在页内的偏移值。</li>
+</ul>
+<p><img src="/pageNumberOffset.png"><br>逻辑地址空间 $2^m$     页大小$2^n$</p>
+<p><img src="/Paging%20Hardware.png"></p>
+<ul>
+<li>在页表中根据页号找到帧号。</li>
+<li>帧号和页内偏移构成物理地址。</li>
+</ul>
+<h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><h4 id="页表的实现"><a href="#页表的实现" class="headerlink" title="页表的实现"></a>页表的实现</h4><ul>
+<li>页表存放在内存中，<strong>页表基地址寄存器</strong>（PTBR）指向页表的基地址，<strong>页表限长寄存器</strong>（PTLR）表示页表的长度。</li>
+<li>这种模式下<strong>每次数据/指令访问需要两次内存访问</strong>：先访问页表获取帧号，再访问数据/指令。使用<strong>转换表缓冲区</strong>（TLBs，也称联想寄存器）解决两次访问的问题：是<strong>高速硬件Cache</strong>，存储少数频繁访问的页表条目，访问几乎不需要额外开销。<ul>
+<li>所需条目在TLB中，直接读取帧号，计算物理地址并访问。</li>
+<li>所需条目不在TLB中：从内存中的页表读取帧号，并将页码和帧号存入TLB，若TLB已满则采用相应的替换策略。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/PagingHardwareWithTLB.png"></p>
+<h4 id="有效访问时间"><a href="#有效访问时间" class="headerlink" title="有效访问时间"></a>有效访问时间</h4><ul>
+<li>关联查找时间：ε</li>
+<li>假设内存访问时间是1ms</li>
+<li>命中率：α<br><img src="/EATofTLB.png"></li>
+</ul>
+<h4 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h4><p>页表中的每一个表项都有一个有效-无效位。</p>
+<ul>
+<li>有效表示页面合法且在进程的逻辑地址空间内。</li>
+<li>无效表示不在进程的逻辑地址空间内。</li>
+</ul>
+<p><img src="/Valid-InvalidBit.png"></p>
+<h1 id="第九章-虚拟内存"><a href="#第九章-虚拟内存" class="headerlink" title="第九章 虚拟内存"></a>第九章 虚拟内存</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>虚拟内存是计算机操作系统中的一种技术，它<strong>定义了一个连续的虚拟地址空间，并且将部分硬盘空间用作内存的扩展</strong>。</p>
 <h3 id="概念区分"><a href="#概念区分" class="headerlink" title="概念区分"></a>概念区分</h3><ul>
 <li>虚拟地址空间：分配给进程的虚拟内存。</li>
 <li>虚拟地址：在虚拟内存中指令或数据的位置。</li>
@@ -418,7 +550,7 @@
 <li>支持更多用户</li>
 </ul>
 <h3 id="有效-无效位"><a href="#有效-无效位" class="headerlink" title="有效-无效位"></a>有效-无效位</h3><p>每一个页表的表项有一个有效-无效位<br><strong>v/1</strong>-&gt;valid-&gt;<strong>页面在内存中并且合法</strong><br><strong>i/0</strong>-&gt;invalid-&gt;<strong>页面合法但不在内存中/页面不合法</strong></p>
-<p>![[Pasted image 20231123150946.png]]</p>
+<p><img src="/demandpaging.png"></p>
 <h3 id="页错误"><a href="#页错误" class="headerlink" title="页错误"></a>页错误</h3><p>对一个页面的首次访问，会陷入操作系统的缺页中断。<br><strong>六步过程</strong></p>
 <ol>
 <li>访问指令/数据，有效-无效位为1-&gt;直接访问，否则继续。</li>
@@ -428,13 +560,13 @@
 <li>更新页表。</li>
 <li>重启指令。</li>
 </ol>
-<p>![[Pasted image 20231123160740.png]]</p>
-<h3 id="有效访问时间"><a href="#有效访问时间" class="headerlink" title="有效访问时间"></a>有效访问时间</h3><ul>
+<p><img src="/pageFault.png"></p>
+<h3 id="有效访问时间-1"><a href="#有效访问时间-1" class="headerlink" title="有效访问时间"></a>有效访问时间</h3><ul>
 <li>缺页率：0&lt;=p&lt;=1.0</li>
 <li><strong>有效访问时间 EAT = （1 - p） * 内存访问时间 + p * 缺页错误处理时间</strong></li>
 <li><strong>缺页错误处理时间 = 处理缺页中断 + 页交换出去时间（不一定需要） + 读入页时间 + 重启进程开销</strong></li>
 </ul>
-<p>![[Pasted image 20231123161436.png]]</p>
+<p><img src="/computingOfEAT.png"></p>
 <h3 id="在进程创建中的两个重要方面"><a href="#在进程创建中的两个重要方面" class="headerlink" title="在进程创建中的两个重要方面"></a>在进程创建中的两个重要方面</h3><ol>
 <li>写时复制（Copy-on-Write）</li>
 </ol>
@@ -468,7 +600,7 @@
 </ul>
 </li>
 </ul>
-<p>![[Pasted image 20231126002001.png]]</p>
+<p><img src="/secondChance.png"></p>
 <h4 id="计数算法"><a href="#计数算法" class="headerlink" title="计数算法"></a>计数算法</h4><ul>
 <li>用一个计数器<strong>记录每个页面被引用的次数</strong>。</li>
 <li>LFU 算法：替换被引用次数最小的也页面。</li>
@@ -508,7 +640,7 @@
 <li><strong>CPU利用率低</strong>（频繁进行页面置换，CPU等待时间长）</li>
 <li>操作系统认为需要增加多道程序的道数（CPU利用率低），<strong>调入新的进程，造成更多的缺页错误和更长的调页设备队列，造成恶性循环</strong>。</li>
 </ul>
-<p>![[Pasted image 20231126004536.png]]</p>
+<p><img src="/thrashing.png"></p>
 
                 
             </div>
@@ -902,7 +1034,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.8k</span>
+                        class="white-color">6.9k</span>
             
             
             
