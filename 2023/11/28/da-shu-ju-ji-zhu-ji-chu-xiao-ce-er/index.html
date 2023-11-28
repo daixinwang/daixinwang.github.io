@@ -4,12 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="操作系统笔记, learning,life,coding,computer science">
-    <meta name="description" content="第八章 内存管理背景
-CPU能直接访问的存储器：寄存器和内存。
-程序必须（从磁盘）装到内存中才能执行。
-在处理地址空间和内存管理方面，程序员主要关注逻辑地址，操作系统主要关注内存大小、地址绑定以及内存保护。
-寄存器通常在一个CPU时钟周期内">
+    <meta name="keywords" content="大数据技术基础小测二, learning,life,coding,computer science">
+    <meta name="description" content="
+Kafka在架构和应用定位上不包括：A、存储的数据是多副本的，能够做到数据不丢B、可将数据暂存一段时间(默认是一周)，供消费者重复读取，提供了类似于“发布订阅模式”的功能C、提供memory channel和file channel，数据">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +18,7 @@ CPU能直接访问的存储器：寄存器和内存。
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>操作系统笔记 | Davian&#39;s Blog</title>
+    <title>大数据技术基础小测二 | Davian&#39;s Blog</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
     
     <style>
@@ -275,12 +272,12 @@ CPU能直接访问的存储器：寄存器和内存。
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">操作系统笔记</h1>
+                    <h1 class="description center-align post-title">大数据技术基础小测二</h1>
                 </div>
             </div>
         </div>
@@ -304,12 +301,12 @@ CPU能直接访问的存储器：寄存器和内存。
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">笔记</span>
+                            <a href="/tags/%E5%BA%94%E8%AF%95%E8%AF%95%E9%A2%98/">
+                                <span class="chip bg-color">应试试题</span>
                             </a>
                         
-                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">操作系统</span>
+                            <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">大数据技术基础</span>
                             </a>
                         
                     </div>
@@ -320,8 +317,8 @@ CPU能直接访问的存储器：寄存器和内存。
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                课程笔记
+                            <a href="/categories/%E5%BA%94%E8%AF%95/" class="post-category">
+                                应试
                             </a>
                         
                     </div>
@@ -333,28 +330,28 @@ CPU能直接访问的存储器：寄存器和内存。
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-11-25
+                    2023-11-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-27
+                    2023-11-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.9k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    9 分
                 </div>
                 
 
@@ -374,323 +371,74 @@ CPU能直接访问的存储器：寄存器和内存。
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第八章-内存管理"><a href="#第八章-内存管理" class="headerlink" title="第八章 内存管理"></a>第八章 内存管理</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
-<li>CPU能直接访问的存储器：<strong>寄存器和内存</strong>。</li>
-<li>程序必须（从磁盘）<strong>装到内存</strong>中才能执行。</li>
-<li>在处理地址空间和内存管理方面，程序员主要关注<strong>逻辑地址</strong>，操作系统主要关注<strong>内存大小</strong>、<strong>地址绑定</strong>以及<strong>内存保护</strong>。</li>
-<li>寄存器通常在一个CPU时钟周期内（或更少）就可以完成访问，而内存通常需要多个CPU时钟周期访问。当CPU已读入指令但尚未从内存中读取完数据时，会暂停导致CPU利用率降低。为解决这个问题，在内存和CPU之间引入了<strong>高速缓存Cache</strong>（将<strong>需要频繁读取的数据从内存暂存到Cache中</strong>），通常位于CPU上。</li>
-<li><strong>内存保护</strong>需要保证执行正确的操作。</li>
-</ul>
-<h2 id="基址寄存器和限址寄存器"><a href="#基址寄存器和限址寄存器" class="headerlink" title="基址寄存器和限址寄存器"></a>基址寄存器和限址寄存器</h2><ol>
-<li><strong>基址寄存器</strong>（Base Register）：存储基址，表示一个可用内存块的<strong>起始地址</strong>。</li>
-<li><strong>限址寄存器</strong>（Limit Register）：存储限址，表示基址寄存器定义的<strong>内存块大小</strong>。</li>
+                <ol>
+<li>Kafka在架构和应用定位上不包括：<br>A、存储的数据是多副本的，能够做到数据不丢<br>B、可将数据暂存一段时间(默认是一周)，供消费者重复读取，提供了类似于“发布订阅模式”的功能<br>C、提供memory channel和file channel，数据有可能丢失<br>D、生产者和消费者均需要用户使用API编写，仅提供了少量的与外部系统集成的组件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/base&amp;limit.png"></p>
-<h2 id="地址绑定"><a href="#地址绑定" class="headerlink" title="地址绑定"></a>地址绑定</h2><p><strong>地址绑定</strong>：在程序的执行过程中，将程序中的逻辑地址（或虚拟地址）映射到实际的物理地址的过程。这个过程可以在编译时、加载时或运行时发生。</p>
-<p>一个程序运行的流程：<strong>编译（编译成机器码）–&gt;链接（链接外部模块）–&gt;加载（加载进内存）–&gt;执行</strong>。</p>
-<h3 id="地址绑定的时机"><a href="#地址绑定的时机" class="headerlink" title="地址绑定的时机"></a>地址绑定的时机</h3><ul>
-<li><strong>编译时</strong>绑定：若编译时已知进程在内存中驻留的地址，即可生成绝对代码。如果未来地址发送变化，程序需要<strong>重新编译</strong>。（<strong>静态重定位，不需要硬件支持</strong>）</li>
-<li><strong>加载时</strong>绑定：编译时生成可重定位代码。加载时再进行绑定，此时若内存地址发生变化，只需要<strong>重新加载程序</strong>。（<strong>静态重定位，不需要硬件支持</strong>）</li>
-<li><strong>运行时</strong>绑定：如果一个进程在运行时可从一个内存段移到另一个内存段，那么绑定将延迟到运行时进行。如果要改变内存地址，只需要改变基址寄存器的值即可。（<strong>动态重定位，需要硬件支持，如基址寄存器、限址寄存器和MMU，为大多数操作系统采用</strong>）</li>
-</ul>
-<h2 id="逻辑地址vs-物理地址"><a href="#逻辑地址vs-物理地址" class="headerlink" title="逻辑地址vs.物理地址"></a>逻辑地址vs.物理地址</h2><ol>
-<li>逻辑地址</li>
-</ol>
-<ul>
-<li>程序运行时由CPU产生的<strong>虚拟地址</strong>。</li>
-<li>CPU利用逻辑地址访问内存中的物理地址并获取数据。</li>
-<li>CPU产生的逻辑地址集合被称为<strong>逻辑地址空间</strong>。</li>
-</ul>
+<p>解析：<br>A选项，<strong>Kafka通过在多个服务器上复制数据来确保数据的高可用性和持久性</strong>。这意味着即使某个服务器失败，Kafka也能保证数据不会丢失。</p>
+<p>B选项，<strong>Kafka允许在服务器上暂存数据一段时间</strong>，这个时间是可配置的（默认情况下大约是一周）。这样，消费者可以在这段时间内重复读取数据。<strong>Kafka的这种功能支持发布订阅模式</strong>，其中生产者发布消息，而消费者订阅并读取这些消息。</p>
+<p>C选项，Kafka本身不提供memory channel和file channel这样的概念。这些是Apache Flume的组成部分，另一个不同的数据集成工具。在Kafka中，数据的持久性和可靠性是通过复制和日志存储来实现的，并不直接依赖于内存或文件系统。</p>
+<p>D选项，<strong>Kafka要求开发者使用其API来实现生产者和消费者</strong>。然而，<strong>Kafka提供了丰富的与外部系统集成的组件和连接器</strong>，例如Kafka Connect，这使得与外部系统的集成变得更加容易和灵活。答案选C</p>
 <ol start="2">
-<li>物理地址</li>
+<li>在Kafka中，每条数据被称为“消息”，每条消息表示为一个三元组，该三元组不包括：<br>A、topic B、key C、message D、value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
-<ul>
-<li>内存中数据的<strong>实际地址</strong>，由<strong>内存管理单元</strong>（MMU）计算得出。</li>
-<li>物理地址对用户程序<strong>不可见</strong>。</li>
-<li>物理地址的集合被称为<strong>物理地址空间</strong>。</li>
-</ul>
-<h2 id="内存管理单元（MMU）"><a href="#内存管理单元（MMU）" class="headerlink" title="内存管理单元（MMU）"></a>内存管理单元（MMU）</h2><ul>
-<li>完成从逻辑地址到物理地址的映射。</li>
-<li>逻辑地址 + 重定位寄存器中的值 = 物理地址。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/MMU.png"></p>
-<h2 id="动态加载和动态链接"><a href="#动态加载和动态链接" class="headerlink" title="动态加载和动态链接"></a>动态加载和动态链接</h2><p>一个程序运行的流程：<strong>编译（编译成机器码）–&gt;链接（链接外部模块）–&gt;加载（加载进内存）–&gt;执行</strong>。但链接和加载有时也可以在执行时动态进行。</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/link&amp;load.png"></p>
-<ul>
-<li>动态链接（运行时链接）：将链接的过程推迟到程序实际执行的时候，利用<strong>存根</strong>（stub）定位内存中的库历程并执行，允许多个程序共享相同的库(被称为<strong>共享库</strong>)，减少了重复的代码和内存占用。需要操作系统的支持。</li>
-<li>动态加载（运行时加载）：将不常用的代码（例如用于异常处理的代码）写入到模块程序中，只有当需要时才会加载进入内存。<strong>提高了内存空间利用率</strong>。不需要系统提供特别的支持，通常是程序员实现。例子：<strong>Windows操作系统的各种DLL库</strong>。</li>
-</ul>
-<h2 id="交换（Swapping）"><a href="#交换（Swapping）" class="headerlink" title="交换（Swapping）"></a>交换（Swapping）</h2><p>一个进程可以<strong>暂时</strong>从内存中交换到<strong>备份区</strong>，之后再被换回内存中继续执行。允许操作系统更有效地利用有限的物理内存资源，类似于进程调度中的<strong>中期调度</strong>。</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Swapping.png"></p>
-<ul>
-<li><strong>备份区</strong>：一个足够大的<strong>可以容纳所有用户内存映像拷贝的快速磁盘</strong>，提供对这些内存映像的直接访问。</li>
-<li><strong>换入，换出</strong>（Roll out，roll in）：换出低优先级的进程，以装入执行高优先级的进程。</li>
-<li>交换时间的<strong>主要部分是传输时间</strong>。</li>
-<li>系统维护一个<strong>已准备运行的进程队列</strong>，这些进程在磁盘上有内存映像。</li>
-</ul>
-<h2 id="连续内存分配"><a href="#连续内存分配" class="headerlink" title="连续内存分配"></a>连续内存分配</h2><h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><p>内存通常分为两个部分：</p>
-<ul>
-<li><strong>操作系统和中断向量</strong>通常放在<strong>低内存</strong>中。</li>
-<li><strong>用户进程</strong>放在<strong>高内存</strong>中。</li>
-</ul>
-<p>再分配寄存器用于<strong>防止用户进程相互越界访问</strong>，并且<strong>避免它们修改操作系统</strong>的代码和数据。</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/addressProtection.png"></p>
-<ul>
-<li><strong>基址寄存器</strong>存储物理地址的最小值。</li>
-<li><strong>限址寄存器</strong>存储逻辑地址的范围——所有逻辑地址都要比这个值小。</li>
-<li><strong>MMU</strong>实现逻辑地址的动态映射。</li>
-</ul>
-<h3 id="多区分配"><a href="#多区分配" class="headerlink" title="多区分配"></a>多区分配</h3><ul>
-<li><strong>空闲块（hole）</strong>——可用的内存块。</li>
-<li>当一个进程到达时，从足<strong>够容纳该进程的空闲块</strong>中分配内存。</li>
-<li>操作系统维护有关<strong>已分配分区和空闲分区</strong>的信息。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Contiguous%20Allocation.png"></p>
-<p>分配策略：</p>
-<ul>
-<li><strong>首次适应</strong>：分配首个足够大的孔。</li>
-<li><strong>最优适应</strong>：分配最小的足够大的孔。</li>
-<li><strong>最差适应</strong>：分配最大的足够大的孔。<br>在速度和空间利用率上，首次适应和最优适应要优于最差适应。</li>
-</ul>
-<h2 id="碎片"><a href="#碎片" class="headerlink" title="碎片"></a>碎片</h2><ul>
-<li><strong>外部碎片</strong>：全部的可用空间可以满足一个进程的请求但<strong>不连续</strong>。</li>
-<li><strong>内部碎片</strong>：<strong>分配给进程的内存大于进程申请的内存</strong>，造成内存浪费。</li>
-</ul>
-<p>通过<strong>压缩</strong>（compaction）可以减少外部碎片：</p>
-<ul>
-<li>重新排列内存内容，将所有的空闲内存拼成一个大的空闲块。</li>
-<li>需要满足动态重定位，且在执行时才能发生。</li>
-</ul>
-<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
-<li><p>把<strong>物理内存</strong>分为等大小（2的幂次）的块，叫做<strong>帧或页帧</strong>。</p>
-</li>
-<li><p>把<strong>逻辑内存</strong>分为等大小的块，叫做<strong>页或页面</strong>。</p>
-</li>
-<li><p>当执行一个<strong>n页</strong>的进程时，需要找到<strong>n个空闲帧</strong>加载程序。</p>
-</li>
-<li><p>系统通过<strong>帧表</strong>保留所有的空闲帧，通过<strong>页表</strong>实现逻辑内存到物理内存的映射。</p>
-</li>
-<li><p>每个进程都拥有一个页表，存放着自己的<strong>逻辑地址空间（页）与物理地址空间（帧）的映射</strong>。</p>
-</li>
-<li><p>分页使分页内存完全独立于物理内存，<strong>解决了外部碎片</strong>（内存和进程都被分成碎片，内存碎片可以被利用而不是浪费），<strong>但仍有内部碎片</strong>。</p>
-</li>
-</ul>
-<h3 id="地址转换机制"><a href="#地址转换机制" class="headerlink" title="地址转换机制"></a>地址转换机制</h3><ul>
-<li>逻辑地址表示为：<strong>页码</strong>（page number）+<strong>页偏移</strong>（page offset）。</li>
-<li>页码：页表的索引，通过页码在页表中找到对应的帧号。</li>
-<li>页偏移：数据在页内的偏移值。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/pageNumberOffset.png"><br>逻辑地址空间 $2^m$     页大小$2^n$</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Paging%20Hardware.png"></p>
-<ul>
-<li>在页表中根据页号找到帧号。</li>
-<li>帧号和页内偏移构成物理地址。</li>
-</ul>
-<h3 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h3><h4 id="页表的实现"><a href="#页表的实现" class="headerlink" title="页表的实现"></a>页表的实现</h4><ul>
-<li>页表存放在内存中，<strong>页表基地址寄存器</strong>（PTBR）指向页表的基地址，<strong>页表限长寄存器</strong>（PTLR）表示页表的长度。</li>
-<li>这种模式下<strong>每次数据/指令访问需要两次内存访问</strong>：先访问页表获取帧号，再访问数据/指令。使用<strong>转换表缓冲区</strong>（TLBs，也称联想寄存器）解决两次访问的问题：是<strong>高速硬件Cache</strong>，存储少数频繁访问的页表条目，访问几乎不需要额外开销。<ul>
-<li>所需条目在TLB中，直接读取帧号，计算物理地址并访问。</li>
-<li>所需条目不在TLB中：从内存中的页表读取帧号，并将页码和帧号存入TLB，若TLB已满则采用相应的替换策略。</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/PagingHardwareWithTLB.png"></p>
-<h4 id="有效访问时间"><a href="#有效访问时间" class="headerlink" title="有效访问时间"></a>有效访问时间</h4><ul>
-<li>关联查找时间：ε</li>
-<li>假设内存访问时间是1ms</li>
-<li>命中率：α<br><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/EATofTLB.png"></li>
-</ul>
-<h4 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h4><p>页表中的每一个表项都有一个有效-无效位。</p>
-<ul>
-<li>有效表示页面合法且在进程的逻辑地址空间内。</li>
-<li>无效表示不在进程的逻辑地址空间内。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Valid-InvalidBit.png"></p>
-<h4 id="共享页"><a href="#共享页" class="headerlink" title="共享页"></a>共享页</h4><ul>
-<li><strong>只读（可重入）代码</strong>的一份拷贝在多个进程之间共享。</li>
-<li>共享代码必须出现在<strong>所有进程的逻辑空间中的相同位置</strong>。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Shared%20Pages.png"></p>
-<h4 id="页表的结构"><a href="#页表的结构" class="headerlink" title="页表的结构"></a>页表的结构</h4><h5 id="层次页表"><a href="#层次页表" class="headerlink" title="层次页表"></a>层次页表</h5><p>将页表再分页，使用时先利用外部页表的页码和外部页表的页偏移获取内部页表的帧号，再计算物理地址，存取数据。（除了二级页表外，还有三级甚至四级页表等）。</p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Two%20Level%20Page%20Table.png"></p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Address%20Translation.png"></p>
-<h5 id="哈希页表"><a href="#哈希页表" class="headerlink" title="哈希页表"></a>哈希页表</h5><p><strong>处理超过32位地址空间的一种常用方法</strong>，防止存储时稀疏问题，解决了浪费（<strong>允许页表项只在需要时被分配</strong>）。</p>
-<p>实现：</p>
-<ul>
-<li>将<strong>虚拟页码哈希到哈希表</strong>，每个哈希表的条目中存储了一个<strong>链表</strong>（拉链法解决哈希时的碰撞），链表每个元素含有三个字段：（1）虚拟页码（2）帧号（3）指向下个元素的指针。</li>
-<li>将虚拟页码与哈希表中第一个元素的第一个字段比较，如果相同，那么取出帧号计算物理地址。否则利用指针访问下个元素，再次比较。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Hashed%20Page%20Table.png"></p>
-<h5 id="倒置页表（反向页表）"><a href="#倒置页表（反向页表）" class="headerlink" title="倒置页表（反向页表）"></a>倒置页表（反向页表）</h5><p><strong>为每个物理内存帧创建一个对应页的条目</strong>，使页表按照物理内存排序，<strong>所有进程共享一张页表</strong>。</p>
-<ul>
-<li>倒置页表不包含进程逻辑地址空间的完整信息，每个进程必须将完整信息保存在外存的<strong>外部页表</strong>中。外部页表按需调入内存。</li>
-<li>优点：减少了物理内存的使用。</li>
-<li>缺点：进程较少时，检索时间较长。（原先直接访问，现在需要遍历搜索）。实现共享内存困难。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Inverted%20Page.png"></p>
-<h2 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h2><p>分段是一种内存管理机制，将一个进程的<strong>逻辑地址空间划分为若干个段</strong>。每个段代表着一个<strong>逻辑单元</strong>，如代码段、数据段、堆、栈等。</p>
-<ul>
-<li>逻辑地址由<strong>段号和段偏移</strong>组成。</li>
-<li>逻辑地址到物理地址的映射由<strong>段表</strong>实现，段表中每个条目包含段基址和段界限。</li>
-<li><strong>段表基址寄存器</strong>（STBR）指向内存中段表的位置，<strong>段表长度寄存器</strong>（STLR）表示一个程序使用的段的数量。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Segmentation%20Hardware.png"></p>
-<h3 id="分段与分页的比较"><a href="#分段与分页的比较" class="headerlink" title="分段与分页的比较"></a>分段与分页的比较</h3><ul>
-<li>分段与分页最大的区别在于：<strong>段的大小不固定，而页的大小固定</strong>。</li>
-<li>分段无法解决外部碎片，<strong>因为碎片大小可能会比所有请求的段大小更小</strong>。但分段不存在内部碎片问题，因为分配给进程的内存块大小不是固定的。</li>
-<li>分段的好处是<strong>易于共享内存</strong>，因为段具有实际意义。不同进程共享的段具有同样的段号。<strong>非连续内存存储才支持共享内存，连续内存存储每个进程的内存区域都是唯一的</strong>。</li>
-</ul>
-<h3 id="实例：Intel-Pentium"><a href="#实例：Intel-Pentium" class="headerlink" title="实例：Intel Pentium"></a>实例：Intel Pentium</h3><p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Pentium%20Paging.png"></p>
-<h1 id="第九章-虚拟内存"><a href="#第九章-虚拟内存" class="headerlink" title="第九章 虚拟内存"></a>第九章 虚拟内存</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>虚拟内存是计算机操作系统中的一种技术，它<strong>定义了一个连续的虚拟地址空间，并且将部分硬盘空间用作内存的扩展</strong>。</p>
-<h3 id="概念区分"><a href="#概念区分" class="headerlink" title="概念区分"></a>概念区分</h3><ul>
-<li>虚拟地址空间：分配给进程的虚拟内存。</li>
-<li>虚拟地址：在虚拟内存中指令或数据的位置。</li>
-<li>虚拟内存：把内存和磁盘结合起来使用，得到一个容量很大的虚存。物理内存上的数据可以通过页表直接访问，但<strong>如果访问到磁盘上的数据，要先调入到内存上的空闲帧（无空闲帧时先利用置换算法与内存中某个帧交换再访问）</strong>。</li>
-</ul>
-<h3 id="虚拟内存的大小决定因素"><a href="#虚拟内存的大小决定因素" class="headerlink" title="虚拟内存的大小决定因素"></a>虚拟内存的大小决定因素</h3><ul>
-<li><strong>操作系统字长</strong>：决定了逻辑地址的最大长度，也决定了虚拟内存的大小（超出部分无法正确寻址使用）。</li>
-<li><strong>内存外存容量和</strong></li>
-</ul>
-<h3 id="两种实现方式"><a href="#两种实现方式" class="headerlink" title="两种实现方式"></a>两种实现方式</h3><ul>
-<li>请求分页</li>
-<li>请求分段</li>
-</ul>
-<h2 id="请求分页"><a href="#请求分页" class="headerlink" title="请求分页"></a>请求分页</h2><p>进程运行开始时，<strong>仅装入一个或零个页面</strong>，所有的数据和指令大都存放在外存中。进程执行过程中，<strong>根据进程的需求动态装入页面</strong>（将外存中固定块的内容装入内存中的某一帧，并更新页表）。内存已满时，要利用<strong>页面置换算法</strong>将低优先级的页面置换出去。<br><strong>使用惰性的调页程序</strong>，即只在页面被需要时调入。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>减少I/O操作</li>
-<li>减少内存需求</li>
-<li>更快的响应速度</li>
-<li>支持更多用户</li>
-</ul>
-<h3 id="有效-无效位"><a href="#有效-无效位" class="headerlink" title="有效-无效位"></a>有效-无效位</h3><p>每一个页表的表项有一个有效-无效位<br><strong>v/1</strong>-&gt;valid-&gt;<strong>页面在内存中并且合法</strong><br><strong>i/0</strong>-&gt;invalid-&gt;<strong>页面合法但不在内存中/页面不合法</strong></p>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/demandpaging.png"></p>
-<h3 id="页错误"><a href="#页错误" class="headerlink" title="页错误"></a>页错误</h3><p>对一个页面的首次访问，会陷入操作系统的缺页中断。<br><strong>六步过程</strong></p>
-<ol>
-<li>访问指令/数据，有效-无效位为1-&gt;直接访问，否则继续。</li>
-<li>页面不合法-&gt;终止，报错，<br> 页面合法但不在内存中-&gt;继续。</li>
-<li>找到页在磁盘中的位置。</li>
-<li>有空闲帧-&gt;直接调入<br> 无空闲帧-&gt;换出一个低优先级的帧<br>         没修改过-&gt;直接覆盖<br>         修改过-&gt;先写入到磁盘，再覆盖</li>
-<li>更新页表。</li>
-<li>重启指令。</li>
+<p>解析：在Kafka中，消息是通信的基本单位。每条消息都有三个主要组成部分：A. <strong>Topic</strong>（主题）：标识消息所属的类别或主题，允许消息被发布到特定的类别。B. <strong>Key</strong>（键）：是一个可选字段，用于标识消息的唯一性，帮助在分布式系统中将消息路由到特定的分区。C. <strong>Message</strong>（值）：包含实际传输的数据，即消息的内容。所以，在这个三元组中，不包括的部分是 D、value。</p>
+<ol start="3">
+<li>Producer负责将数据写入Broker，通常由用户根据实际需要编写，一般不包括以下哪个步骤：<br>A、创建配置对象ProducerConfig<br>B、定义分类区SimplePartitioner<br>C、创建Producer对象，并发送数据<br>D、创建配置对象ConsumerConfig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/pageFault.png"></p>
-<h3 id="有效访问时间-1"><a href="#有效访问时间-1" class="headerlink" title="有效访问时间"></a>有效访问时间</h3><ul>
-<li>缺页率：0&lt;=p&lt;=1.0</li>
-<li><strong>有效访问时间 EAT = （1 - p） * 内存访问时间 + p * 缺页错误处理时间</strong></li>
-<li><strong>缺页错误处理时间 = 处理缺页中断 + 页交换出去时间（不一定需要） + 读入页时间 + 重启进程开销</strong></li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/computingOfEAT.png"></p>
-<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>页面置换：当需要调入新的页面而没有空闲帧时，找到内存中某些页面换出。<br>页面置换算法性能目标：<strong>最小缺页率</strong></p>
-<p>如果发生了页面置换，缺页处理时间会加倍，使用<strong>修改位modify bit或者脏位dirty bit</strong>来减少页面传输的开销：<strong>只有修改过的页面才会被写入磁盘（违背修改的页面直接丢弃）</strong>。</p>
-<p>页面置换完成了逻辑内存和物理内存之间的分离–<strong>可以在较小的物理内存上提供大量的虚拟内存</strong>。</p>
-<h4 id="先进先出（FIFO）算法"><a href="#先进先出（FIFO）算法" class="headerlink" title="先进先出（FIFO）算法"></a>先进先出（FIFO）算法</h4><ul>
-<li>置换在内存中<strong>停留时间最久</strong>的页面。</li>
-<li>可能出现<strong>Belady’s Anomaly</strong>: more frames -&gt; more page faults</li>
-</ul>
-<h4 id="最优置换选择（OPT）算法"><a href="#最优置换选择（OPT）算法" class="headerlink" title="最优置换选择（OPT）算法"></a>最优置换选择（OPT）算法</h4><ul>
-<li>置换在<strong>最远的将来才会使用</strong>的页面。</li>
-<li>缺页错误率最低，不会产生<strong>Belady’s Anomaly</strong>，但需要未来知识才能实现。</li>
-</ul>
-<h4 id="最近最少使用（LRU）算法"><a href="#最近最少使用（LRU）算法" class="headerlink" title="最近最少使用（LRU）算法"></a>最近最少使用（LRU）算法</h4><ul>
-<li>置换<strong>最长时间没有被使用</strong>的页面。</li>
-<li>性能接近OPT，需要硬件（<strong>计数器或堆栈</strong>）支持。</li>
-</ul>
-<h4 id="近似LRU算法-二次机会法"><a href="#近似LRU算法-二次机会法" class="headerlink" title="近似LRU算法/二次机会法"></a>近似LRU算法/二次机会法</h4><ul>
-<li>无硬件支持时使用<strong>引用位</strong>实现近似LRU算法。<ul>
-<li>初始时，将内存中每一页的引用位都初始化为0。</li>
-<li>当某个页面被引用时，引用位设置为1。</li>
-<li>当需要置换时，顺时针遍历内存中所有页面。如果找到一个页的引用位为0，那么将其置换；引用位为1，则将其改为0，继续遍历。~~（给它一次做人的机会）</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/secondChance.png"></p>
-<h4 id="计数算法"><a href="#计数算法" class="headerlink" title="计数算法"></a>计数算法</h4><ul>
-<li>用一个计数器<strong>记录每个页面被引用的次数</strong>。</li>
-<li>LFU 算法：替换被引用次数最小的也页面。</li>
-<li>MFU 算法</li>
-</ul>
-<h3 id="帧分配"><a href="#帧分配" class="headerlink" title="帧分配"></a>帧分配</h3><p>每个进程需要的最小帧数由<strong>计算机架构</strong>决定：</p>
-<ul>
-<li>例子：IBM370的SS-MOV指令：<ul>
-<li>指令是6个字节，并可能跨越2个页面</li>
-<li>存储来源（from）可能需要2个页面</li>
-<li>目的区域（to）可能需要2个页面</li>
-<li>所以这个指令需要的最小帧数为6</li>
-</ul>
-</li>
-</ul>
-<p>两种主流分配方式：</p>
-<ul>
-<li>固定分配<ul>
-<li><strong>平均分配</strong>：例如，100个帧，5个进程，则每个进程分给20个帧。</li>
-<li><strong>比例分配</strong>：按照每个进程的大小（分配比例=进程大小/总进程大小）进行分配。</li>
-</ul>
-</li>
-<li><strong>优先级分配</strong>：根据优先级而不是进程大小按比例分配。</li>
-</ul>
-<h3 id="全局置换vs-局部置换"><a href="#全局置换vs-局部置换" class="headerlink" title="全局置换vs.局部置换"></a>全局置换vs.局部置换</h3><ul>
-<li><strong>全局置换</strong>：每个进程可以从<strong>所有帧的集合</strong>中选择一个进行页面置换，而不用管该帧是否已经分配给其它进程。<strong>高优先级进程可以选择低优先级进程的帧来置换</strong>。（具有<strong>更好的系统吞吐量</strong>）</li>
-<li><strong>局部置换</strong>：每个进程只能从<strong>自己的帧中</strong>选择页面进行置换。</li>
-</ul>
-<h3 id="颠簸（Thrashing）"><a href="#颠簸（Thrashing）" class="headerlink" title="颠簸（Thrashing）"></a>颠簸（Thrashing）</h3><p>颠簸：一个进程的页面被<strong>频繁换入换出</strong>。(例如，某个低优先级进程的帧被全局置换，之后因为执行需要又要换回)</p>
-<p>原因：</p>
-<ul>
-<li>进程分配的<strong>帧数不足</strong>。</li>
-<li>页面<strong>置换算法不合理</strong>。</li>
-</ul>
-<p>后果：</p>
-<ul>
-<li><strong>CPU利用率低</strong>（频繁进行页面置换，CPU等待时间长）</li>
-<li>操作系统认为需要增加多道程序的道数（CPU利用率低），<strong>调入新的进程，造成更多的缺页错误和更长的换页队列，造成恶性循环</strong>。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/thrashing.png"></p>
-<p>解决方案：</p>
-<ul>
-<li><strong>局部性原理</strong><ul>
-<li>Δ=工作集窗口</li>
-<li>$WSS_i$（working set of $P_i$）=最近Δ中引用的页面总数</li>
-<li>系统需要<strong>跟踪每个进程的工作集</strong>，并为它<strong>分配大于其工作集帧数的帧</strong>。</li>
-<li>当所有进程的工作集帧数之和大于当前系统可用帧数时，系统将发生抖动，<strong>需要暂停一个进程</strong>。</li>
-</ul>
-</li>
-<li><strong>页错误门限</strong><ul>
-<li>假如页错误率太低，回收一些进程的帧。</li>
-<li>假如页错误率太高，分给进程一些帧。</li>
-</ul>
-</li>
-</ul>
-<h3 id="请求分页在进程创建中的作用"><a href="#请求分页在进程创建中的作用" class="headerlink" title="请求分页在进程创建中的作用"></a>请求分页在进程创建中的作用</h3><ol>
-<li>写时复制（Copy-on-Write）</li>
+<p>解析：Producer负责将数据写入Broker，通常由用户根据实际需要编写。可根据以下三个步骤进行：<strong>创建配置对象ProducerConfig；定义分类区SimplePartitioner；创建Producer对象，并发送数据。</strong> D选项属于Consumer程序的步骤。</p>
+<ol start="4">
+<li>ZooKeeper内部存储着有关HBase的重要元信息和状态信息，担任着HMaster与RegionServer之间的服务协调角色，具体职责不包括：<br>A、保证任何时候，集群中可以存在多个HMaster；<br>B、存储所有Region的寻址入口；<br>C、实时监控RegionServer的上线和下线信息，并实时通知给HMaster；<br>D、存储HBase的schema和table元数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
-<ul>
-<li>写时复制允许父进程和子进程<strong>最初共享</strong>相同的内存页，<strong>只有当其中一个进程修改了共享的页时，该页才会被复制</strong>。</li>
-<li>使进程创建更高效。</li>
-</ul>
-<ol start="2">
-<li>内存映射文件（Memory-Mapped Files）</li>
+<p>解析：<br>A选项，在HBase中，<strong>通常只有一个活动的HMaster</strong>，它负责协调和管理整个HBase集群。ZooKeeper确保集群中只有一个活跃的HMaster，并在HMaster失败时协助选举新的HMaster。因此，ZooKeeper不是用来保证多个HMaster同时存在的。</p>
+<p>B选项，<strong>ZooKeeper在HBase中用于存储关于Region服务器的信息</strong>，包括它们的地址和状态，这样客户端和HMaster可以知道如何与这些Region服务器通信。</p>
+<p>C选项，<strong>ZooKeeper监控着RegionServer的状态</strong>，包括它们的上线和下线。当RegionServer的状态发生变化时，ZooKeeper会及时通知HMaster，从而允许HMaster做出相应的调整。</p>
+<p>D选项。承担了许多协调和管理的角色，<strong>负责存储HBase的schema和表的元数据</strong>。</p>
+<ol start="5">
+<li>根据接收者可能收到的重复消息的次数，将消息传递语义分为三种模式，其中，发送者发送后立即返回，不关心接收者是否收到这种模式是：<br>A、at least once B、at most once C、exactly once&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
-<ul>
-<li>通过<strong>将磁盘块映射到内存中的页面</strong>中，内存映射文件I/O允许<strong>将文件I/O视为内存访问</strong>。</li>
-<li><strong>允许多个进程映射同一文件</strong>，从而使内存中的页面可以共享。</li>
-</ul>
-<p><img src="/2023/11/25/cao-zuo-xi-tong-bi-ji/Memory%20Mapped%20Files.png"></p>
-<h3 id="内核的内存分配"><a href="#内核的内存分配" class="headerlink" title="内核的内存分配"></a>内核的内存分配</h3><p>内核态的内存分配不同于用户态的内存分配</p>
-<ul>
-<li>内核内存分配可能需要<strong>连续的物理内存</strong>。</li>
-<li>内核需要为数据结构（相对小，数量多）请求内存。需要努力<strong>最小化碎片浪费</strong>。</li>
-</ul>
-<p>分配策略：</p>
-<ul>
-<li>伙伴系统<ul>
-<li>内存<strong>按2的幂的大小进行划分</strong>，即4KB、8KB等，组成若干空闲块链表；查找链表找到满足进程需求的最佳匹配块<ul>
-<li>首先将整个可用空间看作一块: 2^n</li>
-<li>假设进程申请的空间大小为s，如果满足2^n-1&lt;s&lt;=2^n，则分配整个块</li>
-<li>否则，将块划分为两个大小相等的伙伴，大小为2^n-1,<strong>一直划分下去直到产生大于或等于s的最小块</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>&nbsp;</p>
+<p>解析：</p>
+<p><strong>at most once</strong>：发送者将消息发送给消费者后，立刻返回，不会关心消费者是否成功收到消息。 这种情况下，消息可能被消费者成功接收，也可能丢失；</p>
+<p><strong>at least once</strong>：发送者将消息发送给消费者后，需等待确认，如果未收到确认消息，则会重发消息。这种语义能保证消费者收到消息，但可能会收到多次；</p>
+<p><strong>exactly once</strong>：消费者会且只会处理一次同一条消息。</p>
+<ol start="6">
+<li>下列关于网络数据采集说法错误的是<br>A.网络数据采集是指通过网络爬虫或网站公开API等方式从网站上获取数据信息，支持图片、音频、视频等文件或附件的采集，附件和正文可以自动关联<br>B.网络爬虫的常见抓取策略有宽度优先策略、反向链接策略、PartialPageRank策略、OPIC策略、大站优先策略等<br>C.单个抓取程序足以胜任大规模的分布式抓取系统，不需要多个抓取程序协同工作<br>D.Scrapy Engine作为Scrapy内部的主要组件构成，负责控制系统所有组件之间的数据流，并在发生某些操作时触发事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
+</ol>
+<p>解析：一般来说，大规模的分布式抓取系统需要抓取整个互联网上数以亿计的网页，单个抓取程序难以胜任，往往需要多个抓取程序协同工作。</p>
+<ol start="7">
+<li>下列关于HDFS关键技术说法正确的是（ABD）</li>
+</ol>
+<p>A. HDFS的数据块损坏容错性设计为：DataNode保存数据块时，会同时生成一个校验码。当存取数据块时，如果发现校验码不一致则认为该数据块已经损坏，NameNode会通过其他节点上的正常副本重构受损的数据块。</p>
+<p>B. HDFS的副本放置策略与集群物理拓扑结构是直接相关的。</p>
+<p>C. HDFS只提供了API方式，让用户管理集中式缓存系统中的文件和目录，可以根据需要将一个文件增加到缓存中，或从缓存中移除。</p>
+<p>D. HDFS支持多种常用存储类型，包括：ARCHIVE、DISK、SSD、RAM_DISK。</p>
+<p>解析：HDFS允许用户将一部分目录或文件缓存在off-heap内存中，以加速对这些数据的访问效率，该机制被称为集中式缓存管理。<strong>为了方便用户管理集中式缓存系统中的文件和目录，HDFS提供了API和命令行两种方式</strong>，可以根据需要将一个文件增加到缓存中，或从缓存中移除。</p>
+<ol start="8">
+<li>下列关于NoSQL说法错误的是（B）</li>
+</ol>
+<p>A. NoSQL是非关系型数据库的统称，采用类似键-值、列族、文档等非关系模。</p>
+<p>B. 关系型数据库是横向扩展的，NoSQL数据库是纵向扩展的。</p>
+<p>C. NoSQL以块为单元操作数据，使用的是非结构化的查询语言。</p>
+<p>D. NoSQL存储的格式都是key-value类型的，并且存储在内存中，非常容易存储，而且对于数据的一致性是弱要求。NoSQL无需SQL的解析，提高了读写性能。</p>
+<p>解析：纵向扩展(scale-up)是指利用现有的存储系统，通过不断增加存储容量来满足数据增长的需求；横向扩展(scale-out)是指以网络互连的节点为单位扩大存储容量(集群)。<strong>关系系型数据库是纵向扩展</strong>，也就是说想要提高处理能力，要使用速度更快的计算机。<strong>Nosql数据库是横向扩展的</strong>，它的存储天然就是分布式的，可以通过给资源池添加更多的普通数据库服务器来分担负载。</p>
+<ol start="9">
+<li>RegionServer写流程的具体流程包括：</li>
+</ol>
+<p>A、RegionServer收到写请求后，将写入的数据以追加的方式写入HDFS上的日志文件WAL；</p>
+<p>B、扫描器查找缓存BlockCache，它内部缓存了最近读取过的数据</p>
+<p>C、RegionServer将数据写入内存数据结构MemStore中，之后通知客户端数据写入成功；</p>
+<p>D、当MemStore所占内存达到一定阈值后，RegionServer会将数据顺序刷新到HDFS中，保存成HFile格式的文件</p>
+<p>解析：ACD</p>
+<p>扫描器查找缓存BlockCache，它内部缓存了最近读取过的数据。这个选项似乎不是写流程的一部分，而是读流程的一部分，因此不包括在内</p>
+<ol start="10">
+<li>下列关于文件存储格式说法正确的是：</li>
+</ol>
+<p>A.文件存储格式直接决定了数据存取效率以及被上层分布式计算集成的容易程度</p>
+<p>B.常见的存储格式包括行式存储和列式存储两种：行式存储以文本格式Text File、key/value二进制存储格式Sequence File为典型代表；列式存储以ORC、Parquet和Carbon Data三种文件格式为代表</p>
+<p>C.行存储和列存储的写入都是一次完成，性能较高</p>
+<p>D.行存储将每行数据存储在一起，压缩比较低；列存储以列为单位存储数据，使得类型相同的数据存放在一起，对压缩算法友好，压缩比较高</p>
+<p>解析：ABD</p>
+<p>行存储和列存储的写入都是一次完成，性能较高。这是不准确的，因为写入性能的高低受多种因素影响，并不仅仅取决于存储格式。</p>
 
                 
             </div>
@@ -717,7 +465,7 @@ CPU能直接访问的存储器：寄存器和内存。
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://daixinwang.github.io/2023/11/25/cao-zuo-xi-tong-bi-ji/">https://daixinwang.github.io/2023/11/25/cao-zuo-xi-tong-bi-ji/</a>
+                    <a href="https://daixinwang.github.io/2023/11/28/da-shu-ju-ji-zhu-ji-chu-xiao-ce-er/">https://daixinwang.github.io/2023/11/28/da-shu-ju-ji-zhu-ji-chu-xiao-ce-er/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -755,12 +503,12 @@ CPU能直接访问的存储器：寄存器和内存。
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">笔记</span>
+                                <a href="/tags/%E5%BA%94%E8%AF%95%E8%AF%95%E9%A2%98/">
+                                    <span class="chip bg-color">应试试题</span>
                                 </a>
                             
-                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">操作系统</span>
+                                <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">大数据技术基础</span>
                                 </a>
                             
                         </div>
@@ -806,29 +554,30 @@ CPU能直接访问的存储器：寄存器和内存。
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/11/28/da-shu-ju-ji-zhu-ji-chu-xiao-ce-yi/">
+                <a href="/2023/11/28/da-shu-ju-ji-zhu-ji-chu-xiao-ce-er/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="大数据技术基础小测一">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="大数据技术基础小测二">
                         
-                        <span class="card-title">大数据技术基础小测一</span>
+                        <span class="card-title">大数据技术基础小测二</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            大三上大数据技术基础小测一
+                            大三上大数据技术基础小测二
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -841,6 +590,7 @@ CPU能直接访问的存储器：寄存器和内存。
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -863,31 +613,31 @@ CPU能直接访问的存储器：寄存器和内存。
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-bi-ji/">
+                <a href="/2023/11/28/da-shu-ju-ji-zhu-ji-chu-xiao-ce-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="大数据技术基础">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="大数据技术基础小测一">
                         
-                        <span class="card-title">大数据技术基础</span>
+                        <span class="card-title">大数据技术基础小测一</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            大三上大数据技术基础课程笔记
+                            大三上大数据技术基础小测一
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    课程笔记
+                            <a href="/categories/%E5%BA%94%E8%AF%95/" class="post-category">
+                                    应试
                                 </a>
                             
                             
@@ -897,12 +647,12 @@ CPU能直接访问的存储器：寄存器和内存。
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">笔记</span>
+                    <a href="/tags/%E5%BA%94%E8%AF%95%E8%AF%95%E9%A2%98/">
+                        <span class="chip bg-color">应试试题</span>
                     </a>
                     
-                    <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
-                        <span class="chip bg-color">大数据</span>
+                    <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">大数据技术基础</span>
                     </a>
                     
                 </div>
