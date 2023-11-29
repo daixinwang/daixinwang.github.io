@@ -301,12 +301,12 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%BA%94%E8%AF%95%E8%AF%95%E9%A2%98/">
-                                <span class="chip bg-color">应试试题</span>
-                            </a>
-                        
                             <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
                                 <span class="chip bg-color">大数据技术基础</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AF%95%E9%A2%98/">
+                                <span class="chip bg-color">试题</span>
                             </a>
                         
                     </div>
@@ -337,7 +337,7 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-28
+                    2023-11-30
                 </div>
                 
 
@@ -374,71 +374,64 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                 <ol>
 <li>Kafka在架构和应用定位上不包括：<br>A、存储的数据是多副本的，能够做到数据不丢<br>B、可将数据暂存一段时间(默认是一周)，供消费者重复读取，提供了类似于“发布订阅模式”的功能<br>C、提供memory channel和file channel，数据有可能丢失<br>D、生产者和消费者均需要用户使用API编写，仅提供了少量的与外部系统集成的组件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
-<p>解析：<br>A选项，<strong>Kafka通过在多个服务器上复制数据来确保数据的高可用性和持久性</strong>。这意味着即使某个服务器失败，Kafka也能保证数据不会丢失。</p>
-<p>B选项，<strong>Kafka允许在服务器上暂存数据一段时间</strong>，这个时间是可配置的（默认情况下大约是一周）。这样，消费者可以在这段时间内重复读取数据。<strong>Kafka的这种功能支持发布订阅模式</strong>，其中生产者发布消息，而消费者订阅并读取这些消息。</p>
-<p>C选项，Kafka本身不提供memory channel和file channel这样的概念。这些是Apache Flume的组成部分，另一个不同的数据集成工具。在Kafka中，数据的持久性和可靠性是通过复制和日志存储来实现的，并不直接依赖于内存或文件系统。</p>
-<p>D选项，<strong>Kafka要求开发者使用其API来实现生产者和消费者</strong>。然而，<strong>Kafka提供了丰富的与外部系统集成的组件和连接器</strong>，例如Kafka Connect，这使得与外部系统的集成变得更加容易和灵活。答案选C</p>
+<blockquote>
+<p>解析：<br>A选项，<strong>Kafka通过在多个服务器上复制数据来确保数据的高可用性和持久性</strong>。这意味着即使某个服务器失败，Kafka也能保证数据不会丢失。<br>B选项，<strong>Kafka允许在服务器上暂存数据一段时间</strong>，这个时间是可配置的（默认情况下大约是一周）。这样，消费者可以在这段时间内重复读取数据。<strong>Kafka的这种功能支持发布订阅模式</strong>，其中生产者发布消息，而消费者订阅并读取这些消息。<br>C选项，Kafka本身不提供memory channel和file channel这样的概念。这些是Apache Flume的组成部分，另一个不同的数据集成工具。在Kafka中，数据的持久性和可靠性是通过复制和日志存储来实现的，并不直接依赖于内存或文件系统。<br>D选项，<strong>Kafka要求开发者使用其API来实现生产者和消费者</strong>。然而，<strong>Kafka提供了丰富的与外部系统集成的组件和连接器</strong>，例如Kafka Connect，这使得与外部系统的集成变得更加容易和灵活。答案选C</p>
+</blockquote>
 <ol start="2">
 <li>在Kafka中，每条数据被称为“消息”，每条消息表示为一个三元组，该三元组不包括：<br>A、topic B、key C、message D、value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
-<p>解析：在Kafka中，消息是通信的基本单位。每条消息都有三个主要组成部分：A. <strong>Topic</strong>（主题）：标识消息所属的类别或主题，允许消息被发布到特定的类别。B. <strong>Key</strong>（键）：是一个可选字段，用于标识消息的唯一性，帮助在分布式系统中将消息路由到特定的分区。C. <strong>Message</strong>（值）：包含实际传输的数据，即消息的内容。所以，在这个三元组中，不包括的部分是 D、value。</p>
+<blockquote>
+<p>解析：在Kafka中，消息是通信的基本单位。每条消息都有三个主要组成部分：<br>A. <strong>Topic</strong>（主题）：标识消息所属的类别或主题，允许消息被发布到特定的类别。<br>B. <strong>Key</strong>（键）：是一个可选字段，用于标识消息的唯一性，帮助在分布式系统中将消息路由到特定的分区。<br>C. <strong>Message</strong>（值）：包含实际传输的数据，即消息的内容。<br>所以，在这个三元组中，不包括的部分是 D、value。</p>
+</blockquote>
 <ol start="3">
 <li>Producer负责将数据写入Broker，通常由用户根据实际需要编写，一般不包括以下哪个步骤：<br>A、创建配置对象ProducerConfig<br>B、定义分类区SimplePartitioner<br>C、创建Producer对象，并发送数据<br>D、创建配置对象ConsumerConfig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
+<blockquote>
 <p>解析：Producer负责将数据写入Broker，通常由用户根据实际需要编写。可根据以下三个步骤进行：<strong>创建配置对象ProducerConfig；定义分类区SimplePartitioner；创建Producer对象，并发送数据。</strong> D选项属于Consumer程序的步骤。</p>
+</blockquote>
 <ol start="4">
 <li>ZooKeeper内部存储着有关HBase的重要元信息和状态信息，担任着HMaster与RegionServer之间的服务协调角色，具体职责不包括：<br>A、保证任何时候，集群中可以存在多个HMaster；<br>B、存储所有Region的寻址入口；<br>C、实时监控RegionServer的上线和下线信息，并实时通知给HMaster；<br>D、存储HBase的schema和table元数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
-<p>解析：<br>A选项，在HBase中，<strong>通常只有一个活动的HMaster</strong>，它负责协调和管理整个HBase集群。ZooKeeper确保集群中只有一个活跃的HMaster，并在HMaster失败时协助选举新的HMaster。因此，ZooKeeper不是用来保证多个HMaster同时存在的。</p>
-<p>B选项，<strong>ZooKeeper在HBase中用于存储关于Region服务器的信息</strong>，包括它们的地址和状态，这样客户端和HMaster可以知道如何与这些Region服务器通信。</p>
-<p>C选项，<strong>ZooKeeper监控着RegionServer的状态</strong>，包括它们的上线和下线。当RegionServer的状态发生变化时，ZooKeeper会及时通知HMaster，从而允许HMaster做出相应的调整。</p>
-<p>D选项。承担了许多协调和管理的角色，<strong>负责存储HBase的schema和表的元数据</strong>。</p>
+<blockquote>
+<p>解析：<br>A选项，在HBase中，<strong>通常只有一个活动的HMaster</strong>，它负责协调和管理整个HBase集群。ZooKeeper确保集群中只有一个活跃的HMaster，并在HMaster失败时协助选举新的HMaster。因此，ZooKeeper不是用来保证多个HMaster同时存在的。<br>B选项，<strong>ZooKeeper在HBase中用于存储关于Region服务器的信息</strong>，包括它们的地址和状态，这样客户端和HMaster可以知道如何与这些Region服务器通信。<br>C选项，<strong>ZooKeeper监控着RegionServer的状态</strong>，包括它们的上线和下线。当RegionServer的状态发生变化时，ZooKeeper会及时通知HMaster，从而允许HMaster做出相应的调整。<br>D选项。承担了许多协调和管理的角色，<strong>负责存储HBase的schema和表的元数据</strong>。</p>
+</blockquote>
 <ol start="5">
 <li>根据接收者可能收到的重复消息的次数，将消息传递语义分为三种模式，其中，发送者发送后立即返回，不关心接收者是否收到这种模式是：<br>A、at least once B、at most once C、exactly once&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
 <p>&nbsp;</p>
-<p>解析：</p>
-<p><strong>at most once</strong>：发送者将消息发送给消费者后，立刻返回，不会关心消费者是否成功收到消息。 这种情况下，消息可能被消费者成功接收，也可能丢失；</p>
-<p><strong>at least once</strong>：发送者将消息发送给消费者后，需等待确认，如果未收到确认消息，则会重发消息。这种语义能保证消费者收到消息，但可能会收到多次；</p>
-<p><strong>exactly once</strong>：消费者会且只会处理一次同一条消息。</p>
+<blockquote>
+<p>解析：<br><strong>at most once</strong>：发送者将消息发送给消费者后，立刻返回，不会关心消费者是否成功收到消息。 这种情况下，消息可能被消费者成功接收，也可能丢失；<br><strong>at least once</strong>：发送者将消息发送给消费者后，需等待确认，如果未收到确认消息，则会重发消息。这种语义能保证消费者收到消息，但可能会收到多次；<br><strong>exactly once</strong>：消费者会且只会处理一次同一条消息。</p>
+</blockquote>
 <ol start="6">
 <li>下列关于网络数据采集说法错误的是<br>A.网络数据采集是指通过网络爬虫或网站公开API等方式从网站上获取数据信息，支持图片、音频、视频等文件或附件的采集，附件和正文可以自动关联<br>B.网络爬虫的常见抓取策略有宽度优先策略、反向链接策略、PartialPageRank策略、OPIC策略、大站优先策略等<br>C.单个抓取程序足以胜任大规模的分布式抓取系统，不需要多个抓取程序协同工作<br>D.Scrapy Engine作为Scrapy内部的主要组件构成，负责控制系统所有组件之间的数据流，并在发生某些操作时触发事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
 </ol>
+<blockquote>
 <p>解析：一般来说，大规模的分布式抓取系统需要抓取整个互联网上数以亿计的网页，单个抓取程序难以胜任，往往需要多个抓取程序协同工作。</p>
+</blockquote>
 <ol start="7">
-<li>下列关于HDFS关键技术说法正确的是（ABD）</li>
+<li>下列关于HDFS关键技术说法正确的是（ABD）<br>A. HDFS的数据块损坏容错性设计为：DataNode保存数据块时，会同时生成一个校验码。当存取数据块时，如果发现校验码不一致则认为该数据块已经损坏，NameNode会通过其他节点上的正常副本重构受损的数据块。<br>B. HDFS的副本放置策略与集群物理拓扑结构是直接相关的。<br>C. HDFS只提供了API方式，让用户管理集中式缓存系统中的文件和目录，可以根据需要将一个文件增加到缓存中，或从缓存中移除。<br>D. HDFS支持多种常用存储类型，包括：ARCHIVE、DISK、SSD、RAM_DISK。</li>
 </ol>
-<p>A. HDFS的数据块损坏容错性设计为：DataNode保存数据块时，会同时生成一个校验码。当存取数据块时，如果发现校验码不一致则认为该数据块已经损坏，NameNode会通过其他节点上的正常副本重构受损的数据块。</p>
-<p>B. HDFS的副本放置策略与集群物理拓扑结构是直接相关的。</p>
-<p>C. HDFS只提供了API方式，让用户管理集中式缓存系统中的文件和目录，可以根据需要将一个文件增加到缓存中，或从缓存中移除。</p>
-<p>D. HDFS支持多种常用存储类型，包括：ARCHIVE、DISK、SSD、RAM_DISK。</p>
+<blockquote>
 <p>解析：HDFS允许用户将一部分目录或文件缓存在off-heap内存中，以加速对这些数据的访问效率，该机制被称为集中式缓存管理。<strong>为了方便用户管理集中式缓存系统中的文件和目录，HDFS提供了API和命令行两种方式</strong>，可以根据需要将一个文件增加到缓存中，或从缓存中移除。</p>
+</blockquote>
 <ol start="8">
-<li>下列关于NoSQL说法错误的是（B）</li>
+<li>下列关于NoSQL说法错误的是（B）<br>A. NoSQL是非关系型数据库的统称，采用类似键-值、列族、文档等非关系模。<br>B. 关系型数据库是横向扩展的，NoSQL数据库是纵向扩展的。<br>C. NoSQL以块为单元操作数据，使用的是非结构化的查询语言。<br>D. NoSQL存储的格式都是key-value类型的，并且存储在内存中，非常容易存储，而且对于数据的一致性是弱要求。NoSQL无需SQL的解析，提高了读写性能。</li>
 </ol>
-<p>A. NoSQL是非关系型数据库的统称，采用类似键-值、列族、文档等非关系模。</p>
-<p>B. 关系型数据库是横向扩展的，NoSQL数据库是纵向扩展的。</p>
-<p>C. NoSQL以块为单元操作数据，使用的是非结构化的查询语言。</p>
-<p>D. NoSQL存储的格式都是key-value类型的，并且存储在内存中，非常容易存储，而且对于数据的一致性是弱要求。NoSQL无需SQL的解析，提高了读写性能。</p>
-<p>解析：纵向扩展(scale-up)是指利用现有的存储系统，通过不断增加存储容量来满足数据增长的需求；横向扩展(scale-out)是指以网络互连的节点为单位扩大存储容量(集群)。<strong>关系系型数据库是纵向扩展</strong>，也就是说想要提高处理能力，要使用速度更快的计算机。<strong>Nosql数据库是横向扩展的</strong>，它的存储天然就是分布式的，可以通过给资源池添加更多的普通数据库服务器来分担负载。</p>
+<blockquote>
+<p>解析：纵向扩展(scale-up)是指利用现有的存储系统，通过不断增加存储容量来满足数据增长的需求；横向扩展(scale-out)是指以网络互连的节点为单位扩大存储容量(集群)。<br><strong>关系系型数据库是纵向扩展</strong>，也就是说想要提高处理能力，要使用速度更快的计算机。<br><strong>Nosql数据库是横向扩展的</strong>，它的存储天然就是分布式的，可以通过给资源池添加更多的普通数据库服务器来分担负载。</p>
+</blockquote>
 <ol start="9">
-<li>RegionServer写流程的具体流程包括：</li>
+<li>RegionServer写流程的具体流程包括：<br>A、RegionServer收到写请求后，将写入的数据以追加的方式写入HDFS上的日志文件WAL；<br>B、扫描器查找缓存BlockCache，它内部缓存了最近读取过的数据<br>C、RegionServer将数据写入内存数据结构MemStore中，之后通知客户端数据写入成功；<br>D、当MemStore所占内存达到一定阈值后，RegionServer会将数据顺序刷新到HDFS中，保存成HFile格式的文件</li>
 </ol>
-<p>A、RegionServer收到写请求后，将写入的数据以追加的方式写入HDFS上的日志文件WAL；</p>
-<p>B、扫描器查找缓存BlockCache，它内部缓存了最近读取过的数据</p>
-<p>C、RegionServer将数据写入内存数据结构MemStore中，之后通知客户端数据写入成功；</p>
-<p>D、当MemStore所占内存达到一定阈值后，RegionServer会将数据顺序刷新到HDFS中，保存成HFile格式的文件</p>
-<p>解析：ACD</p>
-<p>扫描器查找缓存BlockCache，它内部缓存了最近读取过的数据。这个选项似乎不是写流程的一部分，而是读流程的一部分，因此不包括在内</p>
+<blockquote>
+<p>解析：ACD<br>扫描器查找缓存BlockCache，它内部缓存了最近读取过的数据。这个选项似乎不是写流程的一部分，而是读流程的一部分，因此不包括在内</p>
+</blockquote>
 <ol start="10">
-<li>下列关于文件存储格式说法正确的是：</li>
+<li>下列关于文件存储格式说法正确的是：<br>A.文件存储格式直接决定了数据存取效率以及被上层分布式计算集成的容易程度<br>B.常见的存储格式包括行式存储和列式存储两种：行式存储以文本格式Text File、key/value二进制存储格式Sequence File为典型代表；列式存储以ORC、Parquet和Carbon Data三种文件格式为代表<br>C.行存储和列存储的写入都是一次完成，性能较高<br>D.行存储将每行数据存储在一起，压缩比较低；列存储以列为单位存储数据，使得类型相同的数据存放在一起，对压缩算法友好，压缩比较高</li>
 </ol>
-<p>A.文件存储格式直接决定了数据存取效率以及被上层分布式计算集成的容易程度</p>
-<p>B.常见的存储格式包括行式存储和列式存储两种：行式存储以文本格式Text File、key/value二进制存储格式Sequence File为典型代表；列式存储以ORC、Parquet和Carbon Data三种文件格式为代表</p>
-<p>C.行存储和列存储的写入都是一次完成，性能较高</p>
-<p>D.行存储将每行数据存储在一起，压缩比较低；列存储以列为单位存储数据，使得类型相同的数据存放在一起，对压缩算法友好，压缩比较高</p>
-<p>解析：ABD</p>
-<p>行存储和列存储的写入都是一次完成，性能较高。这是不准确的，因为写入性能的高低受多种因素影响，并不仅仅取决于存储格式。</p>
+<blockquote>
+<p>解析：ABD<br>行存储和列存储的写入都是一次完成，性能较高。这是不准确的，因为写入性能的高低受多种因素影响，并不仅仅取决于存储格式。</p>
+</blockquote>
 
                 
             </div>
@@ -503,12 +496,12 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%BA%94%E8%AF%95%E8%AF%95%E9%A2%98/">
-                                    <span class="chip bg-color">应试试题</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
                                     <span class="chip bg-color">大数据技术基础</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AF%95%E9%A2%98/">
+                                    <span class="chip bg-color">试题</span>
                                 </a>
                             
                         </div>
@@ -594,12 +587,12 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BA%94%E8%AF%95%E8%AF%95%E9%A2%98/">
-                        <span class="chip bg-color">应试试题</span>
-                    </a>
-                    
                     <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
                         <span class="chip bg-color">大数据技术基础</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%95%E9%A2%98/">
+                        <span class="chip bg-color">试题</span>
                     </a>
                     
                 </div>
@@ -647,12 +640,12 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BA%94%E8%AF%95%E8%AF%95%E9%A2%98/">
-                        <span class="chip bg-color">应试试题</span>
-                    </a>
-                    
                     <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
                         <span class="chip bg-color">大数据技术基础</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%95%E9%A2%98/">
+                        <span class="chip bg-color">试题</span>
                     </a>
                     
                 </div>
@@ -832,7 +825,7 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12.1k</span>
+                        class="white-color">11.9k</span>
             
             
             
