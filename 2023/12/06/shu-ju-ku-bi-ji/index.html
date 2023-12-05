@@ -4,9 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="大数据技术基础小测二, learning,life,coding,computer science">
-    <meta name="description" content="
-Kafka在架构和应用定位上不包括：A、存储的数据是多副本的，能够做到数据不丢B、可将数据暂存一段时间(默认是一周)，供消费者重复读取，提供了类似于“发布订阅模式”的功能C、提供memory channel和file channel，数据">
+    <meta name="keywords" content="learning,life,coding,computer science">
+    <meta name="description" content="第七章 关系型数据库设计设计目标
+避免数据冗余
+保存属性间的关系
+便于检查数据更新是否违反完整性约束
+
+函数依赖基本概念当关系模式为R，其中 $\alpha \subseteq R$ 和 $\beta \subseteq R$。如果在 R ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +22,7 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>大数据技术基础小测二 | Davian&#39;s Blog</title>
+    <title>Davian&#39;s Blog</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
     
     <style>
@@ -272,12 +276,12 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">大数据技术基础小测二</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -299,29 +303,12 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
-                                <span class="chip bg-color">大数据技术基础</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%AF%95%E9%A2%98/">
-                                <span class="chip bg-color">试题</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%BA%94%E8%AF%95/" class="post-category">
-                                应试
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -330,7 +317,7 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-11-28
+                    2023-12-06
                 </div>
                 
 
@@ -344,14 +331,14 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    7 分
                 </div>
                 
 
@@ -371,67 +358,102 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li>Kafka在架构和应用定位上不包括：<br>A、存储的数据是多副本的，能够做到数据不丢<br>B、可将数据暂存一段时间(默认是一周)，供消费者重复读取，提供了类似于“发布订阅模式”的功能<br>C、提供memory channel和file channel，数据有可能丢失<br>D、生产者和消费者均需要用户使用API编写，仅提供了少量的与外部系统集成的组件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
-</ol>
-<blockquote>
-<p>解析：<br>A选项，<strong>Kafka通过在多个服务器上复制数据来确保数据的高可用性和持久性</strong>。这意味着即使某个服务器失败，Kafka也能保证数据不会丢失。<br>B选项，<strong>Kafka允许在服务器上暂存数据一段时间</strong>，这个时间是可配置的（默认情况下大约是一周）。这样，消费者可以在这段时间内重复读取数据。<strong>Kafka的这种功能支持发布订阅模式</strong>，其中生产者发布消息，而消费者订阅并读取这些消息。<br>C选项，Kafka本身不提供memory channel和file channel这样的概念。这些是Apache Flume的组成部分，另一个不同的数据集成工具。在Kafka中，数据的持久性和可靠性是通过复制和日志存储来实现的，并不直接依赖于内存或文件系统。<br>D选项，<strong>Kafka要求开发者使用其API来实现生产者和消费者</strong>。然而，<strong>Kafka提供了丰富的与外部系统集成的组件和连接器</strong>，例如Kafka Connect，这使得与外部系统的集成变得更加容易和灵活。答案选C</p>
+                <h1 id="第七章-关系型数据库设计"><a href="#第七章-关系型数据库设计" class="headerlink" title="第七章 关系型数据库设计"></a>第七章 关系型数据库设计</h1><h3 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h3><ul>
+<li>避免数据冗余</li>
+<li>保存属性间的关系</li>
+<li>便于检查数据更新是否违反完整性约束</li>
+</ul>
+<h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>当关系模式为R，其中 $\alpha \subseteq R$ 和 $\beta \subseteq R$。<br>如果在 R 上成立<strong>函数依赖</strong> $\alpha \rightarrow \beta$，则当对于 R 的任何合法关系 r(R) 时，只要关系中的任意两个元组 t1和 t2 在属性 $\alpha$ 上相同，它们在属性 $\beta$上也相同。也就是说，<br>$t1[\alpha] = t2[\alpha] =&gt; t1[\beta] = t2[\beta]$</p>
+<h5 id="键"><a href="#键" class="headerlink" title="键"></a>键</h5><p>K是关系模式R的<strong>超键</strong> &lt;-&gt; K$\rightarrow$R<br>K是R的<strong>候选键</strong> &lt;-&gt; K$\rightarrow$R且不存在α$\subseteq$K，α$\rightarrow$R</p>
+<h5 id="几种依赖"><a href="#几种依赖" class="headerlink" title="几种依赖"></a>几种依赖</h5><ul>
+<li><strong>平凡依赖</strong>：平凡依赖是一种显而易见的依赖，它指的是一个属性或属性集总是依赖于自身的超集。例如，ID,name-&gt;ID；name-&gt;name</li>
+<li><strong>传递依赖</strong>：如果存在依赖 A→B 和 B→C，那么可以推导出传递依赖 A→C。</li>
+<li><strong>部分依赖</strong>：如果一个属性依赖于关键字的一部分，而不是整个关键字，那么就存在部分依赖。</li>
+</ul>
+<h5 id="逻辑蕴含"><a href="#逻辑蕴含" class="headerlink" title="逻辑蕴含"></a>逻辑蕴含</h5><p>在关系模式R上，有一个函数依赖集合F。如果对于R的每个关系实例r(R)，都满足某个特定的函数依赖f，那么我们说这个函数依赖f是由F逻辑上推导出来的。简而言之，<strong>如果关系的所有数据都符合某个函数依赖，那么我们就可以说这个函数依赖是由整体的函数依赖集合逻辑上推导出来的。</strong></p>
+<h4 id="函数依赖集闭包"><a href="#函数依赖集闭包" class="headerlink" title="函数依赖集闭包"></a>函数依赖集闭包</h4><p>对于关系模式 R(U, F)，其中 U 是属性集合，F 是函数依赖集合，<strong>由 F 逻辑上推导出的所有函数依赖的集合称为 F 的闭包</strong>。</p>
+<ul>
+<li>例如，如果存在 A ➔ B 和 B ➔ C，那么我们可以推断出 A ➔ C。<br>我们用 $F^+$ 表示 F 的闭包。</li>
+</ul>
+<h5 id="Armstrong-公理"><a href="#Armstrong-公理" class="headerlink" title="Armstrong 公理"></a>Armstrong 公理</h5><p><img src="/2023/12/06/shu-ju-ku-bi-ji/Armstrong%E2%80%98s%20Axioms.png" alt="|425"></p>
+<h5 id="计算-F"><a href="#计算-F" class="headerlink" title="计算$F^+$"></a>计算$F^+$</h5><blockquote>
+<p>$F^+$=F<br>重复以下步骤：<br>    对于 F 中的每个函数依赖 f：<br>        - 应用<strong>自反律和增广律</strong>于 f，将得到的函数依赖添加到 $F^+$ 中。<br>     对于 $F^+$ 中的每对函数依赖 f1 和 f2：<br>        - 如果可以使用<strong>传递律</strong>规则合并 f1 和 f2，则将得到的函数依赖添加到 $F^+$ 中。<br>重复上述步骤，直到 $F^+$ 不再发生变化。</p>
 </blockquote>
-<ol start="2">
-<li>在Kafka中，每条数据被称为“消息”，每条消息表示为一个三元组，该三元组不包括：<br>A、topic B、key C、message D、value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
-</ol>
-<blockquote>
-<p>解析：在Kafka中，消息是通信的基本单位。每条消息都有三个主要组成部分：<br>A. <strong>Topic</strong>（主题）：标识消息所属的类别或主题，允许消息被发布到特定的类别。<br>B. <strong>Key</strong>（键）：是一个可选字段，用于标识消息的唯一性，帮助在分布式系统中将消息路由到特定的分区。<br>C. <strong>Message</strong>（值）：包含实际传输的数据，即消息的内容。<br>所以，在这个三元组中，不包括的部分是 D、value。</p>
+<h5 id="其他规则"><a href="#其他规则" class="headerlink" title="其他规则"></a>其他规则</h5><p><img src="/2023/12/06/shu-ju-ku-bi-ji/additional%20rules.png" alt="|400"></p>
+<h4 id="属性集闭包"><a href="#属性集闭包" class="headerlink" title="属性集闭包"></a>属性集闭包</h4><p>给定一个属性集合 α，定义 $α^+$（属性集合闭包）为在 F 下由 α 函数决定的属性集合：<br>对于 a→β 在 $F^+$ 中成立 &lt;=&gt; β⊆$a^+$</p>
+<h5 id="计算-a-的算法"><a href="#计算-a-的算法" class="headerlink" title="计算$a^+$的算法"></a>计算$a^+$的算法</h5><blockquote>
+<p>输入：α，F<br>输出：$α^+$</p>
+<p>result := a;<br>当（result仍在变化）时：<br>        对于 F 中的每个 β→γ：<br>            如果 β⊆result，则 result:=result∪γ</p>
 </blockquote>
-<ol start="3">
-<li>Producer负责将数据写入Broker，通常由用户根据实际需要编写，一般不包括以下哪个步骤：<br>A、创建配置对象ProducerConfig<br>B、定义分类区SimplePartitioner<br>C、创建Producer对象，并发送数据<br>D、创建配置对象ConsumerConfig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
+<h1 id="第十三章-数据存储结构"><a href="#第十三章-数据存储结构" class="headerlink" title="第十三章 数据存储结构"></a>第十三章 数据存储结构</h1><h2 id="存储访问"><a href="#存储访问" class="headerlink" title="存储访问"></a>存储访问</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>一个数据库文件被分割成固定长度的存储单元，称为<strong>块</strong>。块是存储分配和数据传输的单位。</li>
+<li>数据库系统的目标是<strong>最小化磁盘和内存之间的块传输次数</strong>，尽量将尽可能多的块保留在主内存中。</li>
+<li><strong>缓冲区</strong> - 主内存中可用于存储磁盘块副本的部分。</li>
+<li><strong>缓冲区管理器</strong> - 负责在主内存中分配缓冲区空间的子系统。</li>
+</ul>
+<h3 id="缓冲区管理器"><a href="#缓冲区管理器" class="headerlink" title="缓冲区管理器"></a>缓冲区管理器</h3><p>如果块已经在缓冲区中，请求的程序将获得主内存中该块的地址。<br>如果块不在缓冲区中， </p>
+<ol>
+<li>缓冲区管理器将在缓冲区中为该块分配空间，如果需要的话，替换（清除）其他块以为新块腾出空间。 </li>
+<li>被清除的块只有在自上次写入/从磁盘获取以来被修改过时才会被写回磁盘。</li>
+<li>一旦在缓冲区中分配了空间，缓冲区管理器将该块从磁盘读取到缓冲区，并将主内存中该块的地址传递给请求者。</li>
 </ol>
-<blockquote>
-<p>解析：Producer负责将数据写入Broker，通常由用户根据实际需要编写。可根据以下三个步骤进行：<strong>创建配置对象ProducerConfig；定义分类区SimplePartitioner；创建Producer对象，并发送数据。</strong> D选项属于Consumer程序的步骤。</p>
-</blockquote>
-<ol start="4">
-<li>ZooKeeper内部存储着有关HBase的重要元信息和状态信息，担任着HMaster与RegionServer之间的服务协调角色，具体职责不包括：<br>A、保证任何时候，集群中可以存在多个HMaster；<br>B、存储所有Region的寻址入口；<br>C、实时监控RegionServer的上线和下线信息，并实时通知给HMaster；<br>D、存储HBase的schema和table元数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
+<h3 id="缓冲区替换策略"><a href="#缓冲区替换策略" class="headerlink" title="缓冲区替换策略"></a>缓冲区替换策略</h3><p>大多数操作系统采用<strong>最近最少使用(LRU)</strong> 策略替换块。</p>
+<p>查询具有明确定义的访问模式（例如顺序扫描），数据库系统可以使用用户查询中的信息来预测将来的引用。<br>对于涉及重复扫描数据的某些访问模式，LRU 可能是一个不好的策略，例如，在计算两个关系 r 和 s 的连接时通过嵌套循环：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for each tuple tr of r do </span><br><span class="line">    for each tuple ts of s do </span><br><span class="line">        if the tuples tr and ts match …</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>钉住的块</strong>  不允许写回磁盘的内存块。<br>在从块中读取/写入数据之前执行固定操作。<br>在读取/写入完成后执行取消固定操作。<br>可以进行多个并发的固定/取消固定操作。</p>
+<p><strong>强制写出</strong>  将块强制写出到磁盘。</p>
+<p><strong>立即丢弃</strong> 一旦处理完块的最后一个元组，就释放该块占用的空间。</p>
+<p><strong>最近最常使用 (MRU)</strong> 策略 - 缓冲区管理器可以使用关于请求将引用特定关系的概率的统计信息。<br>例如，数据字典经常被访问。启发式方法：将数据字典块保留在主内存缓冲区中。</p>
+<h3 id="缓冲区的共享锁和独占锁"><a href="#缓冲区的共享锁和独占锁" class="headerlink" title="缓冲区的共享锁和独占锁"></a>缓冲区的共享锁和独占锁</h3><p>需要防止并发操作（在页面内容被修改时读取页面内容，或者同时进行多个修改）</p>
+<p>读者获取<strong>共享锁</strong>，写者获取<strong>独占锁</strong>。<br><strong>锁定规则</strong>：</p>
+<ul>
+<li>一次只能有一个进程获取独占锁。</li>
+<li>共享锁不能与独占锁同时存在。</li>
+<li>可以同时给予多个进程共享锁。</li>
+</ul>
+<h2 id="文件组织"><a href="#文件组织" class="headerlink" title="文件组织"></a>文件组织</h2><p>数据库以文件的形式存储。每个文件是一系列<strong>记录</strong>，记录是字段的序列。</p>
+<h3 id="定长记录"><a href="#定长记录" class="headerlink" title="定长记录"></a>定长记录</h3><p>简单的存储方法方法： </p>
+<ul>
+<li>将记录 i 存储在字节 n * (i – 1) 处，其中 n 是每个记录的大小。 </li>
+<li>记录访问简单，但记录可能跨越块。修改：不允许记录跨越块边界。</li>
+</ul>
+<p>删除记录 i 的替代方法：</p>
+<ol>
+<li>将记录 i + 1, . . ., n 移动到 i, . . . , n – 1</li>
+<li>将记录 n 移动到 i</li>
+<li>不移动记录，而是将所有空闲记录链接到一个空闲列表上</li>
 </ol>
-<blockquote>
-<p>解析：<br>A选项，在HBase中，<strong>通常只有一个活动的HMaster</strong>，它负责协调和管理整个HBase集群。ZooKeeper确保集群中只有一个活跃的HMaster，并在HMaster失败时协助选举新的HMaster。因此，ZooKeeper不是用来保证多个HMaster同时存在的。<br>B选项，<strong>ZooKeeper在HBase中用于存储关于Region服务器的信息</strong>，包括它们的地址和状态，这样客户端和HMaster可以知道如何与这些Region服务器通信。<br>C选项，<strong>ZooKeeper监控着RegionServer的状态</strong>，包括它们的上线和下线。当RegionServer的状态发生变化时，ZooKeeper会及时通知HMaster，从而允许HMaster做出相应的调整。<br>D选项。承担了许多协调和管理的角色，<strong>负责存储HBase的schema和表的元数据</strong>。</p>
-</blockquote>
-<ol start="5">
-<li>根据接收者可能收到的重复消息的次数，将消息传递语义分为三种模式，其中，发送者发送后立即返回，不关心接收者是否收到这种模式是：<br>A、at least once B、at most once C、exactly once&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
+<h4 id="空闲列表"><a href="#空闲列表" class="headerlink" title="空闲列表"></a>空闲列表</h4><ul>
+<li>将第一个删除的记录的地址存储在文件头中。</li>
+<li>使用第一个记录来存储第二个删除的记录的地址，依此类推。<br><img src="/2023/12/06/shu-ju-ku-bi-ji/freeList.png"></li>
+</ul>
+<h3 id="变长记录"><a href="#变长记录" class="headerlink" title="变长记录"></a>变长记录</h3><p>变长记录在数据库系统中以几种方式出现：</p>
+<ol>
+<li>在文件中存储多个记录类型。</li>
+<li>允许一个或多个字段的变长的记录类型。</li>
+<li>允许重复字段的记录类型。</li>
 </ol>
-<p>&nbsp;</p>
-<blockquote>
-<p>解析：<br><strong>at most once</strong>：发送者将消息发送给消费者后，立刻返回，不会关心消费者是否成功收到消息。 这种情况下，消息可能被消费者成功接收，也可能丢失；<br><strong>at least once</strong>：发送者将消息发送给消费者后，需等待确认，如果未收到确认消息，则会重发消息。这种语义能保证消费者收到消息，但可能会收到多次；<br><strong>exactly once</strong>：消费者会且只会处理一次同一条消息。</p>
-</blockquote>
-<ol start="6">
-<li>下列关于网络数据采集说法错误的是<br>A.网络数据采集是指通过网络爬虫或网站公开API等方式从网站上获取数据信息，支持图片、音频、视频等文件或附件的采集，附件和正文可以自动关联<br>B.网络爬虫的常见抓取策略有宽度优先策略、反向链接策略、PartialPageRank策略、OPIC策略、大站优先策略等<br>C.单个抓取程序足以胜任大规模的分布式抓取系统，不需要多个抓取程序协同工作<br>D.Scrapy Engine作为Scrapy内部的主要组件构成，负责控制系统所有组件之间的数据流，并在发生某些操作时触发事件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [单选题]</li>
+<h4 id="字节字符串表示"><a href="#字节字符串表示" class="headerlink" title="字节字符串表示"></a>字节字符串表示</h4><ul>
+<li>将数据以字节的形式进行编码和存储，而不是以字符的形式。</li>
+<li>可以准确地存储任意类型的数据，包括文本、图像、音频等，而不受字符编码的限制。</li>
+<li>变长字段通常由两部分组成：<strong>偏移量和长度</strong>。偏移量表示变长字段在字节字符串中的起始位置，而长度表示该字段的实际字节数。</li>
+<li>空值通过<strong>空值位图</strong>表示。</li>
+<li>有时，在字节字符串的末尾可能会添加<strong>特殊的结束标志</strong>，以指示数据的结束。<br><img src="/2023/12/06/shu-ju-ku-bi-ji/byteString.png"></li>
+</ul>
+<h4 id="插槽页结构"><a href="#插槽页结构" class="headerlink" title="插槽页结构"></a>插槽页结构</h4><p><img src="/2023/12/06/shu-ju-ku-bi-ji/slotPage.png"><br>在数据库管理系统中，Slotted Page Structure 是一种用于组织和存储记录的数据页结构。每个数据页被划分为固定大小的插槽，每个插槽包含一个指向记录的指针，指示记录在页中的位置。</p>
+<ul>
+<li>插槽页头包含：</li>
+</ul>
+<ol>
+<li>记录条目的数量。</li>
+<li>数据块中空闲空间的末尾。</li>
+<li>每个记录的位置和大小。</li>
 </ol>
-<blockquote>
-<p>解析：一般来说，大规模的分布式抓取系统需要抓取整个互联网上数以亿计的网页，单个抓取程序难以胜任，往往需要多个抓取程序协同工作。</p>
-</blockquote>
-<ol start="7">
-<li>下列关于HDFS关键技术说法正确的是（ABD）<br>A. HDFS的数据块损坏容错性设计为：DataNode保存数据块时，会同时生成一个校验码。当存取数据块时，如果发现校验码不一致则认为该数据块已经损坏，NameNode会通过其他节点上的正常副本重构受损的数据块。<br>B. HDFS的副本放置策略与集群物理拓扑结构是直接相关的。<br>C. HDFS只提供了API方式，让用户管理集中式缓存系统中的文件和目录，可以根据需要将一个文件增加到缓存中，或从缓存中移除。<br>D. HDFS支持多种常用存储类型，包括：ARCHIVE、DISK、SSD、RAM_DISK。</li>
-</ol>
-<blockquote>
-<p>解析：HDFS允许用户将一部分目录或文件缓存在off-heap内存中，以加速对这些数据的访问效率，该机制被称为集中式缓存管理。<strong>为了方便用户管理集中式缓存系统中的文件和目录，HDFS提供了API和命令行两种方式</strong>，可以根据需要将一个文件增加到缓存中，或从缓存中移除。</p>
-</blockquote>
-<ol start="8">
-<li>下列关于NoSQL说法错误的是（B）<br>A. NoSQL是非关系型数据库的统称，采用类似键-值、列族、文档等非关系模。<br>B. 关系型数据库是横向扩展的，NoSQL数据库是纵向扩展的。<br>C. NoSQL以块为单元操作数据，使用的是非结构化的查询语言。<br>D. NoSQL存储的格式都是key-value类型的，并且存储在内存中，非常容易存储，而且对于数据的一致性是弱要求。NoSQL无需SQL的解析，提高了读写性能。</li>
-</ol>
-<blockquote>
-<p>解析：纵向扩展(scale-up)是指利用现有的存储系统，通过不断增加存储容量来满足数据增长的需求；横向扩展(scale-out)是指以网络互连的节点为单位扩大存储容量(集群)。<br><strong>关系系型数据库是纵向扩展</strong>，也就是说想要提高处理能力，要使用速度更快的计算机。<br><strong>Nosql数据库是横向扩展的</strong>，它的存储天然就是分布式的，可以通过给资源池添加更多的普通数据库服务器来分担负载。</p>
-</blockquote>
-<ol start="9">
-<li>RegionServer写流程的具体流程包括：<br>A、RegionServer收到写请求后，将写入的数据以追加的方式写入HDFS上的日志文件WAL；<br>B、扫描器查找缓存BlockCache，它内部缓存了最近读取过的数据<br>C、RegionServer将数据写入内存数据结构MemStore中，之后通知客户端数据写入成功；<br>D、当MemStore所占内存达到一定阈值后，RegionServer会将数据顺序刷新到HDFS中，保存成HFile格式的文件</li>
-</ol>
-<blockquote>
-<p>解析：ACD<br>扫描器查找缓存BlockCache，它内部缓存了最近读取过的数据。这个选项似乎不是写流程的一部分，而是读流程的一部分，因此不包括在内</p>
-</blockquote>
-<ol start="10">
-<li>下列关于文件存储格式说法正确的是：<br>A.文件存储格式直接决定了数据存取效率以及被上层分布式计算集成的容易程度<br>B.常见的存储格式包括行式存储和列式存储两种：行式存储以文本格式Text File、key/value二进制存储格式Sequence File为典型代表；列式存储以ORC、Parquet和Carbon Data三种文件格式为代表<br>C.行存储和列存储的写入都是一次完成，性能较高<br>D.行存储将每行数据存储在一起，压缩比较低；列存储以列为单位存储数据，使得类型相同的数据存放在一起，对压缩算法友好，压缩比较高</li>
-</ol>
-<blockquote>
-<p>解析：ABD<br>行存储和列存储的写入都是一次完成，性能较高。这是不准确的，因为写入性能的高低受多种因素影响，并不仅仅取决于存储格式。</p>
-</blockquote>
+<ul>
+<li>记录可以在页面内移动，以保持它们的连续性，没有空白空间分隔它们；必须更新页头中的条目。</li>
+<li>指针不应直接指向记录，而应指向页头中记录条目的位置。</li>
+</ul>
 
                 
             </div>
@@ -458,7 +480,7 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://daixinwang.github.io/2023/11/28/da-shu-ju-ji-zhu-ji-chu-xiao-ce-er/">https://daixinwang.github.io/2023/11/28/da-shu-ju-ji-zhu-ji-chu-xiao-ce-er/</a>
+                    <a href="https://daixinwang.github.io/2023/12/06/shu-ju-ku-bi-ji/">https://daixinwang.github.io/2023/12/06/shu-ju-ku-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -495,15 +517,7 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
-                                    <span class="chip bg-color">大数据技术基础</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%AF%95%E9%A2%98/">
-                                    <span class="chip bg-color">试题</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -547,9 +561,48 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/12/06/shu-ju-ku-bi-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Davian
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2023/11/28/ji-qi-xue-xi-bi-ji/">
                     <div class="card-image">
@@ -567,9 +620,9 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -591,59 +644,6 @@ Kafka在架构和应用定位上不包括：A、存储的数据是多副本的�
                     
                     <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
                         <span class="chip bg-color">机器学习</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/11/28/da-shu-ju-ji-zhu-ji-chu-xiao-ce-yi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="大数据技术基础小测一">
-                        
-                        <span class="card-title">大数据技术基础小测一</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            大三上大数据技术基础小测一
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-28
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%BA%94%E8%AF%95/" class="post-category">
-                                    应试
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">大数据技术基础</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%AF%95%E9%A2%98/">
-                        <span class="chip bg-color">试题</span>
                     </a>
                     
                 </div>
