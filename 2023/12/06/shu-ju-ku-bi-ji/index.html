@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="learning,life,coding,computer science">
+    <meta name="keywords" content="数据库笔记, learning,life,coding,computer science">
     <meta name="description" content="第七章 关系型数据库设计设计目标
 避免数据冗余
 保存属性间的关系
@@ -22,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Davian&#39;s Blog</title>
+    <title>数据库笔记 | Davian&#39;s Blog</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
     
     <style>
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">数据库笔记</h1>
                 </div>
             </div>
         </div>
@@ -303,12 +303,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                课程笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -324,21 +341,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-30
+                    2023-12-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    5.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    20 分
                 </div>
                 
 
@@ -358,33 +375,92 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第七章-关系型数据库设计"><a href="#第七章-关系型数据库设计" class="headerlink" title="第七章 关系型数据库设计"></a>第七章 关系型数据库设计</h1><h3 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h3><ul>
+                <h1 id="第七章-关系型数据库设计"><a href="#第七章-关系型数据库设计" class="headerlink" title="第七章 关系型数据库设计"></a>第七章 关系型数据库设计</h1><h2 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h2><ul>
 <li>避免数据冗余</li>
 <li>保存属性间的关系</li>
 <li>便于检查数据更新是否违反完整性约束</li>
 </ul>
-<h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>当关系模式为R，其中 $\alpha \subseteq R$ 和 $\beta \subseteq R$。<br>如果在 R 上成立<strong>函数依赖</strong> $\alpha \rightarrow \beta$，则当对于 R 的任何合法关系 r(R) 时，只要关系中的任意两个元组 t1和 t2 在属性 $\alpha$ 上相同，它们在属性 $\beta$上也相同。也就是说，<br>$t1[\alpha] = t2[\alpha] =&gt; t1[\beta] = t2[\beta]$</p>
-<h5 id="键"><a href="#键" class="headerlink" title="键"></a>键</h5><p>K是关系模式R的<strong>超键</strong> &lt;-&gt; K$\rightarrow$R<br>K是R的<strong>候选键</strong> &lt;-&gt; K$\rightarrow$R且不存在α$\subseteq$K，α$\rightarrow$R</p>
+<h2 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>当关系模式为R，其中 $\alpha \subseteq R$ 和 $\beta \subseteq R$。<br>如果在 R 上成立<strong>函数依赖</strong> $\alpha \rightarrow \beta$（α决定β，或β依赖α），则当对于 R 的任何合法关系 r(R) 时，只要关系中的任意两个元组 t1和 t2 在属性 $\alpha$ 上相同，它们在属性 $\beta$上也相同。也就是说，<br>$t1[\alpha] = t2[\alpha] =&gt; t1[\beta] = t2[\beta]$<br>例如，学号-&gt;{姓名，年龄}</p>
+<h5 id="键"><a href="#键" class="headerlink" title="键"></a>键</h5><p>K是关系模式R的<strong>超键</strong> &lt;-&gt; K$\rightarrow$R<br>K是R的<strong>候选键</strong> &lt;-&gt; K$\rightarrow$R且不存在α$\subseteq$K，α$\rightarrow$R（候选键具有最小性和唯一性）</p>
 <h5 id="几种依赖"><a href="#几种依赖" class="headerlink" title="几种依赖"></a>几种依赖</h5><ul>
 <li><strong>平凡依赖</strong>：平凡依赖是一种显而易见的依赖，它指的是一个属性或属性集总是依赖于自身的超集。例如，ID,name-&gt;ID；name-&gt;name</li>
 <li><strong>传递依赖</strong>：如果存在依赖 A→B 和 B→C，那么可以推导出传递依赖 A→C。</li>
 <li><strong>部分依赖</strong>：如果一个属性依赖于关键字的一部分，而不是整个关键字，那么就存在部分依赖。</li>
 </ul>
 <h5 id="逻辑蕴含"><a href="#逻辑蕴含" class="headerlink" title="逻辑蕴含"></a>逻辑蕴含</h5><p>在关系模式R上，有一个函数依赖集合F。如果对于R的每个关系实例r(R)，都满足某个特定的函数依赖f，那么我们说这个函数依赖f是由F逻辑上推导出来的。简而言之，<strong>如果关系的所有数据都符合某个函数依赖，那么我们就可以说这个函数依赖是由整体的函数依赖集合逻辑上推导出来的。</strong></p>
-<h4 id="函数依赖集闭包"><a href="#函数依赖集闭包" class="headerlink" title="函数依赖集闭包"></a>函数依赖集闭包</h4><p>对于关系模式 R(U, F)，其中 U 是属性集合，F 是函数依赖集合，<strong>由 F 逻辑上推导出的所有函数依赖的集合称为 F 的闭包</strong>。</p>
+<h3 id="函数依赖集闭包"><a href="#函数依赖集闭包" class="headerlink" title="函数依赖集闭包"></a>函数依赖集闭包</h3><p>对于关系模式 R(U, F)，其中 U 是属性集合，F 是函数依赖集合，<strong>由 F 逻辑上推导出的所有函数依赖的集合称为 F 的闭包</strong>。</p>
 <ul>
 <li>例如，如果存在 A ➔ B 和 B ➔ C，那么我们可以推断出 A ➔ C。<br>我们用 $F^+$ 表示 F 的闭包。</li>
 </ul>
-<h5 id="Armstrong-公理"><a href="#Armstrong-公理" class="headerlink" title="Armstrong 公理"></a>Armstrong 公理</h5><p><img src="/2023/12/06/shu-ju-ku-bi-ji/Armstrong%E2%80%98s%20Axioms.png" alt="|425"></p>
-<h5 id="计算-F"><a href="#计算-F" class="headerlink" title="计算$F^+$"></a>计算$F^+$</h5><blockquote>
+<h4 id="Armstrong-公理"><a href="#Armstrong-公理" class="headerlink" title="Armstrong 公理"></a>Armstrong 公理</h4><p><img src="/2023/12/06/shu-ju-ku-bi-ji/Armstrong%E2%80%98s%20Axioms.png" alt="|425"></p>
+<h4 id="其他规则"><a href="#其他规则" class="headerlink" title="其他规则"></a>其他规则</h4><p><img src="/2023/12/06/shu-ju-ku-bi-ji/additional%20rules.png" alt="|400"></p>
+<h4 id="计算-F"><a href="#计算-F" class="headerlink" title="计算$F^+$"></a>计算$F^+$</h4><blockquote>
 <p>$F^+$=F<br>重复以下步骤：<br>    对于 F 中的每个函数依赖 f：<br>        - 应用<strong>自反律和增广律</strong>于 f，将得到的函数依赖添加到 $F^+$ 中。<br>     对于 $F^+$ 中的每对函数依赖 f1 和 f2：<br>        - 如果可以使用<strong>传递律</strong>规则合并 f1 和 f2，则将得到的函数依赖添加到 $F^+$ 中。<br>重复上述步骤，直到 $F^+$ 不再发生变化。</p>
 </blockquote>
-<h5 id="其他规则"><a href="#其他规则" class="headerlink" title="其他规则"></a>其他规则</h5><p><img src="/2023/12/06/shu-ju-ku-bi-ji/additional%20rules.png" alt="|400"></p>
-<h4 id="属性集闭包"><a href="#属性集闭包" class="headerlink" title="属性集闭包"></a>属性集闭包</h4><p>给定一个属性集合 α，定义 $α^+$（属性集合闭包）为在 F 下由 α 函数决定的属性集合：<br>对于 a→β 在 $F^+$ 中成立 &lt;=&gt; β⊆$a^+$</p>
-<h5 id="计算-a-的算法"><a href="#计算-a-的算法" class="headerlink" title="计算$a^+$的算法"></a>计算$a^+$的算法</h5><blockquote>
+<h3 id="属性集闭包"><a href="#属性集闭包" class="headerlink" title="属性集闭包"></a>属性集闭包</h3><p>给定一个属性集合 α，定义 $α^+$（属性集合闭包）为在 F 下由 α 函数决定的属性集合：<br>对于 a→β 在 $F^+$ 中成立 &lt;=&gt; β⊆$a^+$</p>
+<h4 id="计算-a-的算法"><a href="#计算-a-的算法" class="headerlink" title="计算$a^+$的算法"></a>计算$a^+$的算法</h4><blockquote>
 <p>输入：α，F<br>输出：$α^+$</p>
-<p>result := a;<br>当（result仍在变化）时：<br>        对于 F 中的每个 β→γ：<br>            如果 β⊆result，则 result:=result∪γ</p>
+<p>result := α;<br>当（result仍在变化）时：<br>        对于 F 中的每个 β→γ：<br>            如果 β⊆result，则 result:=result∪γ<br><img src="/2023/12/06/shu-ju-ku-bi-ji/computea+Example.png"></p>
 </blockquote>
+<h4 id="属性集闭包的作用"><a href="#属性集闭包的作用" class="headerlink" title="属性集闭包的作用"></a>属性集闭包的作用</h4><ul>
+<li>判断超键：计算$α^+$，检查是否包含关系R的所有属性。</li>
+<li>判断函数依赖：要检查函数依赖 α → β 是否成立，只需检查 β 是否是 α+ 的子集。</li>
+<li>计算F的闭包：得到的实际是F 的闭包（由 F 逻辑上推导出的所有函数依赖的集合）。</li>
+</ul>
+<h4 id="等价"><a href="#等价" class="headerlink" title="等价"></a>等价</h4><p>设 F 和 G 是两组函数依赖集合，如果 F+ 等于 G+，则我们可以得出 F 和 G 是等价的。</p>
+<h4 id="最小覆盖-正则覆盖"><a href="#最小覆盖-正则覆盖" class="headerlink" title="最小覆盖/正则覆盖"></a>最小覆盖/正则覆盖</h4><p>函数依赖集合 F 的正则覆盖是一个与 F <strong>等价的“最小”依赖关系集合</strong>，其中没有冗余的依赖关系。</p>
+<h4 id="无关属性"><a href="#无关属性" class="headerlink" title="无关属性"></a>无关属性</h4><p>如果在一个函数依赖中的属性<strong>可以被移除而不改变函数依赖集合的闭包</strong>，那么这个属性被称为是多余的。</p>
+<p><strong>判断无关属性的方法</strong>：<br>考虑一个函数依赖集合 F 和其中的函数依赖关系α→β。</p>
+<blockquote>
+<p>判断属性 A 是否是在 α 中的多余属性，执行以下步骤：</p>
+<ol>
+<li>使用F计算 (α−A)+。</li>
+<li>检查(α−A)+(F) 是否包含 β。如果包含，说明 A 是在 α 中的多余属性。<br>判断属性 A 是否是在 β 中的多余属性，执行以下步骤：</li>
+<li>使用 F’，其中 F′=(F−{α→β})∪{α→(β−A)}，计算 α+</li>
+<li>检查 α+(F′) 是否包含 A。如果包含，说明 A 是在 β 中的多余属性。</li>
+</ol>
+</blockquote>
+<p><strong>计算最小覆盖的方法</strong>：</p>
+<blockquote>
+<p>$F_c$,=F;<br><strong>repeat</strong><br>    使用合并律替换F中所有的依赖关系（$\alpha_1 \rightarrow \beta_1$ and  $\alpha_1 \rightarrow \beta_2$ with $\alpha_1 \rightarrow \beta_1\beta_2$）<br>    找到存在无关属性的依赖关系并删除其中的无关属性<br> <strong>until</strong> F does not change</p>
+</blockquote>
+<p><img src="/2023/12/06/shu-ju-ku-bi-ji/computeCanonicalCoverExample.png" alt="|400"></p>
+<h2 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h2><p><strong>第一范式（1NF）</strong>：关系模式中的每个属性都是<strong>原子性</strong>的，即不可再分。不能有复合属性或多值属性。<br><strong>第二范式（2NF）</strong>：在1NF的基础上，要求表中的<strong>非主键属性完全依赖于所有候选键</strong>。<br><strong>第三范式（3NF）</strong>：在2NF的基础上，要求表中的<strong>非主键属性都不传递依赖于候选键</strong>。<br><strong>巴斯·科德范式（BCNF）</strong>：如果关系模式R是1NF，且每个属性都不部分依赖于候选键也不传递依赖于候选键，那么称R是BC范式。</p>
+<h3 id="多属性依赖集候选关键字求法"><a href="#多属性依赖集候选关键字求法" class="headerlink" title="多属性依赖集候选关键字求法"></a>多属性依赖集候选关键字求法</h3><p>输入：关系模式R及其函数依赖集F<br>输出：R的所有候选关键字<br>方法：</p>
+<blockquote>
+<p>1）将R的所有属性分为四类：<br>&nbsp; L类：仅出现在F的函数依赖左部的属性；<br>&nbsp; R类：仅出现在F的函数依赖右部的属性；<br>&nbsp; N类：在F的函数依赖左右两边均未出现的属性；<br>&nbsp; LR类：在F的函数依赖左右两边均出现的属性；<br>&nbsp; 并令X代表L、N类，Y代表LR类；</p>
+<p>2）求X+，若包含了R的所有属性，则X即为R的唯一候选关键字，转（5），否则转（3）；</p>
+<p>3）在Y中取一属性A，求（XA)+,若它包含了R的所有属性，则转（4），否则，调换一属性反复进行这一过程，直到试完所有Y中的属性；</p>
+<p>4）如果已找出所有的候选关键字，则转（5），否则在Y中依此取两个、三个，…，求他们的属性闭包，直到其闭包包含R的所有的属性。</p>
+<p>5）停止，输出结果。</p>
+</blockquote>
+<h2 id="分解"><a href="#分解" class="headerlink" title="分解"></a>分解</h2><p>判断一个特定的关系 R 是否处于某一范式。如果关系 R 不符合，那么将其分解为一组关系 {R1, R2, …, Rn}。原始模式R的所有属性必须出现在分解中（R1, R2, …, Rn），R=R1∪R2∪…∪Rn。</p>
+<h3 id="无损连接分解"><a href="#无损连接分解" class="headerlink" title="无损连接分解"></a>无损连接分解</h3><p>无损连接分解：将关系 R 分解成一组关系 {R1, R2, …, Rn}，对于模式 R 上的所有可能关系 r： $r=π_{R1}​(r)⋈π_{R2}​(r)⋈…⋈π_{Rn}​(r)$<br>有损连接分解会导致信息缺失，例如：<br>R1=(sno), R2=(dept), R3=(head)<br>R1=(sno,dept), R2=(sno,head)</p>
+<h3 id="3NF分解算法"><a href="#3NF分解算法" class="headerlink" title="3NF分解算法"></a>3NF分解算法</h3><ol>
+<li>先求出正则覆盖Fc</li>
+<li>对于Fc里面的所有函数依赖a-&gt;b,均转化为Ri=ab</li>
+<li>对于所有的模式Ri<ul>
+<li>如果包含候选键，进行第4</li>
+<li>如果都不包含候选键， 将任意一个候选键添加到模式Ri里面</li>
+</ul>
+</li>
+<li>如果一个模式被另一个模式包含，则去掉此被包含的模式。</li>
+</ol>
+<p>例子：U={A,B,C,D,E,G},F={B-&gt;G,CE-&gt;B,C-&gt;A,CE-&gt;G,B-&gt;D,C-&gt;D}</p>
+<p>正则覆盖为{B-&gt;DG,CE-&gt;B,C-&gt;AD}<br>R1=BDG,R2=CEB,R3=CAD<br>CE是候选码，R2包含CE<br>R1,R2,R3没有包含关系<br>3NF分解为{BDG},{CEB},{CAD}</p>
+<h3 id="BCNF分解算法"><a href="#BCNF分解算法" class="headerlink" title="BCNF分解算法"></a>BCNF分解算法</h3><ol>
+<li>求出候选键</li>
+<li>观察函数依赖集，如果左边不是候选键，则不满足条件</li>
+<li>用不满足条件的函数依赖（A-&gt;B）进行分解，这样分解之后就满足了<ul>
+<li>R1=AB（这样就满足了）</li>
+<li>R2=（R-R1)∪A</li>
+<li>F2={…}去掉B的所有函数依赖，尽可能写全</li>
+</ul>
+</li>
+<li>对F2进行步骤1的计算。</li>
+<li>重复直到所有的满足条件</li>
+</ol>
+<p><img src="/2023/12/06/shu-ju-ku-bi-ji/BCNFExample1.png" alt="|500"><br><img src="/2023/12/06/shu-ju-ku-bi-ji/BCNFExample2.png" alt="|500"></p>
 <h1 id="第十三章-数据存储结构"><a href="#第十三章-数据存储结构" class="headerlink" title="第十三章 数据存储结构"></a>第十三章 数据存储结构</h1><h2 id="存储访问"><a href="#存储访问" class="headerlink" title="存储访问"></a>存储访问</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
 <li>一个数据库文件被分割成固定长度的存储单元，称为<strong>块</strong>。块是存储分配和数据传输的单位。</li>
 <li>数据库系统的目标是<strong>最小化磁盘和内存之间的块传输次数</strong>，尽量将尽可能多的块保留在主内存中。</li>
@@ -454,6 +530,121 @@
 <li>记录可以在页面内移动，以保持它们的连续性，没有空白空间分隔它们；必须更新页头中的条目。</li>
 <li>指针不应直接指向记录，而应指向页头中记录条目的位置。</li>
 </ul>
+<h1 id="第十四章-索引"><a href="#第十四章-索引" class="headerlink" title="第十四章 索引"></a>第十四章 索引</h1><h2 id="基本概念-2"><a href="#基本概念-2" class="headerlink" title="基本概念"></a>基本概念</h2><p>索引：用于加速对所需数据访问的机制。<br>搜索键（Search Key）：用于在文件中查找记录的<strong>属性或属性集</strong>*。</p>
+<ul>
+<li>索引文件由<strong>索引条目（搜索键+指针</strong>组成。</li>
+<li>索引文件通常比原始文件小得多。</li>
+</ul>
+<h2 id="有序索引"><a href="#有序索引" class="headerlink" title="有序索引"></a>有序索引</h2><h3 id="主索引和辅助索引"><a href="#主索引和辅助索引" class="headerlink" title="主索引和辅助索引"></a>主索引和辅助索引</h3><p><strong>主索引</strong>（聚集索引）：在一个顺序有序的文件中，其<strong>搜索键指定文件的顺序</strong>的索引。</p>
+<ul>
+<li>主索引的搜索键通常是但不一定是主键。<br>索引-序列文件：带有主索引的有序序列文件。</li>
+</ul>
+<p><strong>辅助索引</strong>（非聚集索引）：其<strong>搜索键指定与文件不同的顺序</strong>的索引。</p>
+<h3 id="稠密索引"><a href="#稠密索引" class="headerlink" title="稠密索引"></a>稠密索引</h3><p>稠密索引：包含了数据表中<strong>每一条记录的索引项</strong>。<br><img src="/2023/12/06/shu-ju-ku-bi-ji/denseIndices.png" alt="|500"></p>
+<h3 id="稀疏索引"><a href="#稀疏索引" class="headerlink" title="稀疏索引"></a>稀疏索引</h3><p>稀疏索引：仅包含<strong>部分记录的索引项</strong>。</p>
+<ul>
+<li>适用于记录按搜索键顺序排列的情况（此时仅存储部分记录也可以找到全部记录）<br><img src="/2023/12/06/shu-ju-ku-bi-ji/sparseIndices.png" alt="|450"></li>
+</ul>
+<h3 id="多级索引"><a href="#多级索引" class="headerlink" title="多级索引"></a>多级索引</h3><p>如果主索引无法完全放入内存中，访问开销大。 为了减少对索引记录的磁盘访问次数，将保存在磁盘上的<strong>主索引视为顺序文件，并在其上构建一个稀疏索引</strong>。 </p>
+<ul>
+<li>外部索引：主索引的稀疏索引 </li>
+<li>内部索引：主索引文件<br>如果即使外部索引也太大而无法放入主内存中，可以创建另一层索引，依此类推。 所有级别的索引在文件插入或删除时都必须进行更新。</li>
+</ul>
+<p><img src="/2023/12/06/shu-ju-ku-bi-ji/multilevelIndex.png" alt="|425"></p>
+<h3 id="索引更新：删除"><a href="#索引更新：删除" class="headerlink" title="索引更新：删除"></a>索引更新：删除</h3><p>如果删除的记录是文件中具有特定搜索关键值的唯一记录，则索引中的搜索关键值也将被删除。</p>
+<h2 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+树索引"></a>B+树索引</h2><h2 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h2><h3 id="静态哈希"><a href="#静态哈希" class="headerlink" title="静态哈希"></a>静态哈希</h3><ul>
+<li>一个桶是一个存储单元，包含一个或多个记录（通常是一个磁盘块）。</li>
+<li>哈希函数h是一个<strong>从搜索键值K到桶地址B</strong>的函数。哈希函数用于定位记录以进行访问、插入和删除。</li>
+</ul>
+<p><img src="/2023/12/06/shu-ju-ku-bi-ji/hashFile.png" alt="|450"></p>
+<h3 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h3><ul>
+<li>典型的哈希函数对搜索关键字的内部二进制表示进行计算。</li>
+<li>理想的哈希函数是<strong>均匀</strong>的，即从所有可能值的集合中为每个桶分配相同数量的搜索关键值。</li>
+<li>理想的哈希函数是<strong>随机</strong>的，因此每个桶将分配相同数量的记录，无论文件中搜索关键值的实际分布如何。</li>
+</ul>
+<h3 id="桶溢出"><a href="#桶溢出" class="headerlink" title="桶溢出"></a>桶溢出</h3><p>桶溢出发生的原因：</p>
+<ol>
+<li>桶数量不足</li>
+<li>记录分布不均匀</li>
+<li>多个记录具有相同的搜索关键值</li>
+<li>所选的哈希函数产生不均匀的关键值分布</li>
+</ol>
+<ul>
+<li>尽管可以降低桶溢出的概率，但无法完全消除，通常通过使用溢出桶来处理。</li>
+<li>溢出链/闭哈希 - 某个桶的溢出桶在一个链表中链接在一起。</li>
+<li>还有一种叫做开放哈希的替代方法，它不使用溢出桶，但对于数据库应用来说不太适用。</li>
+</ul>
+<h3 id="静态哈希的缺点"><a href="#静态哈希的缺点" class="headerlink" title="静态哈希的缺点"></a>静态哈希的缺点</h3><ul>
+<li>在静态哈希中，哈希函数 h 将搜索键值映射到一组固定的 B 个桶地址。</li>
+<li>随着时间的推移，数据库会增长。如果初始桶的数量太少，性能会因为溢出过多而降低。</li>
+<li>如果在将来的某个时候文件大小达到了预期，分配的桶数量相应地增加，那么最初将浪费大量的空间。</li>
+<li>如果数据库缩小，同样会浪费空间。</li>
+<li>一种选择是定期使用新的哈希函数重新组织文件，但这是非常昂贵的。</li>
+</ul>
+<h2 id="SQL中索引的定义"><a href="#SQL中索引的定义" class="headerlink" title="SQL中索引的定义"></a>SQL中索引的定义</h2><ul>
+<li>创建索引：create index &nbsp;b-index on branch(branch-name)</li>
+<li>删除索引：drop index b-index</li>
+</ul>
+<p><img src="/2023/12/06/shu-ju-ku-bi-ji/indexKinds.png"></p>
+<h1 id="第十五章-查询处理"><a href="#第十五章-查询处理" class="headerlink" title="第十五章 查询处理"></a>第十五章 查询处理</h1><h2 id="查询处理的基本步骤"><a href="#查询处理的基本步骤" class="headerlink" title="查询处理的基本步骤"></a>查询处理的基本步骤</h2><p><img src="/2023/12/06/shu-ju-ku-bi-ji/basicStepsInQueryProcess.png" alt="|450"><br><strong>语法分析与翻译:</strong> 在这个阶段，查询被转换成内部形式并翻译成关系代数。语法分析器检查语法，验证关系。</p>
+<p><strong>查询优化:</strong> 在所有等效的执行计划中，选择成本最低的执行计划。</p>
+<p><strong>执行:</strong> 查询执行引擎接收查询评估计划，执行该计划，并返回查询的答案。</p>
+<h2 id="查询代价的衡量"><a href="#查询代价的衡量" class="headerlink" title="查询代价的衡量"></a>查询代价的衡量</h2><p>许多因素会影响时间成本，包括磁盘访问、CPU 或甚至网络通信。通常，<strong>磁盘访问</strong>是主要的成本，而且相对容易估计。代价的衡量考虑了以下因素：</p>
+<ul>
+<li>寻道次数 * 平均寻道成本</li>
+<li>读取的块数 * 平均块读取成本</li>
+<li>写入的块数 * 平均块写入成本</li>
+</ul>
+<p>为了简单起见，我们仅使用磁盘的块传输次数和寻道次数作为成本度量，忽略了 CPU 成本。<br>其中：</p>
+<ul>
+<li>$t_T$ - 传输一个块的时间</li>
+<li>$t_S$ - 一次寻道的时间</li>
+</ul>
+<p>b 块传输加上S 次寻道的代价，表示为b×$t_T$+S×$t_S$。</p>
+<h3 id="select操作"><a href="#select操作" class="headerlink" title="select操作"></a>select操作</h3><p><strong>算法 A1（线性搜索）：</strong> 对每个文件块进行扫描，并测试所有记录，查看它们是否满足选择条件。<br><strong>成本估算：</strong> $Cost=b_r×t_T+t_S$ 其中，br 表示包含关系 r 中的记录的块数。<br>如果选择是在关键属性上进行的，可以在找到记录时停止，此时成本为：</p>
+<ul>
+<li>$Cost=(b_r/2​)×t_T+t_S$</li>
+</ul>
+<p><strong>算法 A2（二分搜索）：</strong> 假设关系的块是连续存储的。<br><strong>成本估算（需要扫描的磁盘块数）：</strong> 定位第一个元组的成本，通过对块进行二分搜索：$Cost=⌈log_2​(b_r)⌉×(t_T+t_S)$<br>如果有多个满足选择条件的记录： 需要添加传输成本，即包含满足选择条件的记录的块数。</p>
+<p><strong>算法 A3（候选键上的主索引，等值）：</strong> 检索满足相应相等条件的单个记录。$Cost=(h_i​+1)×(t_T+t_S)$</p>
+<p><strong>算法 A4（非键上的主索引，等值）：</strong> 检索多个记录。这些记录将位于连续的块中。 设 b 为包含匹配记录的块数。$Cost=h_i​×(t_T+t_S)+t_S+t_T×b$</p>
+<p><strong>算法 A5（次要索引的搜索键，等值）：</strong> 如果搜索键是候选键，则检索单个记录。$Cost=(h_i​+1)×(t_T+t_S)$<br>如果搜索键不是候选键，那么检索多个记录，每个匹配记录可能在不同的块中。$Cost=(h_i​+n)×(t_T+t_S)$<br>这可能非常昂贵，特别是当有多个匹配记录且它们分布在不同的块中时。</p>
+<p><strong>算法 A6（主索引，比较条件）：</strong> （关系在属性 A 上排序）</p>
+<ul>
+<li>对于$σ_A≥V​$(r)，使用索引找到第一个元组 ≥v 并从那里顺序扫描关系。</li>
+<li>对于$σ_A≤V​(r)$，只需顺序扫描关系直到第一个元组 &gt; v；不使用索引。</li>
+</ul>
+<p><strong>算法 A7（次要索引，比较条件）：</strong></p>
+<ul>
+<li>对于$σ_A≥V​(r)$，使用索引找到第一个索引条目 ≥v 并从那里顺序扫描索引，以找到指向记录的指针。</li>
+<li>对于$σ_A≤V​(r)$，只需扫描索引的叶子页面，找到指向记录的指针，直到找到第一个条目 &gt; v。</li>
+</ul>
+<p><strong>算法 A8（使用一个索引的合取选择）：</strong><br>选择一组 $\theta_i$ 和算法 A1 到 A7 的组合，使得 $\sigma_{\theta_i}(r)$ 的成本最小化。</p>
+<p><strong>算法 A9（使用多关键字索引的合取选择）：</strong><br>如果可用，使用适当的复合（多关键字）索引。</p>
+<p><strong>算法 A10（通过标识符的交集进行合取选择）：</strong><br>需要带有记录指针的索引。对于每个条件使用相应的索引，并取得所有获得的记录指针集合的交集。然后从文件中获取记录。如果某些条件没有合适的索引，在内存中进行测试。</p>
+<p><strong>算法 A11（通过标识符的并集进行析取选择）：</strong><br>适用于所有条件都有可用索引的情况。否则使用线性扫描。对于每个条件使用相应的索引，并取得所有获得的记录指针集合的并集。然后从文件中获取记录。</p>
+<p><strong>否定操作：</strong> $\sigma_{\neg \theta}(r)$<br>对文件使用线性扫描。如果很少的记录满足 $\neg \theta$，且对$\theta$适用索引，可以使用索引找到满足条件的记录并从文件中获取。</p>
+<h1 id="第十六章-查询优化"><a href="#第十六章-查询优化" class="headerlink" title="第十六章 查询优化"></a>第十六章 查询优化</h1><h2 id="基于代价的优化方法"><a href="#基于代价的优化方法" class="headerlink" title="基于代价的优化方法"></a>基于代价的优化方法</h2><ol>
+<li>生成逻辑上等价的表达式：<br> 使用等价规则将一个表达式转换成另一个等价的表达式。</li>
+<li>通过对产生的表达式进行注释以获取备选的查询计划。</li>
+<li>根据估计的成本选择代价最小的计划。</li>
+</ol>
+<h2 id="启发式的优化方法"><a href="#启发式的优化方法" class="headerlink" title="启发式的优化方法"></a>启发式的优化方法</h2><p>启发式优化通过使用一组规则来转换查询树，通常（但并非在所有情况下）提高执行性能：</p>
+<ul>
+<li>早期执行选择（减少元组数量）</li>
+<li>早期执行投影（减少属性数量）</li>
+<li>在其他类似操作之前执行最具限制性的选择和连接操作。</li>
+</ul>
+<h3 id="等价规则"><a href="#等价规则" class="headerlink" title="等价规则"></a>等价规则</h3><ol>
+<li>选择串接律</li>
+<li>选择交换律</li>
+<li>投影串接律</li>
+<li>选择和连接</li>
+<li>连接交换律</li>
+<li>连接结合律</li>
+<li>连接分配律</li>
+<li>投影对连接的分配律</li>
+</ol>
 
                 
             </div>
@@ -517,7 +708,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -570,15 +769,15 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="数据库笔记">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">数据库笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            大三上数据库笔记
                         
                     </div>
                     <div class="publish-info">
@@ -587,13 +786,29 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Davian
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    课程笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -823,7 +1038,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">16.8k</span>
+                        class="white-color">20.7k</span>
             
             
             

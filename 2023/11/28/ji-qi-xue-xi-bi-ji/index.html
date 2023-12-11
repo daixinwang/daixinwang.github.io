@@ -337,21 +337,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-28
+                    2023-12-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -417,6 +417,12 @@
 <p>$$<br>P(x_l=a_k|c_j)=\frac{λ+\sum_{i=1}^{M}I(y^{(i)}=c_j and x_l^{(i)} = a_k)}{Nλ+\sum_{i=1}^{M}I(y^{(i)}=c_j)}<br>$$<br>N为属性取值数目，λ经常取1。</p>
 <h2 id="逻辑斯蒂回归模型"><a href="#逻辑斯蒂回归模型" class="headerlink" title="逻辑斯蒂回归模型"></a>逻辑斯蒂回归模型</h2><h3 id="逻辑斯蒂分布"><a href="#逻辑斯蒂分布" class="headerlink" title="逻辑斯蒂分布"></a>逻辑斯蒂分布</h3><p>逻辑斯蒂分布：<br>$$<br>F(x)=P(X≤x)=\frac{1}{1+e^{-(x-\mu)/γ}}<br>$$<br>μ为位置参数，γ&gt;0为形状参数。</p>
 <p><img src="/2023/11/28/ji-qi-xue-xi-bi-ji/logisticDistribution.png" alt="|500"></p>
+<h2 id="高斯混合模型"><a href="#高斯混合模型" class="headerlink" title="高斯混合模型"></a>高斯混合模型</h2><p><img src="/2023/11/28/ji-qi-xue-xi-bi-ji/GaussianModel.png"></p>
+<h3 id="基于高斯混合模型做聚类"><a href="#基于高斯混合模型做聚类" class="headerlink" title="基于高斯混合模型做聚类"></a>基于高斯混合模型做聚类</h3><p>高斯混合聚类算法利用多个高斯分布过程的线性组合对样本概率进行计算，选择这些高斯分布中对样本响应度大的作为样本对应的分类。我们把<strong>多个高斯分布过程的线性组合称为高斯混合模型</strong>（Gaussian mixture model），其概率分布形式如下：<br><img src="/2023/11/28/ji-qi-xue-xi-bi-ji/GaussianMixtureModel.png"></p>
+<h2 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h2><p>估计模型参数——似然函数最大化<br><img src="/2023/11/28/ji-qi-xue-xi-bi-ji/introduceOfEM.png"><br>直接用极大似然估计求解GMM，无法得出解析解，所以引入EM算法。<br>EM（Expectation-Maximization）算法是一种迭代算法，常用来对<strong>含有隐变量的概率模型参数进行极大似然估计</strong>或<strong>极大后验概率估计</strong>。</p>
+<p><img src="/2023/11/28/ji-qi-xue-xi-bi-ji/EofEM.png"><br>Q函数的全称是“期望似然函数”（Expectation of the log-Likelihood function），它在EM算法的每一步都被最大化。</p>
+<p><img src="/2023/11/28/ji-qi-xue-xi-bi-ji/MofEM.png"></p>
+<p><strong>高斯混合模型参数估计的EM算法</strong><br><img src="/2023/11/28/ji-qi-xue-xi-bi-ji/EMofGMM.png"></p>
 
                 
             </div>
@@ -540,15 +546,15 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="数据库笔记">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">数据库笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            大三上数据库笔记
                         
                     </div>
                     <div class="publish-info">
@@ -557,11 +563,27 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Davian
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    课程笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -792,7 +814,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">16.8k</span>
+                        class="white-color">20.7k</span>
             
             
             
