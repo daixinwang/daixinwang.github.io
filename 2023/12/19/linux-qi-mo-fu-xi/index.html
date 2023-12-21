@@ -545,7 +545,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <p>man -k regexp  # 列出关键字与正则表达式regexp匹配的条目</p>
 </blockquote>
 <h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><blockquote>
-<h2 id="date-1"><a href="#date-1" class="headerlink" title="date"></a>date</h2><p>Wed Nov 7 21:09:16 CST 2018&gt;</p>
+<p>date<br>Wed Nov 7 21:09:16 CST 2018&gt;</p>
 </blockquote>
 <p>date用于读取系统日期和时间</p>
 <blockquote>
@@ -580,7 +580,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 </ul>
 <p><img src="/2023/12/19/linux-qi-mo-fu-xi/passwd.png" alt="|319"></p>
 <h3 id="who"><a href="#who" class="headerlink" title="who"></a>who</h3><blockquote>
-<h2 id="who-显示当前登录系统的用户"><a href="#who-显示当前登录系统的用户" class="headerlink" title="who  # 显示当前登录系统的用户"></a>who  # 显示当前登录系统的用户</h2><p>root   tty7     2014-05-13 12:12 (:0)<br>root   pts/0    2014-05-14 17:09 (:0.0)<br>root   pts/1    2014-05-14 18:51 (192.168.1.17)<br>root   pts/2    2014-05-14 19:48 (192.168.1.17)</p>
+<p>who  # 显示当前登录系统的用户<br>root   tty7     2014-05-13 12:12 (:0)<br>root   pts/0    2014-05-14 17:09 (:0.0)<br>root   pts/1    2014-05-14 18:51 (192.168.1.17)<br>root   pts/2    2014-05-14 19:48 (192.168.1.17)</p>
 </blockquote>
 <ul>
 <li>第一列：用户名，第二列：终端设备的设备文件名</li>
@@ -590,7 +590,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <p>tty  # 打印出当前终端的设备文件名<br>who am i  # 登录shell时的用户名<br>whoami  # 当前系统的有效用户</p>
 </blockquote>
 <h3 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h3><blockquote>
-<h2 id="uptime-1"><a href="#uptime-1" class="headerlink" title="uptime "></a>uptime </h2><p>05:52:21 up 412 days, 4:15, 5 users, load average: 0.55, 0.73, 0.43  </p>
+<p>uptime<br>05:52:21 up 412 days, 4:15, 5 users, load average: 0.55, 0.73, 0.43  </p>
 </blockquote>
 <ol>
 <li>系统自启动后到现在的运行时间</li>
@@ -627,9 +627,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>S：状态，S（sleep），R（run），Z（zombie）</li>
 </ul>
 <h3 id="free"><a href="#free" class="headerlink" title="free"></a>free</h3><blockquote>
-<h2 id="free-了解内存使用情况"><a href="#free-了解内存使用情况" class="headerlink" title="free  # 了解内存使用情况"></a>free  # 了解内存使用情况</h2><pre><code>    total used free shared buffers cached
-</code></pre>
-<p>Mem: 254772 184568 70204 0 5692 89892<br>Swap: 524280 65116 459164</p>
+<p>free  # 了解内存使用情况<br>        total used free shared buffers cached<br>Mem: 254772 184568 70204 0 5692 89892<br>Swap: 524280 65116 459164</p>
 </blockquote>
 <h3 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h3><blockquote>
 <p>vmstat  # 了解系统负载<br>vmstat 2 1  # 每2秒采集一次服务器状态，只采集1次</p>
@@ -659,14 +657,18 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <p><strong>VNC（Virtual Network Computing）</strong><br>VNC是一种远程桌面协议，允许用户远程访问和控制另一台计算机的桌面。它使用户能够在远程计算机上看到和操作图形用户界面（GUI），就像他们坐在该计算机前一样。</p>
 <p><strong>Samba</strong><br>Samba是一个开源的软件套件，用于实现Windows网络协议（如SMB/CIFS）在Linux和其他UNIX系统上的兼容性，以实现文件和打印共享。</p>
 <h2 id="文本文件处理"><a href="#文本文件处理" class="headerlink" title="文本文件处理"></a>文本文件处理</h2><h3 id="more-less"><a href="#more-less" class="headerlink" title="more/less"></a>more/less</h3><blockquote>
-<h2 id="more-shudu-c-指定一个文件more-ch-指定多个文件ls-l-more-指定0个文件-效果同ls-l"><a href="#more-shudu-c-指定一个文件more-ch-指定多个文件ls-l-more-指定0个文件-效果同ls-l" class="headerlink" title="more shudu.c  # 指定一个文件more *.[ch]  # 指定多个文件ls -l | more  # 指定0个文件(效果同ls -l)"></a>more shudu.c  # 指定一个文件<br>more *.[ch]  # 指定多个文件<br>ls -l | more  # 指定0个文件(效果同ls -l)</h2><p>less shudu.c</p>
+<p>more shudu.c  # 指定一个文件<br>more *.[ch]  # 指定多个文件<br>ls -l | more  # 指定0个文件(效果同ls -l)<br>less shudu.c</p>
 </blockquote>
 <p>more命令：空格（翻页）、回车（上滚一行）、q（quit）、/pattern（搜索指定模式字符串）、h（help）、Ctrl-L（屏幕刷新）<br>less命令：回退浏览的功能更强，可直接使键盘的上下箭头键，或者j,k，类似vi的光标定位键，以及PgUp，PgDn，Home，End键</p>
 <h3 id="cat-od"><a href="#cat-od" class="headerlink" title="cat/od"></a>cat/od</h3><blockquote>
-<h2 id="cat-tryl-ccat-n-shudu-c-显示行号cat-try-从stdin输入到文件try，直到ctrl-dcat-tryl-c-try2-c-try-h-trysrc"><a href="#cat-tryl-ccat-n-shudu-c-显示行号cat-try-从stdin输入到文件try，直到ctrl-dcat-tryl-c-try2-c-try-h-trysrc" class="headerlink" title="cat tryl.ccat -n shudu.c  # 显示行号cat >try  # 从stdin输入到文件try，直到ctrl-dcat tryl.c try2.c try.h > trysrc"></a>cat tryl.c<br>cat -n shudu.c  # 显示行号<br>cat &gt;try  # 从stdin输入到文件try，直到ctrl-d<br>cat tryl.c try2.c try.h &gt; trysrc</h2><p>od -t x1 x.dat  # 以十六进制打印文件x.dat各字节</p>
+<p>cat tryl.c<br>cat -n shudu.c  # 显示行号<br>cat &gt;try  # 从stdin输入到文件try，直到ctrl-d<br>cat tryl.c try2.c try.h &gt; trysrc</p>
+<p>od -t x1 x.dat  # 以十六进制打印文件x.dat各字节</p>
 </blockquote>
 <h3 id="head-tail"><a href="#head-tail" class="headerlink" title="head/tail"></a>head/tail</h3><blockquote>
-<h2 id="head-ab-c-显示文件的头部，默认前10行head-n-15-ab-c-显示文件ab-c前15行head-n-20-msg-c-除去文件尾部20行其余均算头部"><a href="#head-ab-c-显示文件的头部，默认前10行head-n-15-ab-c-显示文件ab-c前15行head-n-20-msg-c-除去文件尾部20行其余均算头部" class="headerlink" title="head  ab.c  # 显示文件的头部，默认前10行head -n 15 ab.c  # 显示文件ab.c前15行head -n -20 msg.c  # 除去文件尾部20行其余均算头部"></a>head  ab.c  # 显示文件的头部，默认前10行<br>head -n 15 ab.c  # 显示文件ab.c前15行<br>head -n -20 msg.c  # 除去文件尾部20行其余均算头部</h2><p>tail -n 40 liu.mail  # 显示文件尾部20行<br>tail –n +20 msg.c  # 除去文件头部20行其余均算尾部<br>tail -f debug.txt  # 实时打印文件尾部被追加的内容（选项-f:forever）</p>
+<p>head  ab.c  # 显示文件的头部，默认前10行<br>head -n 15 ab.c  # 显示文件ab.c前15行<br>head -n -20 msg.c  # 除去文件尾部20行其余均算头部</p>
+</blockquote>
+<blockquote>
+<p>tail -n 40 liu.mail  # 显示文件尾部20行<br>tail –n +20 msg.c  # 除去文件头部20行其余均算尾部<br>tail -f debug.txt  # 实时打印文件尾部被追加的内容（选项-f:forever）</p>
 </blockquote>
 <h3 id="tee：三通"><a href="#tee：三通" class="headerlink" title="tee：三通"></a>tee：三通</h3><blockquote>
 <p>./myap | tee myap.log  # 将从标准输入stdin得到的数据抄送到标准输出stdout显示，同时存入磁盘文件中</p>
@@ -745,27 +747,33 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 </li>
 </ul>
 <h3 id="grep-fgrep-egrep"><a href="#grep-fgrep-egrep" class="headerlink" title="grep/fgrep/egrep"></a>grep/fgrep/egrep</h3><blockquote>
-<h2 id="grep-选项-模式-文件名列表-在文件中查找字符串选项：-i：忽略大小写-v：反向查找，只打印不匹配的行-n：显示匹配行的行号-r：递归查找子目录中的文件-l：只打印匹配的文件名-c：只打印匹配的行数-F：按照字符串检索-G：BRE-E：ERE"><a href="#grep-选项-模式-文件名列表-在文件中查找字符串选项：-i：忽略大小写-v：反向查找，只打印不匹配的行-n：显示匹配行的行号-r：递归查找子目录中的文件-l：只打印匹配的文件名-c：只打印匹配的行数-F：按照字符串检索-G：BRE-E：ERE" class="headerlink" title="grep 选项 模式 文件名列表  # 在文件中查找字符串选项：    -i：忽略大小写    -v：反向查找，只打印不匹配的行    -n：显示匹配行的行号    -r：递归查找子目录中的文件    -l：只打印匹配的文件名    -c：只打印匹配的行数    -F：按照字符串检索    -G：BRE    -E：ERE"></a>grep 选项 模式 文件名列表  # 在文件中查找字符串<br>选项：<br>    -i：忽略大小写<br>    -v：反向查找，只打印不匹配的行<br>    -n：显示匹配行的行号<br>    -r：递归查找子目录中的文件<br>    -l：只打印匹配的文件名<br>    -c：只打印匹配的行数<br>    -F：按照字符串检索<br>    -G：BRE<br>    -E：ERE</h2><p>grep ‘[0-9]*‘ shudu.c</p>
+<p>grep 选项 模式 文件名列表  # 在文件中查找字符串<br>选项：<br>    -i：忽略大小写<br>    -v：反向查找，只打印不匹配的行<br>    -n：显示匹配行的行号<br>    -r：递归查找子目录中的文件<br>    -l：只打印匹配的文件名<br>    -c：只打印匹配的行数<br>    -F：按照字符串检索<br>    -G：BRE<br>    -E：ERE</p>
+<p>grep ‘[0-9]*‘ shudu.c</p>
 </blockquote>
 <ul>
 <li>egerp：使用扩展正则表达式描述模式</li>
 <li>fgrep：快速搜索指定字符串（按字符串搜索而不是按模式搜索）<br><img src="/2023/12/19/linux-qi-mo-fu-xi/grep.png" alt="|400"></li>
 </ul>
 <h3 id="sed-Stream-Editor"><a href="#sed-Stream-Editor" class="headerlink" title="sed(Stream Editor)"></a>sed(Stream Editor)</h3><blockquote>
-<h2 id="基本用法：sed-选项-‘脚本’-文件名选项：-e：执行脚本-i：直接修改文件-n：静默模式，只输出脚本处理后的结果"><a href="#基本用法：sed-选项-‘脚本’-文件名选项：-e：执行脚本-i：直接修改文件-n：静默模式，只输出脚本处理后的结果" class="headerlink" title="基本用法：sed 选项 ‘脚本’ 文件名选项：-e：执行脚本  -i：直接修改文件  -n：静默模式，只输出脚本处理后的结果"></a>基本用法：sed 选项 ‘脚本’ 文件名<br>选项：-e：执行脚本  -i：直接修改文件  -n：静默模式，只输出脚本处理后的结果</h2><p>sed ‘s/要替换的内容/替换后的内容/‘ 文件名  # 替换文本<br>sed ‘/要删除的内容/d’  # 删除行<br>sed -n ‘行号p’  # 打印行<br>sed -e ‘s/旧内容/新内容/g’ -e ‘s/另一个旧内容/另一个新内容/g’ 文件名  # 多个操作组合</p>
+<p>基本用法：sed 选项 ‘脚本’ 文件名<br>选项：-e：执行脚本  -i：直接修改文件  -n：静默模式，只输出脚本处理后的结果</p>
+<p>sed ‘s/要替换的内容/替换后的内容/‘ 文件名  # 替换文本<br>sed ‘/要删除的内容/d’  # 删除行<br>sed -n ‘行号p’  # 打印行<br>sed -e ‘s/旧内容/新内容/g’ -e ‘s/另一个旧内容/另一个新内容/g’ 文件名  # 多个操作组合</p>
 </blockquote>
 <p>在模式描述中，可以用括号 <code>\(</code> 和 <code>\)</code> 创建匹配组（capture groups），将匹配的文本片段捕获到一个临时缓冲区中，以便后续在替换操作或脚本中引用这些捕获组的内容。<br>将日期格式“月-日-年”改为“年.月.日”<br>比如：将&nbsp; 04-26-1997替换为1997.04.26使用命令:<br>s/<strong>\([0-9][0-9]\)</strong>-<strong>\([0-9][0-9]\)</strong>-<strong>\([0-9][0-9]*\</strong>)/\3.\1.\2/g<br>注意要先将三个/找到并进行划分</p>
 <h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><blockquote>
-<h2 id="基本用法：awk-‘模式-操作-’-文件名awk-f-脚本文件-文件名"><a href="#基本用法：awk-‘模式-操作-’-文件名awk-f-脚本文件-文件名" class="headerlink" title="基本用法：awk ‘模式{操作}’ 文件名awk -f 脚本文件 文件名"></a>基本用法：awk ‘模式{操作}’ 文件名<br>awk -f 脚本文件 文件名</h2><p>awk ‘模式’ 文件名  # 没有指定操作，会打印匹配模式的行<br>awk ‘{print}’ 文件名  # 打印文件的每一行<br>awk -F ‘,’ ‘{print $1,$2}’ 文件名  # -F指定不同的字段分隔符（默认为空格）<br>awk ‘{sum += $1} END {print sum}’ 文件名  # 计算文件中所有数字的总和（这里假设仅每行第一个字段为数字）<br>awk ‘{ if ($1 &gt; 10) print $1 }’ 文件名  # 只打印大于10的数字</p>
+<p>基本用法：awk ‘模式{操作}’ 文件名<br>awk -f 脚本文件 文件名</p>
+<p>awk ‘模式’ 文件名  # 没有指定操作，会打印匹配模式的行<br>awk ‘{print}’ 文件名  # 打印文件的每一行<br>awk -F ‘,’ ‘{print $1,$2}’ 文件名  # -F指定不同的字段分隔符（默认为空格）<br>awk ‘{sum += $1} END {print sum}’ 文件名  # 计算文件中所有数字的总和（这里假设仅每行第一个字段为数字）<br>awk ‘{ if ($1 &gt; 10) print $1 }’ 文件名  # 只打印大于10的数字</p>
 </blockquote>
 <h2 id="文件比对"><a href="#文件比对" class="headerlink" title="文件比对"></a>文件比对</h2><h3 id="cmp"><a href="#cmp" class="headerlink" title="cmp"></a>cmp</h3><blockquote>
-<h2 id="cmp-file1-file2"><a href="#cmp-file1-file2" class="headerlink" title="cmp file1 file2"></a>cmp file1 file2</h2><p>逐字节比较两个文件是否完全相同<br>完全相同时不给出任何提示，否则打印出第一个不同之处</p>
+<p>cmp file1 file2</p>
+<p>逐字节比较两个文件是否完全相同<br>完全相同时不给出任何提示，否则打印出第一个不同之处</p>
 </blockquote>
 <h3 id="md5sum-sha1sum"><a href="#md5sum-sha1sum" class="headerlink" title="md5sum/sha1sum"></a>md5sum/sha1sum</h3><blockquote>
-<h2 id="md5sum-sha1sum-filename"><a href="#md5sum-sha1sum-filename" class="headerlink" title="md5sum/sha1sum filename"></a>md5sum/sha1sum filename</h2><p>使用MD5算法/SHA-1算法根据文件内容生成16字节/20字节hash值</p>
+<p>md5sum/sha1sum filename</p>
+<p>使用MD5算法/SHA-1算法根据文件内容生成16字节/20字节hash值</p>
 </blockquote>
 <h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><blockquote>
-<h2 id="diff-file1-file2-normal格式diff-u-file1-file2-unified格式diff-un-file1-file2-unified格式，显示不同行上下相同的各n行"><a href="#diff-file1-file2-normal格式diff-u-file1-file2-unified格式diff-un-file1-file2-unified格式，显示不同行上下相同的各n行" class="headerlink" title="diff file1 file2  # normal格式diff -u file1 file2  # unified格式diff -un file1 file2  # unified格式，显示不同行上下相同的各n行"></a>diff file1 file2  # normal格式<br>diff -u file1 file2  # unified格式<br>diff -un file1 file2  # unified格式，显示不同行上下相同的各n行</h2><p>输出格式：<br>normal：add、change、delete<br><img src="/2023/12/19/linux-qi-mo-fu-xi/diff.png" alt="|500"><br>unified（-u）：+ -</p>
+<p>diff file1 file2  # normal格式<br>diff -u file1 file2  # unified格式<br>diff -un file1 file2  # unified格式，显示不同行上下相同的各n行</p>
+<p>输出格式：<br>normal：add、change、delete<br><img src="/2023/12/19/linux-qi-mo-fu-xi/diff.png" alt="|500"><br>unified（-u）：+ -</p>
 </blockquote>
 <h2 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h2><p><img src="/2023/12/19/linux-qi-mo-fu-xi/vi1.png" alt="|500"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/vi2.png" alt="|500"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/vi3.png" alt="|500"></p>
 <h2 id="文件系统管理"><a href="#文件系统管理" class="headerlink" title="文件系统管理"></a>文件系统管理</h2><h3 id="文件命名规则"><a href="#文件命名规则" class="headerlink" title="文件命名规则"></a>文件命名规则</h3><ul>
