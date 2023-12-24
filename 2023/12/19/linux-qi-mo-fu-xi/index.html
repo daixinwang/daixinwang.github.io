@@ -347,21 +347,21 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-12-21
+                    2023-12-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    34 分
                 </div>
                 
 
@@ -523,7 +523,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>安全终端：在TCP连接上加密和压缩数据，如：Windows客户端软件SecureCRT</li>
 </ul>
 <p><img src="/2023/12/19/linux-qi-mo-fu-xi/virtualTeiminal.png"></p>
-<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h2 id="系统状态查看工具"><a href="#系统状态查看工具" class="headerlink" title="系统状态查看工具"></a>系统状态查看工具</h2><h3 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h3><blockquote>
+<h1 id="系统状态查看工具"><a href="#系统状态查看工具" class="headerlink" title="系统状态查看工具"></a>系统状态查看工具</h1><h2 id="用户登录和联机手册的查阅"><a href="#用户登录和联机手册的查阅" class="headerlink" title="用户登录和联机手册的查阅"></a>用户登录和联机手册的查阅</h2><h3 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h3><blockquote>
 <p>useradd tt</p>
 </blockquote>
 <p>root用户（超级用户）不受权限的制约，可随意修改和删除文件，使用useradd命令创建新用户，用户信息存放在/etc/passwd文件中，包括<strong>用户名</strong>和<strong>用户ID</strong>，以及<strong>Home目录</strong>，<strong>登录shell</strong>（一般为bash，也可以选其他shell，其他系统程序，甚至自设计的程序）</p>
@@ -544,7 +544,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <blockquote>
 <p>man -k regexp  # 列出关键字与正则表达式regexp匹配的条目</p>
 </blockquote>
-<h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><blockquote>
+<h2 id="时间、计算器和口令维护"><a href="#时间、计算器和口令维护" class="headerlink" title="时间、计算器和口令维护"></a>时间、计算器和口令维护</h2><h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><blockquote>
 <p>date<br>Wed Nov 7 21:09:16 CST 2018&gt;</p>
 </blockquote>
 <p>date用于读取系统日期和时间</p>
@@ -579,7 +579,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>可修改自己的口令，无法读取其他用户的口令，但可以强迫设置其他用户口令（passed liu）</li>
 </ul>
 <p><img src="/2023/12/19/linux-qi-mo-fu-xi/passwd.png" alt="|319"></p>
-<h3 id="who"><a href="#who" class="headerlink" title="who"></a>who</h3><blockquote>
+<h2 id="了解系统状态"><a href="#了解系统状态" class="headerlink" title="了解系统状态"></a>了解系统状态</h2><h3 id="who"><a href="#who" class="headerlink" title="who"></a>who</h3><blockquote>
 <p>who  # 显示当前登录系统的用户<br>root   tty7     2014-05-13 12:12 (:0)<br>root   pts/0    2014-05-14 17:09 (:0.0)<br>root   pts/1    2014-05-14 18:51 (192.168.1.17)<br>root   pts/2    2014-05-14 19:48 (192.168.1.17)</p>
 </blockquote>
 <ul>
@@ -656,7 +656,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 </ul>
 <p><strong>VNC（Virtual Network Computing）</strong><br>VNC是一种远程桌面协议，允许用户远程访问和控制另一台计算机的桌面。它使用户能够在远程计算机上看到和操作图形用户界面（GUI），就像他们坐在该计算机前一样。</p>
 <p><strong>Samba</strong><br>Samba是一个开源的软件套件，用于实现Windows网络协议（如SMB/CIFS）在Linux和其他UNIX系统上的兼容性，以实现文件和打印共享。</p>
-<h2 id="文本文件处理"><a href="#文本文件处理" class="headerlink" title="文本文件处理"></a>文本文件处理</h2><h3 id="more-less"><a href="#more-less" class="headerlink" title="more/less"></a>more/less</h3><blockquote>
+<h1 id="文本文件处理"><a href="#文本文件处理" class="headerlink" title="文本文件处理"></a>文本文件处理</h1><h2 id="读取文件内容"><a href="#读取文件内容" class="headerlink" title="读取文件内容"></a>读取文件内容</h2><h3 id="more-less"><a href="#more-less" class="headerlink" title="more/less"></a>more/less</h3><blockquote>
 <p>more shudu.c  # 指定一个文件<br>more *.[ch]  # 指定多个文件<br>ls -l | more  # 指定0个文件(效果同ls -l)<br>less shudu.c</p>
 </blockquote>
 <p>more命令：空格（翻页）、回车（上滚一行）、q（quit）、/pattern（搜索指定模式字符串）、h（help）、Ctrl-L（屏幕刷新）<br>less命令：回退浏览的功能更强，可直接使键盘的上下箭头键，或者j,k，类似vi的光标定位键，以及PgUp，PgDn，Home，End键</p>
@@ -670,7 +670,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <blockquote>
 <p>tail -n 40 liu.mail  # 显示文件尾部20行<br>tail –n +20 msg.c  # 除去文件头部20行其余均算尾部<br>tail -f debug.txt  # 实时打印文件尾部被追加的内容（选项-f:forever）</p>
 </blockquote>
-<h3 id="tee：三通"><a href="#tee：三通" class="headerlink" title="tee：三通"></a>tee：三通</h3><blockquote>
+<h2 id="文本数据的处理"><a href="#文本数据的处理" class="headerlink" title="文本数据的处理"></a>文本数据的处理</h2><h3 id="tee：三通"><a href="#tee：三通" class="headerlink" title="tee：三通"></a>tee：三通</h3><blockquote>
 <p>./myap | tee myap.log  # 将从标准输入stdin得到的数据抄送到标准输出stdout显示，同时存入磁盘文件中</p>
 </blockquote>
 <h3 id="wc（word-count）"><a href="#wc（word-count）" class="headerlink" title="wc（word count）"></a>wc（word count）</h3><blockquote>
@@ -692,7 +692,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>没有以上两个选项，打印没有重复的行和有重复的行（但只打印一次）</li>
 <li>-c（count）计数同样的行出现几次</li>
 </ul>
-<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="单字符正则表达式"><a href="#单字符正则表达式" class="headerlink" title="单字符正则表达式"></a>单字符正则表达式</h3><ul>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="单字符正则表达式"><a href="#单字符正则表达式" class="headerlink" title="单字符正则表达式"></a>单字符正则表达式</h2><ul>
 <li>非特殊字符与其自身匹配</li>
 <li>转义字符（\）. * $ ^ [ \</li>
 <li>圆点（.）匹配任意单字符</li>
@@ -734,7 +734,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 </ul>
 </li>
 </ul>
-<h3 id="正则表达式扩展"><a href="#正则表达式扩展" class="headerlink" title="正则表达式扩展"></a>正则表达式扩展</h3><p>扩展的正则表达式（ERE）对基本正则表达式（BRE）进行了改进： </p>
+<h2 id="正则表达式扩展"><a href="#正则表达式扩展" class="headerlink" title="正则表达式扩展"></a>正则表达式扩展</h2><p>扩展的正则表达式（ERE）对基本正则表达式（BRE）进行了改进： </p>
 <ul>
 <li>表示<strong>分组</strong>：圆括号（）</li>
 <li>表示<strong>逻辑或</strong>的符号 |</li>
@@ -746,7 +746,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 </ul>
 </li>
 </ul>
-<h3 id="grep-fgrep-egrep"><a href="#grep-fgrep-egrep" class="headerlink" title="grep/fgrep/egrep"></a>grep/fgrep/egrep</h3><blockquote>
+<h2 id="筛选编辑指令"><a href="#筛选编辑指令" class="headerlink" title="筛选编辑指令"></a>筛选编辑指令</h2><h3 id="grep-fgrep-egrep"><a href="#grep-fgrep-egrep" class="headerlink" title="grep/fgrep/egrep"></a>grep/fgrep/egrep</h3><blockquote>
 <p>grep 选项 模式 文件名列表  # 在文件中查找字符串<br>选项：<br>    -i：忽略大小写<br>    -v：反向查找，只打印不匹配的行<br>    -n：显示匹配行的行号<br>    -r：递归查找子目录中的文件<br>    -l：只打印匹配的文件名<br>    -c：只打印匹配的行数<br>    -F：按照字符串检索<br>    -G：BRE<br>    -E：ERE</p>
 <p>grep ‘[0-9]*‘ shudu.c</p>
 </blockquote>
@@ -763,32 +763,16 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <p>基本用法：awk ‘模式{操作}’ 文件名<br>awk -f 脚本文件 文件名</p>
 <p>awk ‘模式’ 文件名  # 没有指定操作，会打印匹配模式的行<br>awk ‘{print}’ 文件名  # 打印文件的每一行<br>awk -F ‘,’ ‘{print $1,$2}’ 文件名  # -F指定不同的字段分隔符（默认为空格）<br>awk ‘{sum += $1} END {print sum}’ 文件名  # 计算文件中所有数字的总和（这里假设仅每行第一个字段为数字）<br>awk ‘{ if ($1 &gt; 10) print $1 }’ 文件名  # 只打印大于10的数字</p>
 </blockquote>
-<h2 id="文件比对"><a href="#文件比对" class="headerlink" title="文件比对"></a>文件比对</h2><h3 id="cmp"><a href="#cmp" class="headerlink" title="cmp"></a>cmp</h3><blockquote>
-<p>cmp file1 file2</p>
-<p>逐字节比较两个文件是否完全相同<br>完全相同时不给出任何提示，否则打印出第一个不同之处</p>
-</blockquote>
-<h3 id="md5sum-sha1sum"><a href="#md5sum-sha1sum" class="headerlink" title="md5sum/sha1sum"></a>md5sum/sha1sum</h3><blockquote>
-<p>md5sum/sha1sum filename</p>
-<p>使用MD5算法/SHA-1算法根据文件内容生成16字节/20字节hash值</p>
-</blockquote>
-<h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><blockquote>
-<p>diff file1 file2  # normal格式<br>diff -u file1 file2  # unified格式<br>diff -un file1 file2  # unified格式，显示不同行上下相同的各n行</p>
-<p>输出格式：<br>normal：add、change、delete<br><img src="/2023/12/19/linux-qi-mo-fu-xi/diff.png" alt="|500"><br>unified（-u）：+ -</p>
-</blockquote>
-<h2 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h2><p><img src="/2023/12/19/linux-qi-mo-fu-xi/vi1.png" alt="|500"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/vi2.png" alt="|500"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/vi3.png" alt="|500"></p>
-<h2 id="文件系统管理"><a href="#文件系统管理" class="headerlink" title="文件系统管理"></a>文件系统管理</h2><h3 id="文件命名规则"><a href="#文件命名规则" class="headerlink" title="文件命名规则"></a>文件命名规则</h3><ul>
+<h1 id="文件管理和目录关系"><a href="#文件管理和目录关系" class="headerlink" title="文件管理和目录关系"></a>文件管理和目录关系</h1><h2 id="文件系统管理"><a href="#文件系统管理" class="headerlink" title="文件系统管理"></a>文件系统管理</h2><h3 id="文件命名规则"><a href="#文件命名规则" class="headerlink" title="文件命名规则"></a>文件命名规则</h3><ul>
 <li>一般允许1-255字符</li>
 <li>除斜线外的所有字符都是命名的合法字符（斜线用作路径名分隔符）</li>
 <li>大小写有区别</li>
 </ul>
 <h3 id="UNIX常见目录和文件"><a href="#UNIX常见目录和文件" class="headerlink" title="UNIX常见目录和文件"></a>UNIX常见目录和文件</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/UNIXFile.png" alt="|600"></p>
 <h3 id="文件通配符规则"><a href="#文件通配符规则" class="headerlink" title="文件通配符规则"></a>文件通配符规则</h3><ul>
-<li><ul>
-<li><ul>
+<li>*<ul>
 <li>匹配任意长度的文件名字符串</li>
 <li>当点字符（.）作为文件名的第一个字符时，必须显式匹配。例：*file不匹配.profile</li>
-</ul>
-</li>
 </ul>
 </li>
 <li>?<ul>
@@ -828,7 +812,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>shell对所键入内容作若干加工处理，其中含有对文件通配符的展开工作(文件名生成)，生成结果命令</li>
 <li>执行前面生成的结果命令</li>
 </ul>
-<h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><blockquote>
+<h2 id="列出文件目录"><a href="#列出文件目录" class="headerlink" title="列出文件目录"></a>列出文件目录</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><blockquote>
 <p>ls<br>选项：<br>-F：Flag<br>-l：长格式列表<br>-h：human-readable，以便于人阅读的方式打印数值，如1K 234M<br>-d：列出目录自身的信息<br>-a：列出文件名首字符为圆点的文件<br>-A：同-a，但不列出.和..<br>-s：size，列出文件占用的磁盘空间<br>-i：i-node，列出文件的i节点号</p>
 </blockquote>
 <p><strong>ls -F</strong><br>目录后缀/，可执行文件后缀*，符号连接文件后缀@，普通文件无标记&gt; <img src="/2023/12/19/linux-qi-mo-fu-xi/ls-F.png" alt="|225"></p>
@@ -852,9 +836,247 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>第6列：文件最后一次被修改的日期和时间</li>
 <li>第7列：文件名（对于符号连接文件，附带列出文件内容）</li>
 </ul>
-<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><blockquote>
+<h2 id="文件的复制与删除"><a href="#文件的复制与删除" class="headerlink" title="文件的复制与删除"></a>文件的复制与删除</h2><h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><blockquote>
+<p>cp file1 file2  # 若file2不存在则创建，否则覆盖<br>cp file1 file2 … filen dir  # dir必须已经存在并且是一个目录</p>
+<p>cp -r dir1 dir2  # -r递归地复制一个目录，dir2不存在则新建，拷入dir2；存在则拷入dir2/dir1<br>选项-v：冗长（verbose），复制目录时实时列出正在复制的文件的名字<br>选项-u：增量拷贝（update），根据文件的时戳，不拷贝相同的或者过时的版本的文件，以提高速度</p>
 </blockquote>
-<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><h1 id="shell脚本程序设计"><a href="#shell脚本程序设计" class="headerlink" title="shell脚本程序设计"></a>shell脚本程序设计</h1><h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><h1 id="网络socket程序设计"><a href="#网络socket程序设计" class="headerlink" title="网络socket程序设计"></a>网络socket程序设计</h1>
+<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><blockquote>
+<p>mv file1 file2  # 改名<br>mv file1 file2 … filen dir  # 移动文件<br>mv dir1 dir2  # dir2不存在-&gt;改名；dir2存在-&gt;移动目录</p>
+</blockquote>
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><blockquote>
+<p>rm file1 file2 … filen # 删除文件<br>-r：递归地删除实参表中的目录<br>-i：每删除一个文件前需要操作员确认<br>-f：强制删除</p>
+</blockquote>
+<p><strong>显示区分命令选项和处理对象</strong><br>问题：<br>设当前目录下只有a，b，c三个文件，<br>ls&gt;-i  # 生成文件-i<br>rm -i  # 不能删除文件-i<br>rm * -&gt; rm -i a b c  # 将-i解析为选项<br>解决方法：<br>用–显式地表示命令行参数列表中选项的结束，例如rm – *，rm – -i</p>
+<h2 id="文件比对"><a href="#文件比对" class="headerlink" title="文件比对"></a>文件比对</h2><h3 id="cmp"><a href="#cmp" class="headerlink" title="cmp"></a>cmp</h3><blockquote>
+<p>cmp file1 file2</p>
+<p>逐字节比较两个文件是否完全相同<br>完全相同时不给出任何提示，否则打印出第一个不同之处</p>
+</blockquote>
+<h3 id="md5sum-sha1sum"><a href="#md5sum-sha1sum" class="headerlink" title="md5sum/sha1sum"></a>md5sum/sha1sum</h3><blockquote>
+<p>md5sum/sha1sum filename</p>
+<p>使用MD5算法/SHA-1算法根据文件内容生成16字节/20字节hash值</p>
+</blockquote>
+<h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><blockquote>
+<p>diff file1 file2  # normal格式<br>diff -u file1 file2  # unified格式<br>diff -un file1 file2  # unified格式，显示不同行上下相同的各n行</p>
+<p>输出格式：<br>normal：add、change、delete<br><img src="/2023/12/19/linux-qi-mo-fu-xi/diff.png" alt="|500"><br>unified（-u）：+ -</p>
+</blockquote>
+<h2 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h2><p><img src="/2023/12/19/linux-qi-mo-fu-xi/vi1.png" alt="|500"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/vi2.png" alt="|500"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/vi3.png" alt="|500"></p>
+<h2 id="目录管理"><a href="#目录管理" class="headerlink" title="目录管理"></a>目录管理</h2><h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h3><blockquote>
+<p>print working directory</p>
+</blockquote>
+<h3 id="cd-change-directory"><a href="#cd-change-directory" class="headerlink" title="cd(change directory)"></a>cd(change directory)</h3><blockquote>
+<p>cd /usr/include<br>cd /<br>cd ..<br>cd    # Windows中打印当前工作目录，unix中回到用户主目录<br>cd是shell的一个内部命令，在硬盘上没有存储，由shell自行完成</p>
+</blockquote>
+<h3 id="mkdir-rmdir"><a href="#mkdir-rmdir" class="headerlink" title="mkdir/rmdir"></a>mkdir/rmdir</h3><blockquote>
+<p>mkdir sun/work.d<br>rmdir sun/work.d  # 要求被删除的目录为空<br>rm -r sun/work.d</p>
+</blockquote>
+<h3 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h3><blockquote>
+<p>rsync 选项 源目录/文件 目标目录<br>选项：-a（归档模式，保留所有文件属性），-v、-r、-u</p>
+</blockquote>
+<p>rsync用一精巧的算法，将文件<strong>分块</strong>，在两主机间传播数据块的<strong>hash值</strong>，具体推出两版本文件的区别，使得网络只传输增、删、改部分</p>
+<h2 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><blockquote>
+<p>find 路径 匹配条件 动作</p>
+<p>-name pattern：按文件名查找，支持使用通配符*和？<br>-type type：按文件类型查找，可以是f（普通文件）、d（目录）、l（符号连接）等<br>-size [+-]size[cwbkMG]：按文件大小查找，支持使用+/-表示大于或小于指定大小，单位可以是c（字节）、w（字数）、b（块数）、k（KB）、M（MB）或G（GB）<br>-mtime days：按修改时间查找，支持使用+/-表示在指定天数前或后，days是一个整数表示天数<br>-user/group name：按文件所有者/所有组查找</p>
+<p>可以用（） -o ！等表示多条件的“与”“或”“非”</p>
+<p>-print：打印查找的文件的路径名<br>-exec：对查找到的目标执行某一命令，在-exec及随后的分号之间的内容作为一条命令，在这命令的命令参数中，{}代表遍历到的目标文件的路径名<br>-ok：与-exec类似，只是对查找到符合条件的目标执行一个命令前需要经过操作员确认</p>
+</blockquote>
+<h2 id="目录遍历的应用（待补充）"><a href="#目录遍历的应用（待补充）" class="headerlink" title="目录遍历的应用（待补充）"></a>目录遍历的应用（待补充）</h2><h2 id="批量处理文件（待补充）"><a href="#批量处理文件（待补充）" class="headerlink" title="批量处理文件（待补充）"></a>批量处理文件（待补充）</h2><h2 id="打包与压缩"><a href="#打包与压缩" class="headerlink" title="打包与压缩"></a>打包与压缩</h2><h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><blockquote>
+<p>tar ctxv[f device] file-list</p>
+<p>选项第一字母指定要执行的操作<br>c：Create创建新磁带。从头开始写，以前存于磁带上的数据会被覆盖掉<br>t：Table列表。磁带上的文件名列表，当不指定文件名时，将列出所有的文件<br>x：eXtract抽取。从磁带中抽取指定的文件。当不指定文件名时，抽取所有文件</p>
+<p>除功能字母外的其它选项<br>v：Verbose冗长。每处理一个文件，就打印出文件的文件名，并在该名前冠以功能字母<br>f：File。指定设备文件名<br>z：采用压缩格式(gzip算法）<br>j：采用压缩格式(bzip2算法)</p>
+</blockquote>
+<p><strong>tar的使用：磁带机操作</strong></p>
+<ul>
+<li>tar cvf /dev/rct0 .<br>  将当前目录树备份到设备/dev/rct0中，圆点目录是当前目录</li>
+<li>tar tvf /dev/rct0<br>  查看磁带设备/dev/rct0上的文件目录</li>
+<li>tar xvf /dev/rct0<br>  将磁带设备/dev/rct0上的文件恢复到文件系统中<br><strong>tar的使用：文件打包</strong><br>tar cvf my.tar *.[ch] makefile<br>指定普通文件代替设备文件，将多个文件或目录树存储成一个文件。这是UNIX世界早期最常用的文件和目录打包工具<br><strong>tar的使用：目录打包</strong><br>设work是一个有多个层次的子目录</li>
+<li>tar cvf work.tar work</li>
+<li>tar cv<strong>z</strong>f work.tar.gz work&nbsp; (gzip压缩算法，对C程序体积为原来的20%)</li>
+<li>tar cv<strong>j</strong>f work.tar.bz2 work（bzip2压缩算法，对C程序17%，执行时间三倍）<br>查看归档文件中的文件目录：</li>
+<li>tar <strong>t</strong>vf work.tar.gz&nbsp;&nbsp;<br>从归档文件中恢复目录树：</li>
+<li>tar <strong>x</strong>vf work.tar.gz<br>文件名后缀.tar,.tar.gz,.tar.bz2仅仅是惯例，不是系统级强制要求<br><strong>文件压缩和解压缩</strong><br>gzip/gunzip&nbsp;&nbsp; (执行速度快）<br>bzip2/bunzip2 (占用较多的CPU时间）</li>
+</ul>
+<h1 id="文件和目录的权限"><a href="#文件和目录的权限" class="headerlink" title="文件和目录的权限"></a>文件和目录的权限</h1><h2 id="文件的权限"><a href="#文件的权限" class="headerlink" title="文件的权限"></a>文件的权限</h2><p>文件的权限用于控制进程对系统中文件和目录的访问</p>
+<ul>
+<li>权限的三个级别<ul>
+<li>文件主，同组用户，其他用户</li>
+<li>每个文件有唯一的属主</li>
+</ul>
+</li>
+<li>普通文件的权限<ul>
+<li>读、写、可执行</li>
+<li><strong>不可写文件也可能会被删除（需要看目录有没有写权限）</strong></li>
+</ul>
+</li>
+</ul>
+<p>两类可执行文件</p>
+<ul>
+<li>程序文件（可执行文件）<ul>
+<li>二进制的CPU指令集合</li>
+</ul>
+</li>
+<li>脚本文件（文本文件）<ul>
+<li>默认的解释程序为/bin/sh</li>
+<li>可以在文件的第一行自行指定解释程序（必须是第一行，#!必须是这个文件首先出现的两个字符）例如：#!/bin/bash</li>
+<li>解释程序也可以是用户自己编写的应用程序</li>
+<li>脚本程序运行时，实际上是由解释程序创建了一个进程</li>
+</ul>
+</li>
+</ul>
+<h2 id="目录的权限"><a href="#目录的权限" class="headerlink" title="目录的权限"></a>目录的权限</h2><ul>
+<li>读权限<ul>
+<li>拥有读权限的用户可以使用 ls 命令来查看该目录中的文件和子目录列表。</li>
+<li>目录的读权限并不允许用户查看目录中文件的具体内容；查看文件内容需要对那些文件具有读权限。</li>
+<li>拥有目录的读权限并不意味着可以进入目录。进入目录需要该目录的执行权限（x）。</li>
+</ul>
+</li>
+<li>写权限<ul>
+<li>若无写权限，那么目录表不许写（不许创建/删除文件）</li>
+<li>修改文件不需要修改目录文件，需要修改i节点</li>
+</ul>
+</li>
+<li>执行权限<ul>
+<li><strong>有执行权限意味着允许用户进入目录</strong></li>
+<li>cat /a/b/c，要求/a与a/b目录有x权限，c文件有读权限</li>
+<li>cd ../st8，要求当前目录，..和st8必须有x权限</li>
+</ul>
+</li>
+<li>STICKY权限（粘着位）<ul>
+<li>早期Unix具有sticky属性的可执行文件尽量常驻内存或交换区以提高效率。现代Linux对访问过的文件自动缓冲在内存，文件sticky属性被忽略</li>
+<li>对于公共目录下，用户user1和user2没有写权限就不能创建文件，若有写权限，用户user1的文件就算是只读文件也可以被user2删除。STICKY属性用于解决这个问题：<strong>目录有写权限并且带STICKY属性，此目录下的文件仅文件主可以删除，其他用户删除操作会失败</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="权限验证的顺序"><a href="#权限验证的顺序" class="headerlink" title="权限验证的顺序"></a>权限验证的顺序</h2><p>每个文件都有文件主和组的属性（文件节点中）<br>每个进程也有进程主和组的属性（进程PCB中）<br>都是整数，uid和gid的编号与名字的对应关系见/etc下passwd和group文件</p>
+<ul>
+<li>文件主与进程主相同——使用文件主的权限</li>
+<li>文件主与进程主不相同但同组——使用组权限</li>
+<li>文件主与进程主不相同且不同组——使用其他权限<br>注意：超级用户不受权限的制约</li>
+</ul>
+<h2 id="文件权限相关命令"><a href="#文件权限相关命令" class="headerlink" title="文件权限相关命令"></a>文件权限相关命令</h2><h4 id="确定文件的权限"><a href="#确定文件的权限" class="headerlink" title="确定文件的权限"></a>确定文件的权限</h4><ul>
+<li>使用ls命令<ul>
+<li>有关选项-l和-d，例如：ls -ld .列出当前目录自身的权限</li>
+</ul>
+</li>
+</ul>
+<h4 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h4><blockquote>
+<p>chmod：修改权限（字母形式）<br>chmod [ugoa][+-=][rwxst]文件名表</p>
+<p>u–user  文件主的权限<br>g–group  同组用户的权限<br>o–other  其他用户权限<br>a–all  所有上述三级权限<br>（t–Sticky，s–SUID）</p>
+</blockquote>
+<p>例：chmod go-rwx *.[ch]  对所有c语言源程序文件，不允许其他用户读、写和执行</p>
+<blockquote>
+<p>chmod：修改权限（数字形式）</p>
+<p>例：chmod 644 xyz1 xyz2<br>八进制： 6 4 4<br>二进制：110 100 100<br>权限：rw- r– r–</p>
+</blockquote>
+<p>注意：只有文件主和超级用户修改文件权限</p>
+<blockquote>
+<p>umask：决定文件/目录的初始权限<br>umask是shell内部命令，是进程属性的一部分<br>umask：打印当前的umask值<br>umask 022：将umask值设置为八进制的022(二进制为000 010 000，取消新文件和新目录的组w权限和其他用户w权限)</p>
+</blockquote>
+<p>一般将umask命令放到shell自动执行的批处理文件中。<br>系统调用umask可以修改进程自身的umask属性值，初创文件的权限受open的规定值进程自身属性umask值影响。已存在的文件的权限，不受open/umask的影响。</p>
+<h2 id="三级权限存在的问题"><a href="#三级权限存在的问题" class="headerlink" title="三级权限存在的问题"></a>三级权限存在的问题</h2><p>问题：系统中任一个用户，要么对文件的全部内容具有访问权，要么不可访问文件。有的情况下，很不方便。例如用户修改口令，需要访问和修改文件/etc/passwd。</p>
+<p>解决方法：SUID权限</p>
+<ul>
+<li>当一个可执行文件设置了 SUID 权限后，无论谁运行这个文件，该程序都会以文件所有者的权限来执行。</li>
+<li>例如，如果一个可执行文件的所有者是 root，并且设置了 SUID 权限，那么无论谁运行这个程序，该程序都会以 root 用户的权限来运行。</li>
+<li>SUID 通常用于那些需要提高权限以执行特定任务的程序。例如，passwd程序用于更改用户的密码，需要访问通常只有 root 用户才能访问的系统文件。通过设置 SUID 权限，普通用户在运行 passwd程序时能以 root 用户的身份执行，从而可以更新密码文件。</li>
+</ul>
+<h1 id="shell的基本机制"><a href="#shell的基本机制" class="headerlink" title="shell的基本机制"></a>shell的基本机制</h1><h2 id="shell概述"><a href="#shell概述" class="headerlink" title="shell概述"></a>shell概述</h2><h3 id="shell种类"><a href="#shell种类" class="headerlink" title="shell种类"></a>shell种类</h3><ul>
+<li>B-shell</li>
+<li>C-shell</li>
+<li>K-shell</li>
+<li>/bin/bash（inux上的标准shell）</li>
+</ul>
+<h3 id="shell的功能"><a href="#shell的功能" class="headerlink" title="shell的功能"></a>shell的功能</h3><ul>
+<li>shell是命令解释器</li>
+<li>文件名替换，命令替换，变量替换</li>
+<li>历史替换（上下方向键查看历史指令），别名替换</li>
+<li>流程控制的内部命令</li>
+</ul>
+<h3 id="shell的特点"><a href="#shell的特点" class="headerlink" title="shell的特点"></a>shell的特点</h3><ul>
+<li>主要用途：批处理，执行效率比算法预言低</li>
+<li>shell编程风格和C语言等算法语言的区别</li>
+<li>shell是<strong>面向命令处理的语言</strong>，提供的流程控制结构通过对一些内部命令的解释实现</li>
+<li>shell许多灵活的功能，通过<strong>shell替换</strong>实现，例如：流程控制所需的条件判断，四则运算，都由shell之外的命令完成</li>
+</ul>
+<h2 id="bash的启动"><a href="#bash的启动" class="headerlink" title="bash的启动"></a>bash的启动</h2><h3 id="三种启动方法"><a href="#三种启动方法" class="headerlink" title="三种启动方法"></a>三种启动方法</h3><ul>
+<li>将登陆后执行的shell设置为bash：注册shell</li>
+<li>键入bash命令：交互式shell</li>
+<li>脚本解释器</li>
+</ul>
+<h3 id="自动执行的一批命令"><a href="#自动执行的一批命令" class="headerlink" title="自动执行的一批命令"></a>自动执行的一批命令</h3><p><strong>用户级</strong></p>
+<ul>
+<li>当bash作为注册shell被启动时:自动执行用户主目录下的.bash_profile文件中命令，记作：<del>/.bash_profile或$HOME/.bash_profile。或</del>/.profile</li>
+<li>当bash作为注册shell退出时:自动执行$HOME/.bash_logout</li>
+<li>当bash作为交互式shell启动时:自动执行$HOME/.bashrc</li>
+<li>类似umask之类的命令，应当写在.bash_profile文件中<br><strong>系统级</strong></li>
+<li>当bash作为注册shell被启动时:自动执行/etc/profile文件中命令</li>
+<li>当bash作为交互式shell启动时:自动执行/etc/bash.bashrc</li>
+<li>当bash作为注册shell退出时:自动执行/etc/bash.bash.logout</li>
+</ul>
+<h3 id="脚本文件"><a href="#脚本文件" class="headerlink" title="脚本文件"></a>脚本文件</h3><p>编辑文件lsdir，文件名不必须为.sh后缀，只是个惯例</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [<span class="variable">$#</span> = 0]               <span class="comment"># 检查命令行参数的个数</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">	<span class="built_in">dir</span>=.</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="built_in">dir</span>=<span class="variable">$1</span>                <span class="comment"># 变量dir赋值为命令行第一个参数</span></span><br><span class="line"><span class="keyword">fi</span>                        <span class="comment"># if语句的结束，相当于end if</span></span><br><span class="line">find <span class="variable">$dir</span> -<span class="built_in">type</span> d -<span class="built_in">print</span>  <span class="comment"># 打印dir的目录树</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'------------'</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$dir</span></span><br><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="脚本文件的执行"><a href="#脚本文件的执行" class="headerlink" title="脚本文件的执行"></a>脚本文件的执行</h4><ul>
+<li>新创建子进程，并在子进程中执行脚本<ol>
+<li>bash&lt;\lsdir  无法携带命令行参数</li>
+<li>bash lsdir<br>   bash -x lsdir （调试运行，指令命令之前打印出每个命令及其扩展的参数）<br>   bash lsdir /usr/lib/gcc</li>
+<li>给文件设置可执行属性x，然后执行：chmod u+x lsdir  ./lsdir /usr/lib/gcc</li>
+</ol>
+</li>
+<li>在当前shell进程中执行脚本：. lsdir /usr/lib/gcc  或者  source lsdir /usr/lib/gcc （脚本执行后对当前shell状态有影响）</li>
+</ul>
+<h2 id="历史与别名"><a href="#历史与别名" class="headerlink" title="历史与别名"></a>历史与别名</h2><h3 id="历史表"><a href="#历史表" class="headerlink" title="历史表"></a>历史表</h3><ul>
+<li>先前键入的命令存于历史表，编号递增，FIFO刷新</li>
+<li>表大小由变量HISTSIZE设定，修改HISTSIZE的配置应放入~/.bashrc</li>
+</ul>
+<h4 id="查看历史表"><a href="#查看历史表" class="headerlink" title="查看历史表"></a>查看历史表</h4><ul>
+<li>内部指令history（文件~/.bash_history）</li>
+</ul>
+<h4 id="历史替换"><a href="#历史替换" class="headerlink" title="历史替换"></a>历史替换</h4><ul>
+<li>人机交互时直接使用上下箭头</li>
+<li>其他方法：!! 引用上一命令  !str  以str开头的最近使用过的命令，如!v !m !.</li>
+</ul>
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><h4 id="别名替换"><a href="#别名替换" class="headerlink" title="别名替换"></a>别名替换</h4><ul>
+<li>在别名表中增加一个别名（内部命令alias）<br>如：alias p=’ping 202.143.12.189’<br>alias rm=‘rm -i’   对rm命令进行重载<br>如果需要，应把alias命令放入.bashrc</li>
+<li>查看别名表 alias</li>
+<li>取消别名（内部命令unalias）<br>unalias n 在别名表中取消n</li>
+</ul>
+<h4 id="TAB键补全"><a href="#TAB键补全" class="headerlink" title="TAB键补全"></a>TAB键补全</h4><ul>
+<li>每行的首个单词<br>TAB键补全搜索$PATH下的命令</li>
+<li>行中的其它单词<br>TAB键补全当前目录下的文件名</li>
+</ul>
+<h2 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h2><ul>
+<li>&lt;\filename<br>从文件filename中获取stdin，例如：sort&lt;telno.txt</li>
+<li>&lt;&lt;word<br>从shell脚本文件获取数据直到再次遇到定界符work，定界符两侧加单引号：不允许定界符之间的内容进行替换操作（如‘date’、$HOME）</li>
+<li>&lt;&lt;&lt;word<br>从命令行获取信息作为标准输入</li>
+</ul>
+<h2 id="输出重定向与管道"><a href="#输出重定向与管道" class="headerlink" title="输出重定向与管道"></a>输出重定向与管道</h2><h3 id="程序的标准输入-输出"><a href="#程序的标准输入-输出" class="headerlink" title="程序的标准输入/输出"></a>程序的标准输入/输出</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/stdin&amp;stdout.png" alt="|500"></p>
+<h3 id="stdout输出重定向"><a href="#stdout输出重定向" class="headerlink" title="stdout输出重定向"></a>stdout输出重定向</h3><ul>
+<li><blockquote>
+<p>filename<br>将stdout重定向到文件filename，文件已存在则先清空（覆盖方式）</p>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<p>filename<br>将stdout重定向追加到文件filename</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="stderr输出重定向"><a href="#stderr输出重定向" class="headerlink" title="stderr输出重定向"></a>stderr输出重定向</h3><ul>
+<li>2&gt;filename<br>将文件句柄2重定向到文件filename，分离stdout与stderr的意义</li>
+<li>2&gt;&amp;1<br>将文件句柄2重定向到文件描述符1指向的文件，允许对除0，1，2外其它文件句柄输入或输出重定向</li>
+</ul>
+<h3 id="输出重定向例子"><a href="#输出重定向例子" class="headerlink" title="输出重定向例子"></a>输出重定向例子</h3><ul>
+<li>ls -l &gt; file.list<br>将命令ls标准输出stdout定向到文件file.list中</li>
+<li>cc try.c -o try 2 &gt; try.err<br>将cc命令的stderr重定向到文件try.err中</li>
+<li>try &gt; try.out 2&gt;try.err<br>try 1 &gt;try.out 2&gt;try.err<br>将try程序执行后的stdout和stderr分别重定向到不同的文件</li>
+<li>./stda &gt;rpt 2&gt;&amp;1<br>stdout和stderr均存入文件rpt</li>
+<li>./ stda 2&gt;&amp;1 &gt;rpt<br>stderr定向到终端，stdout重定向到文件</li>
+</ul>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><ul>
+<li>ls -l | grep ‘^d’<br>前一命令的stdout作后一命令的stdin</li>
+<li>cc try.c -o try 2&gt;&amp;1 | more<br>前一命令的stdout+stderr作为下一命令的stdin</li>
+</ul>
+<h1 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h1><h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><h1 id="网络socket程序设计"><a href="#网络socket程序设计" class="headerlink" title="网络socket程序设计"></a>网络socket程序设计</h1>
                 
             </div>
             <hr/>
@@ -1247,7 +1469,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">20.2k</span>
+                        class="white-color">24k</span>
             
             
             
