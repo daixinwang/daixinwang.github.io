@@ -346,21 +346,21 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-12-26
+                    2023-12-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12.3k
+                    14.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    46 分
+                    55 分
                 </div>
                 
 
@@ -597,7 +597,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>PPID：父进程的PID</li>
 <li>C：CPU占用指数</li>
 <li>STIME：启动时间</li>
-<li>SZ：进程逻辑内存大小</li>
+<li>SZ：进程逻辑内存大小(持续增加：内存泄漏)</li>
 <li>TTY：终端的名字</li>
 <li>COMMAND：命令名</li>
 <li>WCHAN：进程在内核的何处睡眠（wait channel）</li>
@@ -1251,7 +1251,200 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>在函数体内部以$1,$2,…或$*,$@方式引用参数</li>
 <li>函数体内用内命令return使函数有返回码，0表示成功，非零表示失败</li>
 </ul>
-<h1 id="进程的基本概念"><a href="#进程的基本概念" class="headerlink" title="进程的基本概念"></a>进程的基本概念</h1><h1 id="系统调用-1"><a href="#系统调用-1" class="headerlink" title="系统调用"></a>系统调用</h1><h1 id="网络socket程序设计"><a href="#网络socket程序设计" class="headerlink" title="网络socket程序设计"></a>网络socket程序设计</h1>
+<h1 id="进程的基本概念"><a href="#进程的基本概念" class="headerlink" title="进程的基本概念"></a>进程的基本概念</h1><h2 id="进程的组成和逻辑内存"><a href="#进程的组成和逻辑内存" class="headerlink" title="进程的组成和逻辑内存"></a>进程的组成和逻辑内存</h2><h3 id="进程与程序"><a href="#进程与程序" class="headerlink" title="进程与程序"></a>进程与程序</h3><p>程序：存放在磁盘上的一个可执行文件<br>进程：程序的一次执行，包括指令段、用户数据段和系统数据段的执行环境<br>进程和程序的关系：程序用于初始化进程的指令段和用户数据段，之后两者无联系</p>
+<h3 id="进程的组成部分"><a href="#进程的组成部分" class="headerlink" title="进程的组成部分"></a>进程的组成部分</h3><h4 id="指令段（Text）"><a href="#指令段（Text）" class="headerlink" title="指令段（Text）"></a>指令段（Text）</h4><ul>
+<li>程序的CPU指令代码，包括：主程序和子程序编译后的CPU指令代码，以及调用的库函数代码</li>
+<li>指令段的大小固定不变，只读</li>
+</ul>
+<h4 id="用户数据段"><a href="#用户数据段" class="headerlink" title="用户数据段"></a>用户数据段</h4><ul>
+<li>全局变量，静态变量，字符串常数</li>
+<li>允许数据段增长和缩小，实现内存的动态分配</li>
+</ul>
+<h4 id="用户栈段"><a href="#用户栈段" class="headerlink" title="用户栈段"></a>用户栈段</h4><ul>
+<li>程序执行所需要的栈空间，实现函数的调用<ul>
+<li>保存子程序返回地址</li>
+<li>在函数和被调函数之间传递参数</li>
+<li>函数体内部定义的变量（静态变量除外）</li>
+</ul>
+</li>
+<li>main函数得到的命令行参数以及环境参数<ul>
+<li>存放在栈的最底部</li>
+<li>main函数运行之前，这些部分就已经被系统初始化</li>
+</ul>
+</li>
+<li>栈段的动态增长与增长限制</li>
+</ul>
+<h4 id="系统数据段"><a href="#系统数据段" class="headerlink" title="系统数据段"></a>系统数据段</h4><ul>
+<li>上述三部分在进程私有的独立地逻辑地址空间内（CPU用户态访问）</li>
+<li>系统数据段是内核内的数据，每个进程对应一套<ul>
+<li>包括页表和进程控制块PCB</li>
+</ul>
+</li>
+</ul>
+<h4 id="size命令观察可执行程序的段大小"><a href="#size命令观察可执行程序的段大小" class="headerlink" title="size命令观察可执行程序的段大小"></a>size命令观察可执行程序的段大小</h4><blockquote>
+<p>size filename-list  # 列出程序或目标文件的相应段大小</p>
+</blockquote>
+<p><img src="/2023/12/19/linux-qi-mo-fu-xi/exampleOfSize.png" alt="|500"></p>
+<h4 id="进程虚拟地址空间的布局"><a href="#进程虚拟地址空间的布局" class="headerlink" title="进程虚拟地址空间的布局"></a>进程虚拟地址空间的布局</h4><p><img src="/2023/12/19/linux-qi-mo-fu-xi/virtualAddressOfProcess.png" alt="|334"></p>
+<h4 id="逻辑地址和物理地址间的转换"><a href="#逻辑地址和物理地址间的转换" class="headerlink" title="逻辑地址和物理地址间的转换"></a>逻辑地址和物理地址间的转换</h4><p>略，操作系统课程中有详细内容</p>
+<h2 id="进程的执行状态"><a href="#进程的执行状态" class="headerlink" title="进程的执行状态"></a>进程的执行状态</h2><h3 id="进程的系统数据"><a href="#进程的系统数据" class="headerlink" title="进程的系统数据"></a>进程的系统数据</h3><p>在UNIX内核中，含有进程的属性，包括：</p>
+<ul>
+<li>页表</li>
+<li>进程状态，优先级信息</li>
+<li>核心堆栈</li>
+<li>当前目录（记录了当前目录的i-节点），根目录</li>
+<li>打开的文件描述符表</li>
+<li>umask值</li>
+<li>进程PID，PPID</li>
+<li>进程主的实际UID/GID，有效UID/GID</li>
+<li>进程组组号</li>
+</ul>
+<h3 id="传统UNIX的user-proc结构"><a href="#传统UNIX的user-proc结构" class="headerlink" title="传统UNIX的user+proc结构"></a>传统UNIX的user+proc结构</h3><p>进程PCB被分为user结构和proc结构两部分</p>
+<ul>
+<li>user结构（约5000字节）,&lt;sys/user.h&gt;<ul>
+<li><strong>进程运行时才需要的数据在user结构</strong></li>
+<li>核心态堆栈占用了较多空间</li>
+</ul>
+</li>
+<li>proc结构（约300字节）,&lt;sys/proc.h&gt;<ul>
+<li><strong>进程不运行时也需要的管理信息存于proc</strong></li>
+</ul>
+</li>
+<li>用户程序不能直接存取和修改进程的系统数据</li>
+<li>系统调用可用来访问或修改这些属性<ul>
+<li>chdir,umask,open,close,setpgrp,getpid,getppid</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程的基本状态"><a href="#进程的基本状态" class="headerlink" title="进程的基本状态"></a>进程的基本状态</h3><p>从用户的角度看，进程创建后，主要有运行状态和等待状态（操作系统角度来看，有新建、就绪、运行、等待、终止五个状态）</p>
+<h3 id="进程的调度"><a href="#进程的调度" class="headerlink" title="进程的调度"></a>进程的调度</h3><ul>
+<li>内核将可运行进程按优先级调度，高优先级进程优先；</li>
+<li>进程的优先级总在不停的发生变化；</li>
+<li>处于睡眠状态的进程一旦被叫醒后，被赋以高优先级，以保证人机会话操作和其它外设的响应速度；</li>
+<li>用户程序用nice()系统调用有限地调整进程的优先级。</li>
+</ul>
+<h3 id="系统调用的过程示例"><a href="#系统调用的过程示例" class="headerlink" title="系统调用的过程示例"></a>系统调用的过程示例</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/systemCall.png" alt="|475"></p>
+<h2 id="进程的执行时间"><a href="#进程的执行时间" class="headerlink" title="进程的执行时间"></a>进程的执行时间</h2><p>进程执行时间包括睡眠时间，CPU时间（用户时间和系统时间）</p>
+<h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/time.png" alt="|500"></p>
+<h3 id="系统调用times"><a href="#系统调用times" class="headerlink" title="系统调用times"></a>系统调用times</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/times.png" alt="|500"></p>
+<h3 id="与时间有关的函数"><a href="#与时间有关的函数" class="headerlink" title="与时间有关的函数"></a>与时间有关的函数</h3><p>标准函数库中time()：获得当前时间坐标</p>
+<ul>
+<li>坐标0为1970年1月1日零点，单位：秒</li>
+<li>t=time(0);和time(&amp;t);都会使t值为当前时间坐标</li>
+</ul>
+<p>函数gettimeofday()</p>
+<ul>
+<li>获得当前时间坐标，坐标的0是1970年1月1日零点</li>
+<li>可以精确到微秒μs(10-6秒)</li>
+</ul>
+<p>mktime</p>
+<ul>
+<li>将年月日时分秒转换为坐标值</li>
+</ul>
+<p>ctime()和asctime()，localtime()</p>
+<ul>
+<li>坐标值和年月日时分秒转换</li>
+</ul>
+<p>strftime</p>
+<ul>
+<li>定制表示日期和时间的字符串（包括年月日时分秒等）</li>
+</ul>
+<h3 id="忙等待"><a href="#忙等待" class="headerlink" title="忙等待"></a>忙等待</h3><p>在忙等待中，一个进程或线程反复检查某个条件是否满足，而不进行其他操作或改变状态。多任务系统中”忙等待“的程序是不可取的。</p>
+<h1 id="进程的创建和重定向"><a href="#进程的创建和重定向" class="headerlink" title="进程的创建和重定向"></a>进程的创建和重定向</h1><h2 id="进程的生命周期"><a href="#进程的生命周期" class="headerlink" title="进程的生命周期"></a>进程的生命周期</h2><p>回顾：<a href="Linux%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0.md#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE">进程的系统数据</a></p>
+<h3 id="fork：创建新进程"><a href="#fork：创建新进程" class="headerlink" title="fork：创建新进程"></a>fork：创建新进程</h3><p>功能：</p>
+<ul>
+<li>fork系统调用可以创建新进程，原先的进程称作父进程，新创建进程被称作子进程</li>
+<li>完全复制：新进程的指令，用户数据段，堆栈段</li>
+<li>部分复制：系统数据段<br>fork返回值：</li>
+<li>父进程返回值&gt;0，是进程的PID</li>
+<li>子进程返回值=0，失败时返回-1<br>内核实现：</li>
+<li>创建新的PCB，复制父进程环境（包括PCB和内存资源）给子进程</li>
+<li>父子进程可以共享程序和数据（例如：copy-on-write技术）</li>
+</ul>
+<h3 id="命令行参数和环境参数"><a href="#命令行参数和环境参数" class="headerlink" title="命令行参数和环境参数"></a>命令行参数和环境参数</h3><p>命令行参数和环境参数是位于进程堆栈底部的初始化数据。</p>
+<ul>
+<li>访问命令行参数的方法（argc，argv）</li>
+<li>访问环境参数的三种方法<ul>
+<li>通过C库定义的外部变量environ</li>
+<li>main函数的第三个参数</li>
+<li>getenv库函数调用</li>
+</ul>
+</li>
+</ul>
+<h3 id="exec系统调用"><a href="#exec系统调用" class="headerlink" title="exec系统调用"></a>exec系统调用</h3><p>功能：</p>
+<ul>
+<li><strong>用一个指定的程序文件，重新初始化一个进程</strong></li>
+<li>可指定新的命令行参数和环境参数（初始化堆栈底部）</li>
+<li>exec不创建新进程，只是将当前进程重新初始化了指令段和用户数据段，堆栈段以及CPU的PC指针<br>6种格式exec系统调用：<br>exec前缀，后跟一至两个字母（l-list,  v-vector，e-env,  p-path）</li>
+<li>l与v：指定命令行参数的两种方式，l以表的形式，v要事先组织成一个指针数组</li>
+<li>e：需要指定envp来初始化进程</li>
+<li>p：使用环境变量PATH查找可执行文件<br><img src="/2023/12/19/linux-qi-mo-fu-xi/exec.png" alt="|500"></li>
+</ul>
+<h3 id="wait系统调用"><a href="#wait系统调用" class="headerlink" title="wait系统调用"></a>wait系统调用</h3><p>功能：</p>
+<ul>
+<li>等待进程的子进程终止（”收尸“）</li>
+<li>如果已经有子进程终止，则立即返回<br>函数返回值为已终止的子进程PID</li>
+</ul>
+<h3 id="僵尸进程（zombie或defunct）"><a href="#僵尸进程（zombie或defunct）" class="headerlink" title="僵尸进程（zombie或defunct）"></a>僵尸进程（zombie或defunct）</h3><p>当一个进程已经完成执行（即已经结束），但其父进程尚未通过调用<code>wait()</code>系统调用来读取其终止状态时，这个已结束的进程就变成了僵尸进程。</p>
+<ul>
+<li>系统已经释放了进程占用的包括内存在内的系统资源，但仍在内核中保留进程的部分数据结构，记录进程的终止状态，等待父进程来”收尸“。</li>
+<li>僵尸进程占用资源很少，仅占用内核进程表资源，过多的僵尸进程会导致系统有限数目的进程表被用光。</li>
+</ul>
+<h2 id="自编shell：xsh0"><a href="#自编shell：xsh0" class="headerlink" title="自编shell：xsh0"></a>自编shell：xsh0</h2><h3 id="字符串库函数strtok"><a href="#字符串库函数strtok" class="headerlink" title="字符串库函数strtok"></a>字符串库函数strtok</h3><p>char *strtok(char *str,char *tokens)<br>功能:返回第一个单词的首字节指针<br>示例：<br><img src="/2023/12/19/linux-qi-mo-fu-xi/strtok.png" alt="|400"></p>
+<ul>
+<li>空格、制表符、换行都作为字符串结束标识</li>
+<li>NULL指示继续分割</li>
+<li>无从分割则返回NULL</li>
+</ul>
+<h3 id="最简单的shell：xsh0"><a href="#最简单的shell：xsh0" class="headerlink" title="最简单的shell：xsh0"></a>最简单的shell：xsh0</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/xsh0.png" alt="|550"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/xsh0_2.png" alt="|500"></p>
+<ul>
+<li>exit是唯一的一个内部命令</li>
+<li>execvp（argv[0], argv）将子进程重新初始化为argv[0]指定的新程序，所以只有新程序执行失败才会输出”Bad command“</li>
+</ul>
+<h3 id="库函数system：运行一个命令"><a href="#库函数system：运行一个命令" class="headerlink" title="库函数system：运行一个命令"></a>库函数system：运行一个命令</h3><p>int system(char *string);</p>
+<ul>
+<li>执行用字符串传递的shell命令，可使用管道符和重定向</li>
+<li>库函数system()是利用系统调用fork，exec，wait实现的<br>例：<code>system("ls -l")</code> 会在程序运行时执行 UNIX/LINUX 的 <code>ls -l</code> 命令，列出当前目录中的文件和目录的详细列表。</li>
+</ul>
+<h2 id="进程与文件描述符"><a href="#进程与文件描述符" class="headerlink" title="进程与文件描述符"></a>进程与文件描述符</h2><h3 id="活动文件目录AFD"><a href="#活动文件目录AFD" class="headerlink" title="活动文件目录AFD"></a>活动文件目录AFD</h3><h4 id="磁盘文件目录（分两级）"><a href="#磁盘文件目录（分两级）" class="headerlink" title="磁盘文件目录（分两级）"></a>磁盘文件目录（分两级）</h4><p>磁盘文件目录是文件系统中用于组织和管理存储在磁盘上的文件和文件夹的结构。它提供了一种方式，让操作系统能够有效地定位、管理和维护磁盘上的文件。</p>
+<ul>
+<li>文件名，i节点<br><strong>i节点是 Unix 文件系统中的一种数据结构，用于存储文件或目录的元数据</strong>。每个文件或目录都有一个与之关联的 i节点，其中包含了如下信息：文件类型、权限、所有者、大小、时间戳、链接计数、数据块指针。</li>
+</ul>
+<h4 id="活动文件目录（分三级）"><a href="#活动文件目录（分三级）" class="headerlink" title="活动文件目录（分三级）"></a>活动文件目录（分三级）</h4><ul>
+<li><strong>文件描述符表FDT</strong>：每进程一张，PCB的user结构中整型数组u_ofile记录进程打开的文件，文件描述符fd是u_ofile数组的下标。</li>
+<li><strong>系统文件表SFT</strong>：整个操作系统维护一张，用于存储所有打开文件的信息。对于每个打开的文件，存储如下信息：文件的当前偏移量（文件读写操作的当前位置）、文件打开模式、文件的引用计数、指向相关i节点的指针。</li>
+<li><strong>活动i节点表</strong>：整个操作系统维护一张，内存中inode表是外存中inode的缓冲，有个专用的引用计数<br><img src="/2023/12/19/linux-qi-mo-fu-xi/AFD.png" alt="|325"><br>ps：图中存在一个细节问题：文件描述符0、1、2分别代表标准输入、标准输出、标准错误，不是普通的文件。</li>
+</ul>
+<h3 id="文件描述符的继承与关闭"><a href="#文件描述符的继承与关闭" class="headerlink" title="文件描述符的继承与关闭"></a>文件描述符的继承与关闭</h3><ul>
+<li>fork创建的子进程继承父进程的文件描述符表</li>
+<li>父进程在fork前打开的文件，父子进程有相同的文件偏移<br><img src="/2023/12/19/linux-qi-mo-fu-xi/SFTafterFork.png" alt="|500"></li>
+</ul>
+<h3 id="close-on-exec标志"><a href="#close-on-exec标志" class="headerlink" title="close-on-exec标志"></a>close-on-exec标志</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/close-on-exec.png" alt="|550"></p>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><h3 id="文件描述符的复制"><a href="#文件描述符的复制" class="headerlink" title="文件描述符的复制"></a>文件描述符的复制</h3><p>系统调用</p>
+<ul>
+<li><code>int dup2(int fd1, int fd2);</code><br>功能</li>
+<li>复制文件描述符fd1到fd2</li>
+<li>fd2可以是空闲的文件描述符，如果fd2是已打开文件，则关闭已打开文件<br><img src="/2023/12/19/linux-qi-mo-fu-xi/dup2.png" alt="|525"></li>
+</ul>
+<h3 id="xsh1：输入输出重定向"><a href="#xsh1：输入输出重定向" class="headerlink" title="xsh1：输入输出重定向"></a>xsh1：输入输出重定向</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/xsh1.png" alt="|575"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/xsh1-2.png" alt="|625"><br><img src="/2023/12/19/linux-qi-mo-fu-xi/xsh1-3.png" alt="|500"></p>
+<h1 id="管道与信号"><a href="#管道与信号" class="headerlink" title="管道与信号"></a>管道与信号</h1><h2 id="管道-1"><a href="#管道-1" class="headerlink" title="管道"></a>管道</h2><h4 id="创建管道"><a href="#创建管道" class="headerlink" title="创建管道"></a>创建管道</h4><p><code>int pipe(int pfd[2]);</code><br><code>int pipe(int *pfd);</code><br><code>int pipe(int pfd[])</code></p>
+<ul>
+<li>创建一个管道，pfd[0]和pfd[1]分别为管道两端的文件描述字，pfd[0]用于读，pfd[1]用于写</li>
+</ul>
+<h4 id="管道写"><a href="#管道写" class="headerlink" title="管道写"></a>管道写</h4><p><code>ret = write(pfd[1],buf,n)</code></p>
+<ul>
+<li>若管道已满，则被阻塞，直到管道另一端read将已进入管道的数据取走为止</li>
+<li>管道容量：某一有限值，如8192字节，与操作系统的实现相关</li>
+</ul>
+<h4 id="管道读"><a href="#管道读" class="headerlink" title="管道读"></a>管道读</h4><p><code>ret = read(pfd[0],buf,n)</code></p>
+<ul>
+<li>若管道写端已关闭，则返回0</li>
+<li>若管道为空，且写端文件描述字未关闭，则被阻塞</li>
+<li>若管道不为空(设管道中实际有m个字节)<br>  n≥m，则读m个；<br>  如果n＜m则读取n个</li>
+<li>实际读取的数目作为read的返回值。</li>
+<li>注意：管道是无记录边界的字节流通信</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -1644,7 +1837,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">30.6k</span>
+                        class="white-color">33.3k</span>
             
             
             
