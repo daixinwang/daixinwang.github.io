@@ -346,7 +346,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-12-30
+                    2023-12-31
                 </div>
                 
 
@@ -375,7 +375,15 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -1434,7 +1442,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>定制表示日期和时间的字符串（包括年月日时分秒等）</li>
 </ul>
 <h3 id="忙等待"><a href="#忙等待" class="headerlink" title="忙等待"></a>忙等待</h3><p>在忙等待中，一个进程或线程反复检查某个条件是否满足，而不进行其他操作或改变状态。多任务系统中”忙等待“的程序是不可取的。</p>
-<h1 id="进程的创建和重定向"><a href="#进程的创建和重定向" class="headerlink" title="进程的创建和重定向"></a>进程的创建和重定向</h1><h2 id="进程的生命周期"><a href="#进程的生命周期" class="headerlink" title="进程的生命周期"></a>进程的生命周期</h2><p>回顾：<a href="Linux%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0.md#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE">进程的系统数据</a></p>
+<h1 id="进程的创建和重定向"><a href="#进程的创建和重定向" class="headerlink" title="进程的创建和重定向"></a>进程的创建和重定向</h1><h2 id="进程的生命周期"><a href="#进程的生命周期" class="headerlink" title="进程的生命周期"></a>进程的生命周期</h2><p>回顾：进程的系统数据</p>
 <h3 id="fork：创建新进程"><a href="#fork：创建新进程" class="headerlink" title="fork：创建新进程"></a>fork：创建新进程</h3><p>功能：</p>
 <ul>
 <li>fork系统调用可以创建新进程，原先的进程称作父进程，新创建进程被称作子进程</li>
@@ -1569,7 +1577,10 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <ul>
 <li>面向连接</li>
 <li>可靠</li>
-<li>字节流传输<br>UDP</li>
+<li>字节流传输</li>
+</ul>
+<p>UDP</p>
+<ul>
 <li>面向数据报</li>
 <li>不可靠<ul>
 <li>丢报，乱序，流量控制</li>
@@ -1658,10 +1669,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 </li>
 <li>当“读准备好”时，调用read会立刻返回-1/0/字节数</li>
 <li>当“写准备好”时，调用write可以写多少字节？<ul>
-<li><blockquote>
-<p>=1个字节</p>
-</blockquote>
-</li>
+<li>&gt;=1个字节</li>
 <li>“无阻塞I/O”方式</li>
 </ul>
 </li>
@@ -1688,16 +1696,25 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <h2 id="UDP通信"><a href="#UDP通信" class="headerlink" title="UDP通信"></a>UDP通信</h2><p>接收</p>
 <ul>
 <li>没有数据到达时，read调用会使得进程睡眠等待</li>
-<li>一般需区分数据来自何处，常用recvfrom获得对方的端点名<br>发送</li>
+<li>一般需区分数据来自何处，常用recvfrom获得对方的端点名</li>
+</ul>
+<p>发送</p>
+<ul>
 <li>服务器端发送数据常用sendto，指定远端端点名</li>
-<li>对接收来的数据作应答，sendto引用的对方端点名利用recvfrom返回得到的端点名<br>select定时</li>
+<li>对接收来的数据作应答，sendto引用的对方端点名利用recvfrom返回得到的端点名</li>
+</ul>
+<p>select定时</p>
+<ul>
 <li>select可实现同时等待两个事件：收到数据和定时器超时</li>
 <li>用time(0)或者gettimeofday()获得时间坐标，计算时间间隔决定是否执行超时后的动作<br>死锁问题</li>
 </ul>
 <h3 id="客户端程序-1"><a href="#客户端程序-1" class="headerlink" title="客户端程序"></a>客户端程序</h3><p><img src="/2023/12/19/linux-qi-mo-fu-xi/udpclient.c.png"><br>connect</p>
 <ul>
 <li>不产生网络流量，内核记下远端端点名</li>
-<li>之前未用bind指定本地端点名，系统自动分配本地端点名<br>write</li>
+<li>之前未用bind指定本地端点名，系统自动分配本地端点名</li>
+</ul>
+<p>write</p>
+<ul>
 <li>使用前面的connect调用指定的端点名</li>
 <li>UDP不是面向连接的协议，可在sendto参数中指定对方端点名，而且允许对方端点名不同</li>
 <li>每次都使用sendto发送数据，前面的connect调用没必要了</li>
@@ -1972,6 +1989,9 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
