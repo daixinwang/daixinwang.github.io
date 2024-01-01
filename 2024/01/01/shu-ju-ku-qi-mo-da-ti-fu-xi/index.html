@@ -1,0 +1,1179 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{{title}}, learning,life,coding,computer science">
+    <meta name="description" content="关系代数知识总结
+删除
+插入
+更新
+SQL知识总结create table注意完整性约束
+drop tabledrop table r  删除表r
+alter tablealter table r add A D   向表r中增加属性A，D">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>{{title}} | Davian&#39;s Blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
+    
+    <style>
+        body{
+            background-image: url(/medias/background/background3.png);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Davian&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Davian&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            一个大学生的个人博客，记录学习和生活
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">{{title}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                                <span class="chip bg-color">期末复习</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                期末复习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-01-01
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-01-01
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h1><h2 id="知识总结"><a href="#知识总结" class="headerlink" title="知识总结"></a>知识总结</h2><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/relational-algebra.png"></p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/deletion.png"></p>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/insertion.png"></p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/updating.png"></p>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="知识总结-1"><a href="#知识总结-1" class="headerlink" title="知识总结"></a>知识总结</h2><h3 id="create-table"><a href="#create-table" class="headerlink" title="create table"></a>create table</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/create-table.png" alt="|525"><br>注意完整性约束</p>
+<h3 id="drop-table"><a href="#drop-table" class="headerlink" title="drop table"></a>drop table</h3><p>drop table r  删除表r</p>
+<h3 id="alter-table"><a href="#alter-table" class="headerlink" title="alter table"></a>alter table</h3><p>alter table r add A D   向表r中增加属性A，D为数据类型</p>
+<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><p><img src="/images/select.png"><br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/select2.png" alt="|500"></p>
+<h3 id="rename"><a href="#rename" class="headerlink" title="rename"></a>rename</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/rename.png"></p>
+<h3 id="like"><a href="#like" class="headerlink" title="like"></a>like</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/like.png" alt="|500"><br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/like2.png" alt="|500"></p>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/join.png"></p>
+<h3 id="view"><a href="#view" class="headerlink" title="view"></a>view</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/view.png" alt="|475"></p>
+<h3 id="order-by"><a href="#order-by" class="headerlink" title="order by"></a>order by</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/order-by.png"></p>
+<h3 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/group-by.png"><br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/group-by2.png" alt="|550"></p>
+<h3 id="deletion"><a href="#deletion" class="headerlink" title="deletion"></a>deletion</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/deletionSQL.png"></p>
+<h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/insertionSQL.png"></p>
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/update.png"></p>
+<h3 id="index"><a href="#index" class="headerlink" title="index"></a>index</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/index.png"></p>
+<h3 id="grant-revoke"><a href="#grant-revoke" class="headerlink" title="grant/revoke"></a>grant/revoke</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/grant.png"><br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/revoke.png"></p>
+<h3 id="role"><a href="#role" class="headerlink" title="role"></a>role</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/role.png"></p>
+<h1 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h1><h2 id="知识总结-2"><a href="#知识总结-2" class="headerlink" title="知识总结"></a>知识总结</h2><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/E-R.png" alt="|500"></p>
+<h3 id="全参与-部分参与"><a href="#全参与-部分参与" class="headerlink" title="全参与/部分参与"></a>全参与/部分参与</h3><p>两条线的那端表示全参与<br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/quan-can-yu.png"></p>
+<h3 id="弱实体集"><a href="#弱实体集" class="headerlink" title="弱实体集"></a>弱实体集</h3><p>双方框表示弱实体集，弱实体集的部分键加虚下划线进行标识<br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/ruo-shi-ti-ji.png"></p>
+<h2 id="题型总结"><a href="#题型总结" class="headerlink" title="题型总结"></a>题型总结</h2><h3 id="画E-R图"><a href="#画E-R图" class="headerlink" title="画E-R图"></a>画E-R图</h3><h3 id="将E-R图转换为关系模式"><a href="#将E-R图转换为关系模式" class="headerlink" title="将E-R图转换为关系模式"></a>将E-R图转换为关系模式</h3><h1 id="关系范式"><a href="#关系范式" class="headerlink" title="关系范式"></a>关系范式</h1><h2 id="知识总结-3"><a href="#知识总结-3" class="headerlink" title="知识总结"></a>知识总结</h2><h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><p>当关系模式为R，其中 $\alpha \subseteq R$ 和 $\beta \subseteq R$。如果在 R 上成立<strong>函数依赖</strong> $\alpha \rightarrow \beta$（α决定β，或β依赖α），则当对于 R 的任何合法关系 r(R) 时，只要关系中的任意两个元组 t1和 t2 在属性 $\alpha$ 上相同，它们在属性 $\beta$上也相同。</p>
+<ul>
+<li><strong>平凡依赖</strong>：平凡依赖是一种显而易见的依赖，它指的是一个属性或属性集总是依赖于自身的超集。例如，ID,name-&gt;ID；name-&gt;name</li>
+<li><strong>传递依赖</strong>：如果存在依赖 A→B 和 B→C，那么可以推导出传递依赖 A→C。</li>
+<li><strong>部分依赖</strong>：如果一个属性依赖于关键字的一部分，而不是整个关键字，那么就存在部分依赖。</li>
+</ul>
+<h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><p>K是关系模式R的<strong>超键</strong> &lt;-&gt; K$\rightarrow$R<br>K是R的<strong>候选键</strong> &lt;-&gt; K$\rightarrow$R且不存在α$\subseteq$K，α$\rightarrow$R（候选键具有最小性和唯一性）<br><strong>主属性</strong>：属于某个候选键的属性<br><strong>非主属性</strong>：不属于任何候选键的属性</p>
+<h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><p><strong>第一范式（1NF）</strong>：关系模式中的每个属性都是<strong>原子性</strong>的，即不可再分。不能有复合属性或多值属性。<br><strong>第二范式（2NF）</strong>：在1NF的基础上，要求表中的<strong>非主属性完全依赖于所有候选键</strong>。<br><strong>第三范式（3NF）</strong>：在2NF的基础上，要求表中的<strong>非主属性都不传递依赖于候选键</strong>。<br><strong>巴斯·科德范式（BCNF）</strong>：如果关系模式R是1NF，且<strong>每个属性</strong>都不部分依赖于候选键也不传递依赖于候选键，那么称R是BC范式。</p>
+<h3 id="无损连接"><a href="#无损连接" class="headerlink" title="无损连接"></a>无损连接</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/lossless-join.png"></p>
+<h3 id="函数依赖保持"><a href="#函数依赖保持" class="headerlink" title="函数依赖保持"></a>函数依赖保持</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/dependency-preserving.png"></p>
+<h2 id="题型总结-1"><a href="#题型总结-1" class="headerlink" title="题型总结"></a>题型总结</h2><h3 id="求属性集闭包a"><a href="#求属性集闭包a" class="headerlink" title="求属性集闭包a+"></a>求属性集闭包a+</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/computea+Example.png"></p>
+<h3 id="求函数依赖集的候选键"><a href="#求函数依赖集的候选键" class="headerlink" title="求函数依赖集的候选键"></a>求函数依赖集的候选键</h3><h4 id="step1-属性分类"><a href="#step1-属性分类" class="headerlink" title="step1 属性分类"></a>step1 属性分类</h4><p>L：只出现在左边（能推出别人，但不能被别人推出，一定属于候选键）<br>R：只出现在右边（只能被推出，一定不属于候选键）<br>LR：左右都出现（可能属于候选键）<br>N：未出现（不能被别人推出，一定属于候选键）</p>
+<h4 id="Step2-求闭包"><a href="#Step2-求闭包" class="headerlink" title="Step2 求闭包"></a>Step2 求闭包</h4><p>假如L、N的闭包是整个集合，那么L、N就是候选键；否则，依次加上LR中的属性，求闭包，看是否是整个集合，是则为候选键。</p>
+<h3 id="判断关系模式最高第几范式"><a href="#判断关系模式最高第几范式" class="headerlink" title="判断关系模式最高第几范式"></a>判断关系模式最高第几范式</h3><h4 id="step1-写出候选键和非主属性"><a href="#step1-写出候选键和非主属性" class="headerlink" title="step1 写出候选键和非主属性"></a>step1 写出候选键和非主属性</h4><h4 id="step2-判断是否存在存在部分依赖"><a href="#step2-判断是否存在存在部分依赖" class="headerlink" title="step2 判断是否存在存在部分依赖"></a>step2 判断是否存在存在部分依赖</h4><h4 id="step3-判断是否存在传递依赖"><a href="#step3-判断是否存在传递依赖" class="headerlink" title="step3 判断是否存在传递依赖"></a>step3 判断是否存在传递依赖</h4><h3 id="计算正则覆盖-最小覆盖Fc"><a href="#计算正则覆盖-最小覆盖Fc" class="headerlink" title="计算正则覆盖/最小覆盖Fc"></a>计算正则覆盖/最小覆盖Fc</h3><h4 id="step1-拆分右侧"><a href="#step1-拆分右侧" class="headerlink" title="step1 拆分右侧"></a>step1 拆分右侧</h4><p>例如将A-&gt;BC拆分为A-&gt;B和A-&gt;C</p>
+<h4 id="step2-去除自身求闭包"><a href="#step2-去除自身求闭包" class="headerlink" title="step2 去除自身求闭包"></a>step2 去除自身求闭包</h4><p>若有AB-&gt;C，BC-&gt;E，AE-&gt;G，去除AB自身，求AB的闭包，假如包含C，则删除冗余依赖AB-&gt;C</p>
+<h4 id="step3-左侧最小化"><a href="#step3-左侧最小化" class="headerlink" title="step3 左侧最小化"></a>step3 左侧最小化</h4><p>若有ABC-&gt;D，观察左侧，判断A能否由BC推出，能则去掉左侧的A</p>
+<h3 id="判断无损连接"><a href="#判断无损连接" class="headerlink" title="判断无损连接"></a>判断无损连接</h3><p>求R1与R2的交集X<br>看是否满足X-&gt;R1或者X-&gt;R2，满足一个就是无损连接</p>
+<h3 id="分解R为3NF，并保持无损连接和函数依赖"><a href="#分解R为3NF，并保持无损连接和函数依赖" class="headerlink" title="分解R为3NF，并保持无损连接和函数依赖"></a>分解R为3NF，并保持无损连接和函数依赖</h3><h4 id="step1-求正则覆盖Fc"><a href="#step1-求正则覆盖Fc" class="headerlink" title="step1 求正则覆盖Fc"></a>step1 求正则覆盖Fc</h4><h4 id="step2-观察Fc，划分集合，删除被另一集合包含的冗余集合"><a href="#step2-观察Fc，划分集合，删除被另一集合包含的冗余集合" class="headerlink" title="step2 观察Fc，划分集合，删除被另一集合包含的冗余集合"></a>step2 观察Fc，划分集合，删除被另一集合包含的冗余集合</h4><h4 id="step3-找出未在Fc中出现的属性，划分为一个集合"><a href="#step3-找出未在Fc中出现的属性，划分为一个集合" class="headerlink" title="step3 找出未在Fc中出现的属性，划分为一个集合"></a>step3 找出未在Fc中出现的属性，划分为一个集合</h4><h4 id="step-4-假如候选键未出现在上述集合中，单独将候选键划分为一个集合"><a href="#step-4-假如候选键未出现在上述集合中，单独将候选键划分为一个集合" class="headerlink" title="step 4 假如候选键未出现在上述集合中，单独将候选键划分为一个集合"></a>step 4 假如候选键未出现在上述集合中，单独将候选键划分为一个集合</h4><h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="知识总结-4"><a href="#知识总结-4" class="headerlink" title="知识总结"></a>知识总结</h2><p>聚集索引：索引顺序和文件顺序相同<br>稠密索引：索引文件中出现了数据文件中所有的搜索键<br>稀疏索引：索引文件中仅出现数据文件中部分的搜索键</p>
+<h1 id="语法树"><a href="#语法树" class="headerlink" title="语法树"></a>语法树</h1><h3 id="构造语法树"><a href="#构造语法树" class="headerlink" title="构造语法树"></a>构造语法树</h3><p>叶节点：关系<br>非叶节点：各种关系代数操作<br>从底向上执行</p>
+<h3 id="优化语法树"><a href="#优化语法树" class="headerlink" title="优化语法树"></a>优化语法树</h3><ol>
+<li>利用选择串接律，将选择操作分成单个独立；</li>
+<li>对于每个选择操作，尽可能移到靠近叶节点；</li>
+<li>对于每个投影操作，尽可能移到靠近叶节点或删除某些投影操作；</li>
+<li>将串接的多个选择和投影组合成一个；</li>
+<li>按照小关系先执行的原则，安排操作顺序；</li>
+<li>组合笛卡尔乘积和相继的操作为连接操作；</li>
+<li>对每个叶节点加必要的投影操作，消除对查询无用的属性；</li>
+<li>分组（考试不涉及）</li>
+</ol>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>可恢复调度（recoverable schedule）：如果Tj会读取一个由Ti写的数据，那么Tj应该在Ti之后提交。<br>无级联调度（cascadeless schedule）：不会发生级联回滚（因一个事务故障导致其它事务回滚），对每一对事务Ti和Tj，如果Tj会读取由Ti写的数据，那么Tj的读取操作应该发生在Ti提交之后。</p>
+<p>共享锁S：只能读<br>互斥锁X：能读能写<br>两阶段锁协议：事务在锁点前只能加锁，在锁点后只能解锁<br>strict two-phase locking protocol：互斥锁保持到最后再释放<br>rigorous two-phase locking protocol：所有锁保持到最后再释放</p>
+<p>冲突可串行化（serializable）：若一个调度能通过调换非冲突操作等价于一个串行调度，则为冲突可串行化。<br>冲突可串行化判断方法：前驱图</p>
+<ol>
+<li>Ti-&gt;Tj，代表Ti执行一条操作后，Tj会执行冲突操作</li>
+<li>若得到的前驱图无环，代表冲突可串行化</li>
+<li>根据无环的前驱图确认等价的串行顺序：选入度为0的事务，去掉该事务和边，再选入度为0的事务，以此类推</li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Davian</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://daixinwang.github.io/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/">https://daixinwang.github.io/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Davian</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                                    <span class="chip bg-color">期末复习</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="{{title}}">
+                        
+                        <span class="card-title">{{title}}</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            大三上数据库期末大题复习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                    期末复习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                        <span class="chip bg-color">期末复习</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/12/19/linux-qi-mo-fu-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Linux开发环境及应用期末复习">
+                        
+                        <span class="card-title">Linux开发环境及应用期末复习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            大三上Linux开发环境及应用期末复习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                    期末复习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                        <span class="chip bg-color">期末复习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Davian&#39;s Blog<br />'
+            + '文章作者: Davian<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023-2024</span>
+            
+            <a href="/about" target="_blank">Davian</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">40.2k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2023";
+                        var startMonth = "11";
+                        var startDate = "24";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/daixinwang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:daixinwang@bupt.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        <script type="text/javascript" src="/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://daixinwang.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

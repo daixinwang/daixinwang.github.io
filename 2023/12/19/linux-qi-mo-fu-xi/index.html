@@ -318,6 +318,10 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
                                 <span class="chip bg-color">Linux</span>
                             </a>
                         
+                            <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                                <span class="chip bg-color">期末复习</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -346,7 +350,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-12-31
+                    2024-01-01
                 </div>
                 
 
@@ -360,7 +364,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    75 分
+                    74 分
                 </div>
                 
 
@@ -1279,9 +1283,9 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>注意:<strong>左花括号后面必须有一个空格</strong></li>
 <li>圆括号是shell元字符，花括号不是，它作为一个特殊内部命令处理。所以必须是一行的行首单词</li>
 </ul>
-<h2 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h2><h3 id="条件结构if：两个或多个分支"><a href="#条件结构if：两个或多个分支" class="headerlink" title="条件结构if：两个或多个分支"></a>条件结构if：两个或多个分支</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; if condition</span><br><span class="line">&gt; then </span><br><span class="line">&gt; 	list</span><br><span class="line">&gt; elif condition</span><br><span class="line">&gt; then </span><br><span class="line">&gt; 	list</span><br><span class="line">&gt; else</span><br><span class="line">&gt; 	list</span><br><span class="line">&gt; fi</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h2><h3 id="条件结构if：两个或多个分支"><a href="#条件结构if：两个或多个分支" class="headerlink" title="条件结构if：两个或多个分支"></a>条件结构if：两个或多个分支</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then </span><br><span class="line">	list</span><br><span class="line">elif condition</span><br><span class="line">then </span><br><span class="line">	list</span><br><span class="line">else</span><br><span class="line">	list</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
 <p>其中：if/then/elif/else/fi为关键字（内部命令），<strong>关键字作为内部命令，要么在行首，要么前面有分号来分隔命令</strong><br>与C语言不同，if的语法中then与else或fi配对，使得不需要花括号这样的命令组合</p>
-<h3 id="case结构：多条件分支"><a href="#case结构：多条件分支" class="headerlink" title="case结构：多条件分支"></a>case结构：多条件分支</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; case word in</span><br><span class="line">	 pattern1)  </span><br><span class="line">		 list1;;</span><br><span class="line">	 pattern2)  </span><br><span class="line">		 list2;;</span><br><span class="line">	 ...</span><br><span class="line">	esac</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="case结构：多条件分支"><a href="#case结构：多条件分支" class="headerlink" title="case结构：多条件分支"></a>case结构：多条件分支</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">case word in</span><br><span class="line">	pattern1)  </span><br><span class="line">		list1;;</span><br><span class="line">	pattern2)  </span><br><span class="line">		list2;;</span><br><span class="line">	 ...</span><br><span class="line">esac</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>word与pattern匹配：使用shell的文件名匹配规则</li>
 <li>;;是一个整体，不能在两分号间加空格，也不能用两个连续的空行代替</li>
@@ -1308,10 +1312,10 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>解释和编译</li>
 <li>将数据（程序生成的数据或者外部输入的数据）当做程序来执行是只有解释型语言才可能具备的特点，类似C这样的编译型语言无法具备这样的功能（但可以通过“动态链接”的方式，在程序运行期间不停止程序的运行有限度地变换处理程序）<br><img src="/2023/12/19/linux-qi-mo-fu-xi/exampleOfEval.png" alt="|400"></li>
 </ul>
-<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; while condition</span><br><span class="line">&gt; do</span><br><span class="line">&gt; 	list</span><br><span class="line">&gt; done</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; for name in word1 word2 ...</span><br><span class="line">&gt; do</span><br><span class="line">&gt; 	list</span><br><span class="line">&gt; done</span><br><span class="line">或者</span><br><span class="line">&gt; for name</span><br><span class="line">&gt; do</span><br><span class="line">&gt; 	list</span><br><span class="line">&gt; done</span><br><span class="line">相当于</span><br><span class="line">&gt;for name in $1 $2 ...</span><br><span class="line">&gt;do</span><br><span class="line">&gt;	list</span><br><span class="line">&gt;done</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while condition</span><br><span class="line">do</span><br><span class="line">	list</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> for name in word1 word2 ...</span><br><span class="line"> do</span><br><span class="line"> 	list</span><br><span class="line"> done</span><br><span class="line">或者</span><br><span class="line"> for name</span><br><span class="line"> do</span><br><span class="line"> 	list</span><br><span class="line"> done</span><br><span class="line">相当于</span><br><span class="line">for name in $1 $2 ...</span><br><span class="line">do</span><br><span class="line">	list</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="seq"><a href="#seq" class="headerlink" title="seq"></a>seq</h3><p>用seq命令实现类似C语言中的for循环</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;for i in \`seq 1 254\`</span><br><span class="line">&gt;do</span><br><span class="line">&gt;	ping -c 1 -w 1 192.168.0.$i</span><br><span class="line">&gt;done</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in \`seq 1 254\`</span><br><span class="line">do</span><br><span class="line">	ping -c 1 -w 1 192.168.0.$i</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 <p>人机交互时可直接写为一行：<br>for i in `seq1254`;do ping -c1 -w1 192.168.0.$i;done</p>
 <h3 id="break-continue-exit"><a href="#break-continue-exit" class="headerlink" title="break,continue,exit"></a>break,continue,exit</h3><ul>
 <li><p>内部命令break<br>循环结构for/while中使用，中止循环<br>例：break<br>  break2         # 中止两重循环</p>
@@ -1863,6 +1867,10 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
                                     <span class="chip bg-color">Linux</span>
                                 </a>
                             
+                                <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                                    <span class="chip bg-color">期末复习</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1906,30 +1914,29 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/12/19/linux-qi-mo-fu-xi/">
+                <a href="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Linux开发环境及应用期末复习">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="{{title}}">
                         
-                        <span class="card-title">Linux开发环境及应用期末复习</span>
+                        <span class="card-title">{{title}}</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            大三上Linux开发环境及应用期末复习
+                            大三上数据库期末大题复习
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1942,16 +1949,15 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">笔记</span>
+                    <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                        <span class="chip bg-color">期末复习</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
@@ -2176,7 +2182,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2023</span>
+                <span id="year">2023-2024</span>
             
             <a href="/about" target="_blank">Davian</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -2187,7 +2193,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">38.6k</span>
+                        class="white-color">40.2k</span>
             
             
             
