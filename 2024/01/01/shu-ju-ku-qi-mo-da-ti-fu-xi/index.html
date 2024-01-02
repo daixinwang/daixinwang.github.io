@@ -4,14 +4,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="{{title}}, learning,life,coding,computer science">
+    <meta name="keywords" content="数据库期末大题复习, learning,life,coding,computer science">
     <meta name="description" content="关系代数知识总结
 删除
 插入
 更新
-SQL知识总结create table注意完整性约束
-drop tabledrop table r  删除表r
-alter tablealter table r add A D   向表r中增加属性A，D">
+SQL知识总结create table常用数据类型：
+
+char(n)：长度为n的定长字符串
+varchar(n)：最大长度为n的变长字符串
+int：长整数
+numeric(p,d)：定点数，小数点前p位">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +26,7 @@ alter tablealter table r add A D   向表r中增加属性A，D">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>{{title}} | Davian&#39;s Blog</title>
+    <title>数据库期末大题复习 | Davian&#39;s Blog</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
     
     <style>
@@ -277,12 +280,12 @@ alter tablealter table r add A D   向表r中增加属性A，D">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">{{title}}</h1>
+                    <h1 class="description center-align post-title">数据库期末大题复习</h1>
                 </div>
             </div>
         </div>
@@ -342,21 +345,21 @@ alter tablealter table r add A D   向表r中增加属性A，D">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-01
+                    2024-01-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -388,10 +391,27 @@ alter tablealter table r add A D   向表r中增加属性A，D">
 <h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/deletion.png"></p>
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/insertion.png"></p>
 <h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/updating.png"></p>
-<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="知识总结-1"><a href="#知识总结-1" class="headerlink" title="知识总结"></a>知识总结</h2><h3 id="create-table"><a href="#create-table" class="headerlink" title="create table"></a>create table</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/create-table.png" alt="|525"><br>注意完整性约束</p>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="知识总结-1"><a href="#知识总结-1" class="headerlink" title="知识总结"></a>知识总结</h2><h3 id="create-table"><a href="#create-table" class="headerlink" title="create table"></a>create table</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/create-table.png" alt="|525"><br>常用数据类型：</p>
+<ul>
+<li>char(n)：长度为n的定长字符串</li>
+<li>varchar(n)：最大长度为n的变长字符串</li>
+<li>int：长整数</li>
+<li>numeric(p,d)：定点数，小数点前p位，小数点后d位</li>
+<li>boolean：逻辑布尔值<br>建表时考虑的完整性约束：</li>
+<li>主键约束：primary key(ID)</li>
+<li>外键约束：foreign key(dept_name) references department</li>
+<li>检查约束：sex char(1) check(sex in(‘男’,’女’))</li>
+<li>非空约束：name varchar(20) not null</li>
+<li>默认值约束：sex char(1) default ‘男’<br>补充：关系模型的完整性约束</li>
+</ul>
+<ol>
+<li>实体完整性约束（entity integrity）</li>
+<li>参照完整性约束（referential integrity）</li>
+<li>用户自定义的完整性约束</li>
+</ol>
 <h3 id="drop-table"><a href="#drop-table" class="headerlink" title="drop table"></a>drop table</h3><p>drop table r  删除表r</p>
 <h3 id="alter-table"><a href="#alter-table" class="headerlink" title="alter table"></a>alter table</h3><p>alter table r add A D   向表r中增加属性A，D为数据类型</p>
-<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><p><img src="/images/select.png"><br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/select2.png" alt="|500"></p>
+<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/select.png"><br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/select2.png" alt="|500"></p>
 <h3 id="rename"><a href="#rename" class="headerlink" title="rename"></a>rename</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/rename.png"></p>
 <h3 id="like"><a href="#like" class="headerlink" title="like"></a>like</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/like.png" alt="|500"><br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/like2.png" alt="|500"></p>
 <h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/join.png"></p>
@@ -407,7 +427,17 @@ alter tablealter table r add A D   向表r中增加属性A，D">
 <h1 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h1><h2 id="知识总结-2"><a href="#知识总结-2" class="headerlink" title="知识总结"></a>知识总结</h2><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/E-R.png" alt="|500"></p>
 <h3 id="全参与-部分参与"><a href="#全参与-部分参与" class="headerlink" title="全参与/部分参与"></a>全参与/部分参与</h3><p>两条线的那端表示全参与<br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/quan-can-yu.png"></p>
 <h3 id="弱实体集"><a href="#弱实体集" class="headerlink" title="弱实体集"></a>弱实体集</h3><p>双方框表示弱实体集，弱实体集的部分键加虚下划线进行标识<br><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/ruo-shi-ti-ji.png"></p>
-<h2 id="题型总结"><a href="#题型总结" class="headerlink" title="题型总结"></a>题型总结</h2><h3 id="画E-R图"><a href="#画E-R图" class="headerlink" title="画E-R图"></a>画E-R图</h3><h3 id="将E-R图转换为关系模式"><a href="#将E-R图转换为关系模式" class="headerlink" title="将E-R图转换为关系模式"></a>将E-R图转换为关系模式</h3><h1 id="关系范式"><a href="#关系范式" class="headerlink" title="关系范式"></a>关系范式</h1><h2 id="知识总结-3"><a href="#知识总结-3" class="headerlink" title="知识总结"></a>知识总结</h2><h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><p>当关系模式为R，其中 $\alpha \subseteq R$ 和 $\beta \subseteq R$。如果在 R 上成立<strong>函数依赖</strong> $\alpha \rightarrow \beta$（α决定β，或β依赖α），则当对于 R 的任何合法关系 r(R) 时，只要关系中的任意两个元组 t1和 t2 在属性 $\alpha$ 上相同，它们在属性 $\beta$上也相同。</p>
+<h2 id="题型总结"><a href="#题型总结" class="headerlink" title="题型总结"></a>题型总结</h2><h3 id="画E-R图"><a href="#画E-R图" class="headerlink" title="画E-R图"></a>画E-R图</h3><h3 id="将E-R图转换为关系模式"><a href="#将E-R图转换为关系模式" class="headerlink" title="将E-R图转换为关系模式"></a>将E-R图转换为关系模式</h3><h4 id="实体集的转换"><a href="#实体集的转换" class="headerlink" title="实体集的转换"></a>实体集的转换</h4><ul>
+<li>一个多值属性生成一个表</li>
+<li>表中只写复合属性的细分属性</li>
+<li>弱实体集中键+依赖集的主键构成弱实体集的主键</li>
+</ul>
+<h4 id="联系集的转换"><a href="#联系集的转换" class="headerlink" title="联系集的转换"></a>联系集的转换</h4><ul>
+<li>1对1-&gt;合并到任一边</li>
+<li>1对n-&gt;用1的主键作为外键合并到n那一边</li>
+<li>多对多-&gt;生成表：两个主键+联系集的属性</li>
+</ul>
+<h1 id="关系范式"><a href="#关系范式" class="headerlink" title="关系范式"></a>关系范式</h1><h2 id="知识总结-3"><a href="#知识总结-3" class="headerlink" title="知识总结"></a>知识总结</h2><h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><p>当关系模式为R，其中 $\alpha \subseteq R$ 和 $\beta \subseteq R$。如果在 R 上成立<strong>函数依赖</strong> $\alpha \rightarrow \beta$（α决定β，或β依赖α），则当对于 R 的任何合法关系 r(R) 时，只要关系中的任意两个元组 t1和 t2 在属性 $\alpha$ 上相同，它们在属性 $\beta$上也相同。</p>
 <ul>
 <li><strong>平凡依赖</strong>：平凡依赖是一种显而易见的依赖，它指的是一个属性或属性集总是依赖于自身的超集。例如，ID,name-&gt;ID；name-&gt;name</li>
 <li><strong>传递依赖</strong>：如果存在依赖 A→B 和 B→C，那么可以推导出传递依赖 A→C。</li>
@@ -420,7 +450,9 @@ alter tablealter table r add A D   向表r中增加属性A，D">
 <h2 id="题型总结-1"><a href="#题型总结-1" class="headerlink" title="题型总结"></a>题型总结</h2><h3 id="求属性集闭包a"><a href="#求属性集闭包a" class="headerlink" title="求属性集闭包a+"></a>求属性集闭包a+</h3><p><img src="/2024/01/01/shu-ju-ku-qi-mo-da-ti-fu-xi/computea+Example.png"></p>
 <h3 id="求函数依赖集的候选键"><a href="#求函数依赖集的候选键" class="headerlink" title="求函数依赖集的候选键"></a>求函数依赖集的候选键</h3><h4 id="step1-属性分类"><a href="#step1-属性分类" class="headerlink" title="step1 属性分类"></a>step1 属性分类</h4><p>L：只出现在左边（能推出别人，但不能被别人推出，一定属于候选键）<br>R：只出现在右边（只能被推出，一定不属于候选键）<br>LR：左右都出现（可能属于候选键）<br>N：未出现（不能被别人推出，一定属于候选键）</p>
 <h4 id="Step2-求闭包"><a href="#Step2-求闭包" class="headerlink" title="Step2 求闭包"></a>Step2 求闭包</h4><p>假如L、N的闭包是整个集合，那么L、N就是候选键；否则，依次加上LR中的属性，求闭包，看是否是整个集合，是则为候选键。</p>
-<h3 id="判断关系模式最高第几范式"><a href="#判断关系模式最高第几范式" class="headerlink" title="判断关系模式最高第几范式"></a>判断关系模式最高第几范式</h3><h4 id="step1-写出候选键和非主属性"><a href="#step1-写出候选键和非主属性" class="headerlink" title="step1 写出候选键和非主属性"></a>step1 写出候选键和非主属性</h4><h4 id="step2-判断是否存在存在部分依赖"><a href="#step2-判断是否存在存在部分依赖" class="headerlink" title="step2 判断是否存在存在部分依赖"></a>step2 判断是否存在存在部分依赖</h4><h4 id="step3-判断是否存在传递依赖"><a href="#step3-判断是否存在传递依赖" class="headerlink" title="step3 判断是否存在传递依赖"></a>step3 判断是否存在传递依赖</h4><h3 id="计算正则覆盖-最小覆盖Fc"><a href="#计算正则覆盖-最小覆盖Fc" class="headerlink" title="计算正则覆盖/最小覆盖Fc"></a>计算正则覆盖/最小覆盖Fc</h3><h4 id="step1-拆分右侧"><a href="#step1-拆分右侧" class="headerlink" title="step1 拆分右侧"></a>step1 拆分右侧</h4><p>例如将A-&gt;BC拆分为A-&gt;B和A-&gt;C</p>
+<h3 id="判断关系模式最高第几范式"><a href="#判断关系模式最高第几范式" class="headerlink" title="判断关系模式最高第几范式"></a>判断关系模式最高第几范式</h3><h4 id="step1-写出候选键和非主属性"><a href="#step1-写出候选键和非主属性" class="headerlink" title="step1 写出候选键和非主属性"></a>step1 写出候选键和非主属性</h4><h4 id="step2-判断非主属性和候选键之间是否存在部分依赖"><a href="#step2-判断非主属性和候选键之间是否存在部分依赖" class="headerlink" title="step2 判断非主属性和候选键之间是否存在部分依赖"></a>step2 判断非主属性和候选键之间是否存在部分依赖</h4><p>存在则最高第一范式</p>
+<h4 id="step3-判断非主属性和候选键之间是否存在传递依赖"><a href="#step3-判断非主属性和候选键之间是否存在传递依赖" class="headerlink" title="step3 判断非主属性和候选键之间是否存在传递依赖"></a>step3 判断非主属性和候选键之间是否存在传递依赖</h4><p>存在则最高第二范式</p>
+<h3 id="计算正则覆盖-最小覆盖Fc"><a href="#计算正则覆盖-最小覆盖Fc" class="headerlink" title="计算正则覆盖/最小覆盖Fc"></a>计算正则覆盖/最小覆盖Fc</h3><h4 id="step1-拆分右侧"><a href="#step1-拆分右侧" class="headerlink" title="step1 拆分右侧"></a>step1 拆分右侧</h4><p>例如将A-&gt;BC拆分为A-&gt;B和A-&gt;C</p>
 <h4 id="step2-去除自身求闭包"><a href="#step2-去除自身求闭包" class="headerlink" title="step2 去除自身求闭包"></a>step2 去除自身求闭包</h4><p>若有AB-&gt;C，BC-&gt;E，AE-&gt;G，去除AB自身，求AB的闭包，假如包含C，则删除冗余依赖AB-&gt;C</p>
 <h4 id="step3-左侧最小化"><a href="#step3-左侧最小化" class="headerlink" title="step3 左侧最小化"></a>step3 左侧最小化</h4><p>若有ABC-&gt;D，观察左侧，判断A能否由BC推出，能则去掉左侧的A</p>
 <h3 id="判断无损连接"><a href="#判断无损连接" class="headerlink" title="判断无损连接"></a>判断无损连接</h3><p>求R1与R2的交集X<br>看是否满足X-&gt;R1或者X-&gt;R2，满足一个就是无损连接</p>
@@ -568,9 +600,9 @@ alter tablealter table r add A D   向表r中增加属性A，D">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="{{title}}">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="数据库期末大题复习">
                         
-                        <span class="card-title">{{title}}</span>
+                        <span class="card-title">数据库期末大题复习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -652,16 +684,16 @@ alter tablealter table r add A D   向表r中增加属性A，D">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">笔记</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                     <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
                         <span class="chip bg-color">期末复习</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
                     </a>
                     
                 </div>
@@ -844,7 +876,7 @@ alter tablealter table r add A D   向表r中增加属性A，D">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">39.5k</span>
+                        class="white-color">39.8k</span>
             
             
             
