@@ -353,7 +353,7 @@ Variety（多样化）
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-02
+                    2024-01-04
                 </div>
                 
 
@@ -572,7 +572,9 @@ Variety（多样化）
 <h3 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h3><ul>
 <li>列簇式存储引擎：<strong>同一列簇中的数据会单独存储，但列簇内数据是行式存储的</strong></li>
 </ul>
-<h4 id="HBase逻辑数据模型"><a href="#HBase逻辑数据模型" class="headerlink" title="HBase逻辑数据模型"></a>HBase逻辑数据模型</h4><h4 id="HBase物理数据存储"><a href="#HBase物理数据存储" class="headerlink" title="HBase物理数据存储"></a>HBase物理数据存储</h4><h4 id="HBase基本架构"><a href="#HBase基本架构" class="headerlink" title="HBase基本架构"></a>HBase基本架构</h4><p>HBase采用了经典的<strong>master/slave</strong>架构，与HDFS不同的是，它的master与slave不直接互连，而是通过 引入ZooKeeper让两类服务解耦。</p>
+<h4 id="HBase逻辑数据模型"><a href="#HBase逻辑数据模型" class="headerlink" title="HBase逻辑数据模型"></a>HBase逻辑数据模型</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Hbase-logi1.png"><br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Hbase-logi2.png"></p>
+<h4 id="HBase物理数据存储"><a href="#HBase物理数据存储" class="headerlink" title="HBase物理数据存储"></a>HBase物理数据存储</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Hbase-wuli1.png"><br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Hbase-wuli2.png"></p>
+<h4 id="HBase基本架构"><a href="#HBase基本架构" class="headerlink" title="HBase基本架构"></a>HBase基本架构</h4><p>HBase采用了经典的<strong>master/slave</strong>架构，与HDFS不同的是，它的master与slave不直接互连，而是通过 引入ZooKeeper让两类服务解耦。</p>
 <ul>
 <li><strong>HMaster</strong>：HMaster可以存在多个，主HMaster由ZooKeeper动态选举产生，当主HMaster出现故障后， 系统可由ZooKeeper动态选举出的新HMaster接管。<ul>
 <li>协调RegionSever</li>
@@ -606,7 +608,7 @@ Variety（多样化）
 <li>当leader出现故障时，ZooKeeper会<strong>通过ZAB协议发起新一轮的leader投票选举，保证集群中始终有一个可用的leader</strong>。</li>
 <li>ZooKeeper中多个实例中的内存数据并不是强一致的，它采用的ZAB协议<strong>只能保证，同一时刻至少多数节点中的数据是强一致的</strong>。为了让客户端读到最新的数据，需给对应的ZooKeeper实例发送同步指令（可通过调用sync接口实现），强制其与leader同步数据。</li>
 <li>为了解决集群扩展性导致写性能下降的问题，ZooKeeper引入了第三个角色：Observer。</li>
-<li><strong>Observer并不参与投票过程</strong>，除此之外，它的功能与follower类似：它可以接入正常的ZooKeeper集群，接收并处理客户端读请求，或将写请求进一步转发给leader处理。由于Observer自身能够保存一份数据提供读服务，因此可通过增加Observer实例数提高系统的读吞吐率。由于Observer不参与投票过程，因此它出现故障并不会影响ZooKeeper集群的可用性。<br>负载均衡是对<br>Kafka中的负载均衡是对leader partition的负载均衡</li>
+<li><strong>Observer并不参与投票过程</strong>，除此之外，它的功能与follower类似：它可以接入正常的ZooKeeper集群，接收并处理客户端读请求，或将写请求进一步转发给leader处理。由于Observer自身能够保存一份数据提供读服务，因此可通过增加Observer实例数提高系统的读吞吐率。由于Observer不参与投票过程，因此它出现故障并不会影响ZooKeeper集群的可用性。<br>负载均衡是对?的负载均衡<br>Kafka中的负载均衡是对leader partition的负载均衡</li>
 </ul>
 <h3 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h3><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/yarnStructure.png" alt="|600"></p>
 <ul>
@@ -1095,7 +1097,7 @@ Variety（多样化）
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">39.8k</span>
+                        class="white-color">39.9k</span>
             
             
             
