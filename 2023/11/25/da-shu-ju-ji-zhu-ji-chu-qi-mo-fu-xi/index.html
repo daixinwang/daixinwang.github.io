@@ -17,8 +17,8 @@ Volume（量大）
 Variety（多样化）
 
 数据度量
-大数据的产生阶段
-运营式系统阶段（数据">
+b：比特，一个二进制数字
+B：字节，8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -317,12 +317,12 @@ Variety（多样化）
                                 <span class="chip bg-color">大数据技术基础</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
-                                <span class="chip bg-color">期末复习</span>
-                            </a>
-                        
                             <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                 <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                                <span class="chip bg-color">期末复习</span>
                             </a>
                         
                     </div>
@@ -406,7 +406,13 @@ Variety（多样化）
 <li>Volume（量大）</li>
 <li>Variety（多样化）</li>
 </ul>
-<h3 id="数据度量"><a href="#数据度量" class="headerlink" title="数据度量"></a>数据度量</h3><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/shu-jv-du-liang.png"></p>
+<h3 id="数据度量"><a href="#数据度量" class="headerlink" title="数据度量"></a>数据度量</h3><ul>
+<li>b：比特，一个二进制数字</li>
+<li>B：字节，8比特组成一个字节</li>
+<li>KB：10的3次方</li>
+<li>MB：10的6次方</li>
+<li>GB：10的9次方<br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/shu-jv-du-liang.png"></li>
+</ul>
 <h3 id="大数据的产生阶段"><a href="#大数据的产生阶段" class="headerlink" title="大数据的产生阶段"></a>大数据的产生阶段</h3><ul>
 <li>运营式系统阶段（数据被动产生）</li>
 <li>用户原创内容阶段（数据主动产生）</li>
@@ -457,7 +463,7 @@ Variety（多样化）
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="大数据技术框架"><a href="#大数据技术框架" class="headerlink" title="大数据技术框架"></a>大数据技术框架</h3><ul>
+<h3 id="大数据技术框架（重要）"><a href="#大数据技术框架（重要）" class="headerlink" title="大数据技术框架（重要）"></a>大数据技术框架（重要）</h3><ul>
 <li>数据收集：从数据源收集数据</li>
 <li>数据存储：存储海量结构化与非结构化数据的存储</li>
 <li>资源管理与服务协调：管理计算资源和协调不同服务之间的交互</li>
@@ -475,23 +481,19 @@ Variety（多样化）
 <li>Sink：Sink负责从Channel中读取数据，并发送给下一个Agent。</li>
 <li>Channel：Channel是一个缓存区，它暂存Source写入的Event，直到被Sink发送出去。<br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Flume%20Agent.png"></li>
 </ul>
-<h4 id="多路复用和多路合并"><a href="#多路复用和多路合并" class="headerlink" title="多路复用和多路合并"></a>多路复用和多路合并</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/duo-lu-he-bing.png"><br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/duo-lu-fu-yong.png"></p>
-<h3 id="分布式消息队列-Kafka"><a href="#分布式消息队列-Kafka" class="headerlink" title="分布式消息队列-Kafka"></a>分布式消息队列-Kafka</h3><h4 id="Kafka设计动机"><a href="#Kafka设计动机" class="headerlink" title="Kafka设计动机"></a>Kafka设计动机</h4><p>存在问题：</p>
+<h4 id="多路复用和多路合并（要了解）"><a href="#多路复用和多路合并（要了解）" class="headerlink" title="多路复用和多路合并（要了解）"></a>多路复用和多路合并（要了解）</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/duo-lu-he-bing.png"><br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/duo-lu-fu-yong.png"></p>
+<h3 id="分布式消息队列-Kafka"><a href="#分布式消息队列-Kafka" class="headerlink" title="分布式消息队列-Kafka"></a>分布式消息队列-Kafka</h3><h4 id="Kafka设计动机（要了解）"><a href="#Kafka设计动机（要了解）" class="headerlink" title="Kafka设计动机（要了解）"></a>Kafka设计动机（要了解）</h4><p>存在问题：</p>
 <ul>
 <li><strong>数据生产者和消费者耦合度过高</strong>：需要增加一种新的消费者时，所有数据生产者均需要被改动，扩展性非常差。</li>
 <li><strong>生产者和消费者间数据处理速率不对等</strong></li>
-<li><strong>大量并发的网络连接对后端消费者不够友好</strong><br>解决方法：引入一层”中间件”</li>
-<li><strong>消息中间件</strong>：避免生产者和消费者直接互通产生的彼此高度依赖，两者中任何一个有变化都不会影响另一方。  </li>
-<li><strong>消息队列</strong>：缓存生产者产生的数据，使得消费者可以重复消费历史数据；平滑生产者产生数据速度和消费者处理数据速度的不对等。</li>
-<li><strong>发布订阅系统</strong>：消费者可订阅某类主题的数据，当生产者产生对应主题的数据后，所有订阅者会快速获取到的数据，即消费者可快速获取新增数据。</li>
-<li><strong>信息总线</strong>：所有收集到的数据会流经Kafka，之后由Kafka分流后，进入各个消费者系统。</li>
+<li><strong>大量并发的网络连接对后端消费者不够友好</strong></li>
 </ul>
 <h4 id="Kafka设计架构"><a href="#Kafka设计架构" class="headerlink" title="Kafka设计架构"></a>Kafka设计架构</h4><p>Kafka是一个分布式消息队列，它将数据分区保存，并将每个分区保存成多份以提高数据可靠性。</p>
 <ul>
 <li>Kafka架构由<strong>Producer、Broker和Consumer</strong>三类组件构成，其中Producer将数据写入Broker，Consumer则从Broker上读取数据进行处理；Broker构成了连接Producer和Consumer的”缓冲区”，Broker和Consumer通过ZooKeeper做协调和服务发现。<br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Kafka.png"></li>
-<li>Kafka架构采用<strong>Push-Pull架构</strong>（生产者将消息推送到队列中，但消费者不会立即接收消息。相反，消费者在自己的节奏下拉（pull）消息），即Producer将数据直接”push”给Broker，而Consumer从Broker端”pull”数据，这种架构优势主要体现在以下两点:<ul>
+<li>Kafka架构采用<strong>Push-Pull架构</strong>（生产者将消息推送到队列中，但消费者不会立即接收消息。相反，消费者在自己的节奏下拉（pull）消息），即Producer将数据直接”push”给Broker，而Consumer从Broker端”pull”数据，这种<strong>架构优势</strong>主要体现在以下两点:<ul>
 <li>Consumer可根据自己的实际负载和需求获取数据，避免采用”push”方式给Consumer带来较大压力。</li>
-<li>Consumer自己维护已读取消息的offset而不是由Broker端维护，大大缓解了Broker的压力。</li>
+<li>Consumer自己维护已读取消息的offset而不是由Broker端维护，大大缓解了Broker的压力。<br> 需要知道：Kafka的负载均衡是对leader partition的负载均衡，因为只有leader partition负载对数据的读写，follower partition仅负责同步数据。<br> <img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Pasted%20image%2020240104161856.png"></li>
 </ul>
 </li>
 </ul>
@@ -512,8 +514,16 @@ Variety（多样化）
 <h3 id="文件存储格式"><a href="#文件存储格式" class="headerlink" title="文件存储格式"></a>文件存储格式</h3><p>常见的存储格式包括<strong>行式存储和列式存储</strong>两种：行式存储以文本格式Text File、key/value，二进制存储格式Sequence File为典型代表；列式存储以ORC、Parquet和Carbon Data三种文件格式为代 表。</p>
 <h4 id="行存储与列存储的区别（重要）"><a href="#行存储与列存储的区别（重要）" class="headerlink" title="行存储与列存储的区别（重要）"></a>行存储与列存储的区别（重要）</h4><p>行存储以行为单位进行存储，读写过程是一致的，都是连续读取或写入同一行的所有列；列存储写数据时将数据拆分成列，并以列为单位存储（相同列存储在一起），读数据时，分别读取对应的列，并拼装成行。下表是行列存储优缺点对比：<br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/hang-vs-lie.png"></p>
 <h3 id="分布式文件系统"><a href="#分布式文件系统" class="headerlink" title="分布式文件系统"></a>分布式文件系统</h3><h4 id="横向扩展和纵向扩展"><a href="#横向扩展和纵向扩展" class="headerlink" title="横向扩展和纵向扩展"></a>横向扩展和纵向扩展</h4><ul>
-<li>纵向扩展(scale-up)：利用现有的存储系统，通过不断增加存储容量来满足数据增长的需求 </li>
-<li>横向扩展(scale-out)：以网络互连的节点为单位扩大存储容量(集群)</li>
+<li>纵向扩展(scale-up)：利用现有的存储系统，通过不断增加存储容量来满足数据增长的需求 <ul>
+<li>简单，低延迟</li>
+<li>无法无限扩展，成本较高，容错性较低</li>
+</ul>
+</li>
+<li>横向扩展(scale-out)：以网络互连的节点为单位扩大存储容量(集群)<ul>
+<li>可扩展性强，高可用性，负载分散</li>
+<li>复杂性，数据一致性，网络依赖</li>
+</ul>
+</li>
 </ul>
 <h3 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h3><ul>
 <li>HDFS属于块级别的分布式文件系统</li>
@@ -570,7 +580,9 @@ Variety（多样化）
 <li>图模型（Neo4j:基本概念包含节点、属性、关系、标签）</li>
 </ul>
 <h3 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h3><ul>
-<li>列簇式存储引擎：<strong>同一列簇中的数据会单独存储，但列簇内数据是行式存储的</strong></li>
+<li>列簇式存储引擎：<strong>同一列簇中的数据会单独存储，但列簇内数据是行式存储的。</strong></li>
+<li>每个列簇包含了一组相关的列，这些列通常一起被查询。</li>
+<li>列簇式存储提供了高效的读写性能，灵活的数据模型，有效的数据压缩，以及优化的查询性能。</li>
 </ul>
 <h4 id="HBase逻辑数据模型"><a href="#HBase逻辑数据模型" class="headerlink" title="HBase逻辑数据模型"></a>HBase逻辑数据模型</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Hbase-logi1.png"><br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Hbase-logi2.png"></p>
 <h4 id="HBase物理数据存储"><a href="#HBase物理数据存储" class="headerlink" title="HBase物理数据存储"></a>HBase物理数据存储</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Hbase-wuli1.png"><br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Hbase-wuli2.png"></p>
@@ -610,7 +622,7 @@ Variety（多样化）
 <li>为了解决集群扩展性导致写性能下降的问题，ZooKeeper引入了第三个角色：Observer。</li>
 <li><strong>Observer并不参与投票过程</strong>，除此之外，它的功能与follower类似：它可以接入正常的ZooKeeper集群，接收并处理客户端读请求，或将写请求进一步转发给leader处理。由于Observer自身能够保存一份数据提供读服务，因此可通过增加Observer实例数提高系统的读吞吐率。由于Observer不参与投票过程，因此它出现故障并不会影响ZooKeeper集群的可用性。<br>负载均衡是对?的负载均衡<br>Kafka中的负载均衡是对leader partition的负载均衡</li>
 </ul>
-<h3 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h3><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/yarnStructure.png" alt="|600"></p>
+<h3 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h3><h4 id="MapReduce1-0的局限性"><a href="#MapReduce1-0的局限性" class="headerlink" title="MapReduce1.0的局限性"></a>MapReduce1.0的局限性</h4><p>无法支持多种计算框架；JobTracker处理作业调度和资源管理，在大规模集群环境中成为性能瓶颈。<br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/yarnStructure.png" alt="|600"></p>
 <ul>
 <li>Yarn总体上采用<strong>master/slave</strong>架构，其中，<strong>ResourceManager为master，NodeManager为slave</strong>, ResourceManager负责对各个NodeManager上的资源进行统一管理和调度。</li>
 <li>当用户提交一个应用程序时，需要提供一个用以跟踪和管理这个程序的ApplicationMaster，它负责向ResourceManager申请资源，并要求NodeManager启动可以占用一定资源的任务，由于不同的ApplicationMaster被分布到不同的节点上，因此它们之间不会相互影响。</li>
@@ -629,9 +641,9 @@ Variety（多样化）
 <h4 id="Yarn高可用性"><a href="#Yarn高可用性" class="headerlink" title="Yarn高可用性"></a>Yarn高可用性</h4><p>YARN提供了恢复机制，这使得YARN在服务出现故障或人工重启时，不会对正在运行的应用程序产生任何影响。<br>a)<strong>ResourceManager HA（High Availability）</strong><br>• 为了避免ResourceManager故障导致整个集群不可用，YARN引入了<strong>Active/Standby ResourceManager</strong> ，通过冗余方式解决ResourceManager单点故障。<br>• 当Active ResourceManager 出现故障时，Standby ResourceManager 可通过ZooKeeper选举成为Active ResourceManager并通过ResourceManager Recovery机制恢复状态。<br>b)<strong>ResourceManager Recovery</strong><br>•ResourceManager内置了重启恢复功能，当ResourceManager就地重启，或发生Active/Standby切换时，不会影响正在运行的应用程序运行。主要流程为：保存元信息、加载元信息、重构状态信息。</p>
 <h4 id="Yarn工作流程"><a href="#Yarn工作流程" class="headerlink" title="Yarn工作流程"></a>Yarn工作流程</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Yarn-liucheng.png"><br>YARN的工作流程分为以下几个步骤：<br><strong>1）提交应用程序</strong>：用户通过客户端与YARN ResourceManager通信，以提交应用程序，应用程序中需包含ApplicationMaster可执行代码、启动命令和资源需求、应用程序可执行代码和资源需求、优先级、提交到的队列等信息。<br><strong>2）启动ApplicationMaster</strong>： ResourceManager为该应用程序分配第一个Container,并与对应的NodeManager通信，要求它在这个Container中启动应用程序的ApplicationMaster之后ApplicationMaster的生命周期直接被ResourceManager管理。<br><strong>3） ApplicationMaster注册</strong>： ApplicationMaster启动后，首先，向ResourceManager注册，这样，用户可以直接通过ResourceManage查看应用程序的运行状态，然后，它将初始化应用程序，并按照一定的策略为内部任务申请资源，监控它们的运行状态，直到运行结束，即重复步骤4~7。<br><strong>4） 资源获取</strong>: ApplicationMaster采用轮询的方式通过RPC协议向ResourceManager申请和领取资源。<br><strong>5） 请求启动Container</strong> ：一旦ApplicationMaster申请到资源后，则与对应的NodeManager通信，请求为其启动任务（NodeManager会将任务放到Container中）。<br><strong>6）启动Container</strong>：NodeManager为任务设置好运行环境(包括环境变量、jar包、二进制程序等)后，将任务启动命令写到一个脚本中，并通过ContainerExecutor运行该脚本启动任务。<br><strong>7） Container监控</strong>：ApplicationMaster可通过两种方式获取各个Container的运行状态，以便在任务失败时重新启动任务。<br>•ApplicationMaster与ResourceManager间维护了周期性心跳信息，每次通信可获取自己分管的Container的运行状态。<br>•各个Container可通过某个RPC协议向ApplicationMaster汇报自己的状态和进度。<br><strong>8）注销ApplicationMaster</strong>：应用程序运行完成后，ApplicationMaster 向ResourceManager注销，并退出执行。</p>
 <h3 id="资源管理系统结构演化"><a href="#资源管理系统结构演化" class="headerlink" title="资源管理系统结构演化"></a>资源管理系统结构演化</h3><ol>
-<li>中央式调度器架构</li>
-<li>双层调度器架构</li>
-<li>共享状态架构</li>
+<li>中央式调度器架构（类似于Hadoop JobTracker，但是支持多种类型作业调度）：一个中央调度器负责所有的资源管理和任务调度决策。</li>
+<li>双层调度器架构（类似于Mesos和YARN）：首先由一个全局调度器进行资源分配，然后由每个框架的内部调度器进行具体的任务调度。</li>
+<li>共享状态架构（Omega）：所有调度决策都基于共享的资源状态信息，多个调度器可以并行工作，都可以访问共享的资源状态信息。</li>
 </ol>
 <h2 id="计算引擎"><a href="#计算引擎" class="headerlink" title="计算引擎"></a>计算引擎</h2><h3 id="批处理引擎MapReduce"><a href="#批处理引擎MapReduce" class="headerlink" title="批处理引擎MapReduce"></a>批处理引擎MapReduce</h3><h4 id="MapReduce编程模型"><a href="#MapReduce编程模型" class="headerlink" title="MapReduce编程模型"></a>MapReduce编程模型</h4><p>MapReduce模型的目的是为了简化分布式数据处理，它是对大量分布式处理问题的总结和抽象，核心思想是分而治之，即将一个分布式计算过程拆解成两个阶段：</p>
 <ul>
@@ -660,13 +672,8 @@ Variety（多样化）
 <li><strong>处理效率低效</strong>：任务调度和启动开销大、无法充分利用内存、Map端和Reduce端均需要排序和复杂功能磁盘IO开销大等。</li>
 <li><strong>不适合迭代式和交互式计算</strong>：MapReduce是一种基于磁盘的分布式计算框架，它追求的是高吞吐率，而性能较为低效，这使得它不适合迭代式和交互式计算。<br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/MapreduceVSSpark.png" alt="|475"><br>Spark中有两个核心概念：<strong>RDD（Resilient Distributed Datasets）和DAG（Directed Acyclic Graph）</strong>。</li>
 </ul>
-<h4 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h4><p>RDD：Spark提出了一个数据集抽象概念RDD，即<strong>弹性分布式数据集</strong>，它是一个只读的、带分区的数据集合，并支持多种分布式算子。<br>RDD只是一个逻辑概念，它可能并不对应磁盘或内存中的物理数据，而仅仅是记录了RDD的由来，包括父RDD是谁，以及自己是如何通过父RDD计算得到的。RDD由以下五部分构成：</p>
+<h4 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h4><p>RDD：Spark提出了一个数据集抽象概念RDD，即<strong>弹性分布式数据集</strong>，它是一个只读的、带分区的数据集合，并支持多种分布式算子。<br>作用在RDD上的操作（或称为“算子”）主要分为两类：transformation和action，他们的作用如下：</p>
 <ul>
-<li>一组partition；</li>
-<li>每个partition的计算函数；</li>
-<li>所依赖的RDD列表（即父RDD列表）；</li>
-<li>（可选的）对于key-value类型的RDD（每个元素是key-value对），则包含一个Partitioner；</li>
-<li>（可选的）计算每个partition所倾向的节点位置（比如HDFS文件的存放位置）。<br>作用在RDD上的操作（或称为“算子”）主要分为两类：transformation和action，他们的作用如下：</li>
 <li><strong>transformation：即“转换”</strong>，其主要作用是将一种RDD转换为另外一类RDD，比如通过“增加1”的转换方式将一个RDD[Int]转换成一个新的RDD[Int]。常用的transformatin操作包括map，filter，groupByKey等。</li>
 <li><strong>action：即“行动”</strong>，其主要作用是通过处理RDD得到一个或一组结果，比如将一个RDD[Int]中所有元素值加起来，得到一个全局和。常用的action包括saveAsTextFile，reduce，count等。</li>
 </ul>
@@ -685,7 +692,13 @@ Variety（多样化）
 <h4 id="Spark生态系统"><a href="#Spark生态系统" class="headerlink" title="Spark生态系统"></a>Spark生态系统</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Spark-shengtai.png" alt="|550"></p>
 <h3 id="流计算引擎Storm"><a href="#流计算引擎Storm" class="headerlink" title="流计算引擎Storm"></a>流计算引擎Storm</h3><p>目前常用的流式实时计算引擎分为两类：<strong>面向行</strong>和<strong>面向微批处理</strong>。<br>• 面向行的流式实时计算引擎的代表是Apache Storm，其典型特点是延迟低，但吞吐率也低。<br>• 面向微批处理的流式实时计算引擎的代表是Spark Streaming， 其典型特点是延迟高，但吞吐率也高。</p>
 <h4 id="可靠性机制"><a href="#可靠性机制" class="headerlink" title="可靠性机制"></a>可靠性机制</h4><p><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Pasted%20image%2020240102221856.png"></p>
-<h3 id="Spark-Streaming"><a href="#Spark-Streaming" class="headerlink" title="Spark Streaming"></a>Spark Streaming</h3><h3 id="Flink"><a href="#Flink" class="headerlink" title="Flink"></a>Flink</h3><h4 id="窗口类型（5种）"><a href="#窗口类型（5种）" class="headerlink" title="窗口类型（5种）"></a>窗口类型（5种）</h4><p>翻滚面向时间、翻滚面向计数<br>滑动面向时间、滑动面向窗口<br>会话窗口<br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Flink.png"></p>
+<h3 id="Spark-Streaming"><a href="#Spark-Streaming" class="headerlink" title="Spark Streaming"></a>Spark Streaming</h3><h3 id="Flink"><a href="#Flink" class="headerlink" title="Flink"></a>Flink</h3><h4 id="窗口类型（5种）"><a href="#窗口类型（5种）" class="headerlink" title="窗口类型（5种）"></a>窗口类型（5种）</h4><ul>
+<li>会话窗口</li>
+<li>翻滚计数窗口</li>
+<li>翻滚时间窗口</li>
+<li>滑动计数窗口</li>
+<li>滑动时间窗口<br><img src="/2023/11/25/da-shu-ju-ji-zhu-ji-chu-qi-mo-fu-xi/Flink.png"></li>
+</ul>
 <h3 id="图计算Pregel"><a href="#图计算Pregel" class="headerlink" title="图计算Pregel"></a>图计算Pregel</h3><h4 id="Pregel计算过程"><a href="#Pregel计算过程" class="headerlink" title="Pregel计算过程"></a>Pregel计算过程</h4><ul>
 <li>在Pregel计算过程中，一个算法什么时候可以结束，是由所有顶点的状态决定的</li>
 <li>在第0个超步，所有顶点处于活跃状态，都会参与该超步的计算过程</li>
@@ -762,12 +775,12 @@ Variety（多样化）
                                     <span class="chip bg-color">大数据技术基础</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
-                                    <span class="chip bg-color">期末复习</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                     <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                                    <span class="chip bg-color">期末复习</span>
                                 </a>
                             
                         </div>
@@ -909,12 +922,12 @@ Variety（多样化）
                         <span class="chip bg-color">大数据技术基础</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
-                        <span class="chip bg-color">期末复习</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                        <span class="chip bg-color">期末复习</span>
                     </a>
                     
                 </div>
