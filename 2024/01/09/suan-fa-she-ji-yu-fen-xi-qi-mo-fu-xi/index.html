@@ -1,0 +1,1189 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="算法设计与分析期末复习, learning,life,coding,computer science">
+    <meta name="description" content="第一章
+算法复杂性的概念
+用特征方程解递归方程的通解
+第二章 分治
+二分搜索public static int binarySearch(int a[], int x, int n){	int left = 0, right = n - 1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>算法设计与分析期末复习 | Davian&#39;s Blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/medias/favicon.ico">
+    
+    <style>
+        body{
+            background-image: url(/medias/background/background3.png);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-vs.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Davian&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Davian&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            一个大学生的个人博客，记录学习和生活
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">算法设计与分析期末复习</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                                <span class="chip bg-color">期末复习</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                期末复习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-01-09
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-01-09
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    12 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/Chapter1.png"></p>
+<h2 id="算法复杂性的概念"><a href="#算法复杂性的概念" class="headerlink" title="算法复杂性的概念"></a>算法复杂性的概念</h2><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/jihao1.png"><br><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/jihao2.png"><br><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/jiahao3.png"></p>
+<h2 id="用特征方程解递归方程的通解"><a href="#用特征方程解递归方程的通解" class="headerlink" title="用特征方程解递归方程的通解"></a>用特征方程解递归方程的通解</h2><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/te-zheng-fang-cheng1.png"><br><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/te-zheng-fang-cheng2.png"></p>
+<h1 id="第二章-分治"><a href="#第二章-分治" class="headerlink" title="第二章 分治"></a>第二章 分治</h1><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/Chapter2.png"></p>
+<h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">public <span class="type">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span> a[], <span class="type">int</span> x, <span class="type">int</span> n)</span>{</span><br><span class="line">	<span class="type">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(left &lt;= right){</span><br><span class="line">		<span class="type">int</span> middle = (left + right)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(x == a[middle]) <span class="keyword">return</span> middle;</span><br><span class="line">		<span class="keyword">if</span>(x &gt; a[middle]) left = middle + <span class="number">1</span>;  <span class="comment">//在右半部查找</span></span><br><span class="line">		<span class="keyword">else</span> right = middle - <span class="number">1</span>;              <span class="comment">//在左半部查找</span></span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>每执行一次算法的while循环，待搜索数组的大小减少一半。因此最坏情况下，while循环被执行了O(logn)次。循环体内运算需要O(1)时间，因此整个算法在最坏情况下的计算时间复杂性为O(logn)</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>在待排序的数列中，首先找一个数字作为基准数。为了方便，一般选择第 1 个数字作为基准数（。接下来把这个待排序的数列中小于基准数的元素移动到待排序的数列的左边，把大于基准数的元素移动到待排序的数列的右边。这时，左右两个分区的元素就相对有序了；接着把两个分区的元素分别按照上面两种方法继续对每个分区找出基准数，然后移动，直到各个分区只有一个数时为止。</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">private <span class="type">void</span> <span class="title function_">quickSort</span><span class="params">(<span class="type">int</span> src[], <span class="type">int</span> begin, <span class="type">int</span> end)</span>{</span><br><span class="line">	<span class="keyword">if</span>(begin &lt; end){</span><br><span class="line">		<span class="type">int</span> key = src[begin], i = begin, j = end;</span><br><span class="line">		<span class="keyword">while</span>(i &lt; j){</span><br><span class="line">			<span class="keyword">while</span>(i &lt; j &amp;&amp; src[j] &gt; key) j--;</span><br><span class="line">			<span class="keyword">if</span>(i &lt; j){</span><br><span class="line">				src[i] = src[j];</span><br><span class="line">				i++;</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">while</span>(i &lt; j &amp;&amp; src[i] &lt; key) i++;</span><br><span class="line">			<span class="keyword">if</span>(i &lt; j){</span><br><span class="line">				src[j] = src[i];</span><br><span class="line">				j--;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		src[i] = key;</span><br><span class="line">		quickSort(src, begin, i - <span class="number">1</span>);</span><br><span class="line">		quickSort(src, i + <span class="number">1</span>, end);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>最坏时间复杂度：O(n^2)<br>平均时间复杂度：O(nlogn)<br>不稳定排序</p>
+<h2 id="合并排序"><a href="#合并排序" class="headerlink" title="合并排序"></a>合并排序</h2><figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">MergeSort(<span class="type">int</span> a[], <span class="type">int</span> p, <span class="type">int</span> r){</span><br><span class="line">	<span class="keyword">if</span>(p &lt; r){</span><br><span class="line">		<span class="type">int</span> q = ((p+r)/<span class="number">2</span>);</span><br><span class="line">		MergeSort(a, p, q);</span><br><span class="line">		MergeSort(a, q+<span class="number">1</span>, r);</span><br><span class="line">		Merge(A, p, q, r);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">Merge(<span class="type">int</span> a[], <span class="type">int</span> p, <span class="type">int</span> q, <span class="type">int</span> r){</span><br><span class="line">	<span class="type">int</span> n1 = q-p+<span class="number">1</span>, n2 = r-q;</span><br><span class="line">	<span class="type">int</span> L[n1+<span class="number">2</span>], R[n2+<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n1;i++) L[i] = a[p+i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= n2;j++) R[j] = a[q+j];</span><br><span class="line">	L[n1+<span class="number">1</span>] = MAX; R[n2+<span class="number">1</span>] = MAX;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> k = p;k &lt;= r;k++){</span><br><span class="line">		<span class="keyword">if</span>(L[i] &lt;= R[j]){</span><br><span class="line">			A[k] = L[i];</span><br><span class="line">			i++;</span><br><span class="line">		}<span class="keyword">else</span>{</span><br><span class="line">			A[k] = R[j];</span><br><span class="line">			j++;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/MergeSort-fuzadu.png"></p>
+<h2 id="线性时间选择"><a href="#线性时间选择" class="headerlink" title="线性时间选择"></a>线性时间选择</h2><p>如果能在线性时间内找到一个划分基准，使得按这个基准所划分出的2个子数组的长度都至少为原数组长度的ε倍(0&lt;ε&lt;1是某个正常数)，那么就可以在最坏情况下用O(n)时间完成选择任务，这是线性时间选择问题。<br>Pivot/划分基准的选择:</p>
+<ol>
+<li>将n个输入元素划分成 n/5 个组，每组5个元素，只可能有一个组不是5个元素。用任意一种排序算法，将每组中的元素排好序，并取出每组的中位数，共 n/5 个。</li>
+<li>递归调用select来找出这 n/5 个元素的中位数。如果 n/5 是偶数，就找它的2个中位数中较大的一个。</li>
+<li>以这个元素作为划分基准。<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">Type <span class="title function_">select</span><span class="params">(Type a[], <span class="type">int</span> p, <span class="type">int</span> r, <span class="type">int</span> k)</span>{</span><br><span class="line">	<span class="keyword">if</span>(p - r &lt; <span class="number">75</span>){</span><br><span class="line">		BubbleSort(a,p,r);</span><br><span class="line">		<span class="keyword">return</span> a[p+k<span class="number">-1</span>];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i =;i &lt;= (r-p<span class="number">-4</span>)/<span class="number">5</span>;i++){</span><br><span class="line">		BubbleSort(a, p+<span class="number">5</span>*i, p+<span class="number">5</span>*i+<span class="number">4</span>);</span><br><span class="line">		Swap(a[p+i],a[p+<span class="number">5</span>*i+<span class="number">2</span>]);</span><br><span class="line">	}</span><br><span class="line">	Type x = selct(a, p, p+(r-p<span class="number">-4</span>)/<span class="number">5</span>,(r-p<span class="number">-4</span>)/<span class="number">10</span>);</span><br><span class="line">	<span class="type">int</span> i = Partition(a, p, i, k);</span><br><span class="line">	<span class="type">int</span> j = i-p+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(k &lt;= j) <span class="keyword">return</span> Select(a, p, i, k);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> Select(a, i+<span class="number">1</span>, r, k-j);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="循环赛"><a href="#循环赛" class="headerlink" title="循环赛"></a>循环赛</h2><p>按照分治策略，将所有选手分为两半，n个选手的比赛日程表就可以通过为n/2个选手设计的比赛日程表来决定，递归地对选手进行分割，知道只剩下2个选手时，比赛日程表的制定就变得很简单，这是只要让这2个选手进行比赛就可以了。</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Round</span><span class="params">(A, n)</span>{</span><br><span class="line">	<span class="keyword">if</span>(n == <span class="number">1</span>){</span><br><span class="line">		A[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">	Round(A,n/<span class="number">2</span>);</span><br><span class="line">	<span class="type">int</span> m = n/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= m;i++){</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= m;j++){</span><br><span class="line">			A[i][j+m] = A[i][j] + m;</span><br><span class="line">			A[i+m][j] = A[i][j+m];</span><br><span class="line">			A[i+m][j+m] = A[i][j];</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="最接近点对"><a href="#最接近点对" class="headerlink" title="最接近点对"></a>最接近点对</h2><figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">//一维</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">Cpair1</span><span class="params">(s,d)</span>{</span><br><span class="line">	n = |s|;</span><br><span class="line">	<span class="keyword">if</span>(n &lt; <span class="number">2</span>){</span><br><span class="line">		d = INFINITE；</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	}</span><br><span class="line">	m = s中各坐标的中位数；</span><br><span class="line">	构造S1和S2</span><br><span class="line">	S1={x&lt;m} S2={x&gt;m}</span><br><span class="line">	Cpair(s1,d1);</span><br><span class="line">	Cpair(s2,d2);</span><br><span class="line">	p = max(s1);</span><br><span class="line">	q= min(s2);</span><br><span class="line">	d = min(d1,d2,q-p);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="第三章-动态规划"><a href="#第三章-动态规划" class="headerlink" title="第三章 动态规划"></a>第三章 动态规划</h1><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/Chapter3.png"></p>
+<h3 id="最优子结构性质"><a href="#最优子结构性质" class="headerlink" title="最优子结构性质"></a>最优子结构性质</h3><p>原问题的最优解包含了子问题的最优解，即原问题可以由子问题的最优解组合而成，这就使得问题可以拆分成若干个子问题。</p>
+<h3 id="重叠子问题"><a href="#重叠子问题" class="headerlink" title="重叠子问题"></a>重叠子问题</h3><p>每次产生的子问题并不总是新问题，有些子问题被反复计算，这是和分治的不同点。</p>
+<h3 id="动态规划算法设计步骤"><a href="#动态规划算法设计步骤" class="headerlink" title="动态规划算法设计步骤"></a>动态规划算法设计步骤</h3><ul>
+<li>找出最优解的性质，并刻画其结构特征</li>
+<li>递归地定义最优值</li>
+<li>以自底向上的方式计算出最优值</li>
+<li>根据计算最优值是得到的信息，构造最优解</li>
+</ul>
+<h2 id="矩阵连乘问题"><a href="#矩阵连乘问题" class="headerlink" title="矩阵连乘问题"></a>矩阵连乘问题</h2><p>计算A[i:j]的最优次序所包含的计算矩阵子链A[i:k]和A[k+1:j]的次序也是最优的。<br><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/MatrixChain.png"></p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MatrixChain</span><span class="params">(<span class="type">int</span> *p, <span class="type">int</span> n, <span class="type">int</span> **m, <span class="type">int</span> **s)</span>{</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;i++) m[i][i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> r = <span class="number">2</span>;r &lt;= n;r++){</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n-r+<span class="number">1</span>;i++){</span><br><span class="line">			<span class="type">int</span> j = i+r<span class="number">-1</span>;</span><br><span class="line">			m[i][j] = m[i+<span class="number">1</span>][j] + p[i<span class="number">-1</span>]*p[i]*p[j];</span><br><span class="line">			s[i][j] = i;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> k = i+<span class="number">1</span>;k &lt; j; k++){</span><br><span class="line">				<span class="type">int</span> t = m[i][k] + m[k+<span class="number">1</span>][j] + p[i<span class="number">-1</span>]*p[k]*p[j];</span><br><span class="line">				<span class="keyword">if</span>(t &lt; m[i][j]){</span><br><span class="line">					m[i][j] = t;</span><br><span class="line">					s[i][j] = k;</span><br><span class="line">				}</span><br><span class="line">			}	</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="comment">//输出最优解</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">traceback</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j, <span class="type">int</span> **s)</span>{</span><br><span class="line">	<span class="keyword">if</span>(i == j)<span class="keyword">return</span>;</span><br><span class="line">	traceback(s,i,s[i][j]);</span><br><span class="line">	traceback(s,s[i][j]+<span class="number">1</span>,j);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"Multiply A"</span>&lt;&lt;i&lt;&lt;<span class="string">","</span>&lt;&lt;s[i][j];</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">" and A"</span>&lt;&lt;(s[i][j] + <span class="number">1</span>)&lt;&lt;<span class="string">","</span>&lt;&lt;j&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h2><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/LCS.png"></p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">LCSLength</span><span class="params">(<span class="type">int</span> m, <span class="type">int</span> n, <span class="type">char</span> *x, <span class="type">char</span> *y, <span class="type">int</span> **c, <span class="type">int</span> **b)</span>{</span><br><span class="line">	<span class="type">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= m;i++) c[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n;i++) c[<span class="number">0</span>][i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= m;i++){</span><br><span class="line">		<span class="keyword">for</span>(j = <span class="number">1</span>;j &lt;= n;j++){</span><br><span class="line">			<span class="keyword">if</span>(x[i] == y[j]){</span><br><span class="line">				c[i][j] = c[i<span class="number">-1</span>][j<span class="number">-1</span>] + <span class="number">1</span>;</span><br><span class="line">				b[i][j] = <span class="number">1</span>;</span><br><span class="line">			}<span class="keyword">else</span> <span class="keyword">if</span>(c[i<span class="number">-1</span>][j] &gt;= c[i][j<span class="number">-1</span>]){</span><br><span class="line">				c[i][j] = c[i<span class="number">-1</span>][j];</span><br><span class="line">				b[i][j] = <span class="number">2</span>;</span><br><span class="line">			}<span class="keyword">else</span>{</span><br><span class="line">				c[i][j] = c[i][j<span class="number">-1</span>];</span><br><span class="line">				b[i][j] = <span class="number">3</span>;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="comment">//构造最长公共子序列</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LCS</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j, <span class="type">char</span> *x, <span class="type">int</span> **b)</span>{</span><br><span class="line">	<span class="keyword">if</span>(i == <span class="number">0</span>||j == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(b[i][j] == <span class="number">1</span>){</span><br><span class="line">		LCS(i<span class="number">-1</span>, j<span class="number">-1</span>, x, b);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;x[i];</span><br><span class="line">	}<span class="keyword">else</span> <span class="keyword">if</span>(b[i][j] == <span class="number">2</span>){</span><br><span class="line">		LCS(i<span class="number">-1</span>, j, x, b)</span><br><span class="line">	}<span class="keyword">else</span></span><br><span class="line">		LCS(i,j<span class="number">-1</span>,x,b)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="最大子段和"><a href="#最大子段和" class="headerlink" title="最大子段和"></a>最大子段和</h2><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/maxSum.png"></p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">maxSum</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> *a)</span>{</span><br><span class="line">	<span class="type">int</span> sum = <span class="number">0</span>,b = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;i++){</span><br><span class="line">		<span class="keyword">if</span>(b&gt;<span class="number">0</span>) b+=a[i];</span><br><span class="line">		<span class="keyword">else</span> b=a[i];</span><br><span class="line">		<span class="keyword">if</span>(b&gt;sum) sum = b;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="0-1背包"><a href="#0-1背包" class="headerlink" title="0/1背包"></a>0/1背包</h2><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/Knapsack.png"></p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">Knapsack</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> c, <span class="type">int</span> w[], <span class="type">int</span> v[], <span class="type">int</span> x[])</span>{</span><br><span class="line">	<span class="type">int</span> m[n+<span class="number">1</span>][c+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt;= c;j++) m[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n;i++){</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt;= c;j++){</span><br><span class="line">			<span class="keyword">if</span>(w[i] &lt; j){</span><br><span class="line">				m[i][j] = max(m[i<span class="number">-1</span>][j],m[i<span class="number">-1</span>][j-w[i]]+v[i]);</span><br><span class="line">			}<span class="keyword">else</span>{</span><br><span class="line">				m[i][j] = m[i<span class="number">-1</span>][j];</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="type">int</span> j = c;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = n;i &gt; <span class="number">1</span>;i--){</span><br><span class="line">		<span class="keyword">if</span>(m[i][j] == m[i<span class="number">-1</span>][j]){</span><br><span class="line">			x[i] = <span class="number">0</span>;</span><br><span class="line">		}<span class="keyword">else</span>{</span><br><span class="line">			x[i] = <span class="number">1</span>;</span><br><span class="line">			j -= w[i];</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> m[n][c];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="第四章-贪心"><a href="#第四章-贪心" class="headerlink" title="第四章 贪心"></a>第四章 贪心</h1><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/Chapter4.png"></p>
+<h3 id="贪心算法的证明"><a href="#贪心算法的证明" class="headerlink" title="贪心算法的证明"></a>贪心算法的证明</h3><p>首先假设存在一个最优解，然后证明存在一个以贪心选择开始的最优解，进一步，在做了贪心选择之后，子问题也是贪心选择获得的最优解。</p>
+<h2 id="活动安排"><a href="#活动安排" class="headerlink" title="活动安排"></a>活动安排</h2><p>先把活动1选上，再依次选择完成时间最早的相容活动</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">GreedySelect</span><span class="params">(<span class="type">int</span> n, Type s[], Type f[], <span class="type">bool</span> A[])</span>{</span><br><span class="line">	A[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">	<span class="type">int</span> j = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>;i &lt;= n;i++){</span><br><span class="line">		<span class="keyword">if</span>(s[i] &gt;= f[j]) {A[i] =<span class="literal">true</span>; j=i;}</span><br><span class="line">		<span class="keyword">else</span> A[i] = <span class="literal">false</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><p>按照重量和价值比排序，依次装入背包，最后一个不能完全装部分装</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Knapsack</span><span class="params">(<span class="type">int</span> n, <span class="type">float</span> M, <span class="type">float</span> v[], <span class="type">float</span> w[], <span class="type">float</span> x[])</span>{</span><br><span class="line">	Sort(n,v,w);</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= n;i++) x[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="type">float</span> c = M;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">		<span class="keyword">if</span>(w[i]&gt;c) <span class="keyword">break</span>;</span><br><span class="line">		x[i] = <span class="number">1</span>;</span><br><span class="line">		c -= w[i];</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span>((i&lt;=n)&amp;&amp;(c&gt;<span class="number">0</span>)) x[i] = c/w[i];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h2><h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/MST.png"></p>
+<h2 id="单源最短路径"><a href="#单源最短路径" class="headerlink" title="单源最短路径"></a>单源最短路径</h2><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/shortestPath.png"></p>
+<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/Chapter5.png"></p>
+<h2 id="轮船装载"><a href="#轮船装载" class="headerlink" title="轮船装载"></a>轮船装载</h2><p>尽量装满一艘，然后去装第二艘<br>剪枝策略：<br>左子树：不超载<br>右子树：最优解选择</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">n:集装箱数 bestx:当前最优解</span><br><span class="line">w:集装箱重量数组 c:第一艘轮船载重量</span><br><span class="line">cw:当前载重量 bestw:当前最优载重量</span><br><span class="line">r:剩余集装箱的重量</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Backtrack</span><span class="params">(<span class="type">int</span> i)</span>{</span><br><span class="line">	<span class="keyword">if</span>(i &gt; n){</span><br><span class="line">		<span class="keyword">if</span>(cw &gt; bestw){</span><br><span class="line">			<span class="keyword">for</span>(j = <span class="number">1</span>;j &lt;= n;j++)</span><br><span class="line">				bestx[j] = x[j];</span><br><span class="line">			bestw = cw;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	}</span><br><span class="line">	r -= w[i];</span><br><span class="line">	<span class="keyword">if</span>(cw + w[i] &lt;= c){</span><br><span class="line">		x[i] = <span class="number">1</span>;</span><br><span class="line">		cw += w[i];</span><br><span class="line">		Backtrack(i+<span class="number">1</span>);</span><br><span class="line">		cw -= w[i]; 	</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">if</span>(cw + r &gt; bestw){</span><br><span class="line">		x[i] = <span class="number">0</span>;</span><br><span class="line">		Backtarck(i+<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">	r += w[i];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="旅行售货员"><a href="#旅行售货员" class="headerlink" title="旅行售货员"></a>旅行售货员</h2><p>排列树</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Backtrack</span><span class="params">(<span class="type">int</span> i)</span>{</span><br><span class="line">	<span class="keyword">if</span>(i==n){</span><br><span class="line">		<span class="keyword">if</span>(a[x[n<span class="number">-1</span>]][x[n]] != NoEdge &amp;&amp; a[x[n]][<span class="number">1</span>] != NoEdge &amp;&amp;</span><br><span class="line">		(cc + a[x[n<span class="number">-1</span>]][x[n]] + a[x[n]][<span class="number">1</span>] &lt; bestc || bestc == NoEdge)){</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= n;j++) bestx[j] = x[j];</span><br><span class="line">			bestc = cc + a[x[n<span class="number">-1</span>]][x[n]] + a[x[n]][<span class="number">1</span>];	</span><br><span class="line">		}</span><br><span class="line">	}<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = i;j &lt;= n;j++){</span><br><span class="line">			<span class="keyword">if</span>(a[x[i<span class="number">-1</span>]][x[j]] != NoEdge &amp;&amp;</span><br><span class="line">			(cc + a[x[i<span class="number">-1</span>]][x[j]] &lt; bestc || bestc == NoEdge)){</span><br><span class="line">				Swap(x[i].x[j]);</span><br><span class="line">				cc += a[x[i<span class="number">-1</span>]][x[i]];</span><br><span class="line">				Backtrack(i+<span class="number">1</span>);</span><br><span class="line">				cc -= a[x[i<span class="number">-1</span>]][x[i]];</span><br><span class="line">				Swap(x[i],x[j]);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="作业调度"><a href="#作业调度" class="headerlink" title="作业调度"></a>作业调度</h2><figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">M:各作业所需的处理时间 x:当前作业调度</span><br><span class="line">bestx:当前最优作业调度 f2:机器<span class="number">2</span>完成处理时间</span><br><span class="line">f1:机器<span class="number">1</span>完成处理时间 f:完成时间和</span><br><span class="line">bestf:当前最优值 n:作业数</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Backtrack</span><span class="params">(<span class="type">int</span> i)</span>{</span><br><span class="line">	<span class="keyword">if</span>(i &gt; n){</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= n;j++) bestx[j] = x[j];</span><br><span class="line">		bestf = f;</span><br><span class="line">	}<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = i;j &lt;= n;j++){</span><br><span class="line">			f1 += M[x[j]][<span class="number">1</span>];</span><br><span class="line">			f2[i] = ((f2[i<span class="number">-1</span>]&gt;f1)?f2[i<span class="number">-1</span>]:f1)+M[x[j]][<span class="number">2</span>]</span><br><span class="line">			f+=f2[i];</span><br><span class="line">			<span class="keyword">if</span>(f &lt; bestf){</span><br><span class="line">				Swap(x[i],x[j]);</span><br><span class="line">				Backtrack(i+<span class="number">1</span>);</span><br><span class="line">				Swap(x[i],x[j]);</span><br><span class="line">			}</span><br><span class="line">			f1 -= M[x[j]][<span class="number">1</span>];</span><br><span class="line">			f -= f2[i];</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="N皇后问题"><a href="#N皇后问题" class="headerlink" title="N皇后问题"></a>N皇后问题</h2><p><img src="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/Queen.png"></p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">Place</span><span class="params">(<span class="type">int</span> k)</span>{</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; k;j++){</span><br><span class="line">		<span class="keyword">if</span>((<span class="built_in">abs</span>(k-j)==<span class="built_in">abs</span>(x[j]-x[k])) || (x[j]==x[k])) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="type">void</span> <span class="title function_">Backtrack</span><span class="params">(<span class="type">int</span> t)</span>{</span><br><span class="line">	<span class="keyword">if</span>(t &gt; n) sum++;</span><br><span class="line">	<span class="keyword">else</span>{</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = ;i &lt;= n;i++){</span><br><span class="line">			x[t] = i;</span><br><span class="line">			<span class="keyword">if</span>(Place(t)) Backtrack(t+<span class="number">1</span>);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Davian</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://daixinwang.github.io/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/">https://daixinwang.github.io/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Davian</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                                    <span class="chip bg-color">期末复习</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="算法设计与分析期末复习">
+                        
+                        <span class="card-title">算法设计与分析期末复习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            大三上算法设计与分析期末复习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                    期末复习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                        <span class="chip bg-color">期末复习</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/01/07/cao-zuo-xi-tong-qi-mo-fu-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="操作系统期末复习">
+                        
+                        <span class="card-title">操作系统期末复习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            大三上操作系统期末复习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                    期末复习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/">
+                        <span class="chip bg-color">期末复习</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Davian&#39;s Blog<br />'
+            + '文章作者: Davian<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+    <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+    </style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023-2024</span>
+            
+            <a href="/about" target="_blank">Davian</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">36.5k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2023";
+                        var startMonth = "11";
+                        var startDate = "24";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/daixinwang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:daixinwang@bupt.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        <script type="text/javascript" src="/js/tw_cn.js"></script>
+        <script type="text/javascript">
+          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+          var cookieDomain = "https://daixinwang.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
+          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
+          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
+          var translateButtonId = "translateLink"; //默认互换id
+          translateInitilization();
+        </script>
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
