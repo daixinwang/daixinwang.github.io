@@ -71,8 +71,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 
 <meta name="generator" content="Hexo 7.0.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-vs.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 
 
 <body>
@@ -379,6 +378,9 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -1269,16 +1271,16 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <h3 id="整数的比较"><a href="#整数的比较" class="headerlink" title="整数的比较"></a>整数的比较</h3><p>-eq＝                 -ne ≠<br>-gt＞                  -ge≥<br>-lt＜                   -le≤<br>例:<br>test `ls | wc -l` -ge 100 &amp;&amp; echo”Too many files”</p>
 <h3 id="复合条件"><a href="#复合条件" class="headerlink" title="复合条件"></a>复合条件</h3><p>！            NOT（非）<br>-o            OR（或）<br>-a            AND（与）<br>例:如果变量cmd的值为一个可执行命令，执行该命令<br>[ ! -d $cmd -a -x $cmd ] &amp;&amp; $cmd<br>注意：必需的空格不可省略</p>
 <h2 id="命令组合"><a href="#命令组合" class="headerlink" title="命令组合"></a>命令组合</h2><h3 id="命令组合的两种方式-与"><a href="#命令组合的两种方式-与" class="headerlink" title="命令组合的两种方式{}与()"></a>命令组合的两种方式{}与()</h3><p>命令组合类似C语言中的复合语句，组合在一起的几个命令作为一个整体看待：可以集体管道和重定向或者当条件满足时执行若干个命令。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pwd  </span><br><span class="line">DIR=/usr/bin  </span><br><span class="line">[ -d $DIR ] &amp;&amp; {  </span><br><span class="line">	cd $DIR  </span><br><span class="line">	echo "Current Directory is `pwd`"  </span><br><span class="line">	echo "`ls | wc -l` files"  </span><br><span class="line">}  </span><br><span class="line">pwd</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pwd  </span><br><span class="line">DIR=/usr/bin  </span><br><span class="line">[ -d $DIR ] &amp;&amp; {  </span><br><span class="line">	cd $DIR  </span><br><span class="line">	echo "Current Directory is `pwd`"  </span><br><span class="line">	echo "`ls | wc -l` files"  </span><br><span class="line">}  </span><br><span class="line">pwd</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="与-的不同"><a href="#与-的不同" class="headerlink" title="{}与()的不同"></a>{}与()的不同</h3><h4 id="语义上的不同"><a href="#语义上的不同" class="headerlink" title="语义上的不同"></a>语义上的不同</h4><p>{}在当前shell中执行一组命令<br>()在子shell中执行一组命令<br>例如，上述代码中，第二次pwd结果应为/usr/bin，假如将花括号换为圆括号，结果应与第一次pwd结果相同</p>
 <h4 id="语法上的不同"><a href="#语法上的不同" class="headerlink" title="语法上的不同"></a>语法上的不同</h4><p>(list)在子shell中执行命令表list<br>{ list;}在当前shell中执行命令表list</p>
 <ul>
 <li>注意:<strong>左花括号后面必须有一个空格</strong></li>
 <li>圆括号是shell元字符，花括号不是，它作为一个特殊内部命令处理。所以必须是一行的行首单词</li>
 </ul>
-<h2 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h2><h3 id="条件结构if：两个或多个分支"><a href="#条件结构if：两个或多个分支" class="headerlink" title="条件结构if：两个或多个分支"></a>条件结构if：两个或多个分支</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then </span><br><span class="line">	list</span><br><span class="line">elif condition</span><br><span class="line">then </span><br><span class="line">	list</span><br><span class="line">else</span><br><span class="line">	list</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h2><h3 id="条件结构if：两个或多个分支"><a href="#条件结构if：两个或多个分支" class="headerlink" title="条件结构if：两个或多个分支"></a>条件结构if：两个或多个分支</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then </span><br><span class="line">	list</span><br><span class="line">elif condition</span><br><span class="line">then </span><br><span class="line">	list</span><br><span class="line">else</span><br><span class="line">	list</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
 <p>其中：if/then/elif/else/fi为关键字（内部命令），<strong>关键字作为内部命令，要么在行首，要么前面有分号来分隔命令</strong><br>与C语言不同，if的语法中then与else或fi配对，使得不需要花括号这样的命令组合</p>
-<h3 id="case结构：多条件分支"><a href="#case结构：多条件分支" class="headerlink" title="case结构：多条件分支"></a>case结构：多条件分支</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">case word in</span><br><span class="line">	pattern1)  </span><br><span class="line">		list1;;</span><br><span class="line">	pattern2)  </span><br><span class="line">		list2;;</span><br><span class="line">	 ...</span><br><span class="line">esac</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="case结构：多条件分支"><a href="#case结构：多条件分支" class="headerlink" title="case结构：多条件分支"></a>case结构：多条件分支</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">case word in</span><br><span class="line">	pattern1)  </span><br><span class="line">		list1;;</span><br><span class="line">	pattern2)  </span><br><span class="line">		list2;;</span><br><span class="line">	 ...</span><br><span class="line">esac</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>word与pattern匹配：使用shell的文件名匹配规则</li>
 <li>;;是一个整体，不能在两分号间加空格，也不能用两个连续的空行代替</li>
@@ -1305,10 +1307,10 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>解释和编译</li>
 <li>将数据（程序生成的数据或者外部输入的数据）当做程序来执行是只有解释型语言才可能具备的特点，类似C这样的编译型语言无法具备这样的功能（但可以通过“动态链接”的方式，在程序运行期间不停止程序的运行有限度地变换处理程序）<br><img src="/2023/12/19/linux-qi-mo-fu-xi/exampleOfEval.png" alt="|400"></li>
 </ul>
-<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">while condition</span><br><span class="line">do</span><br><span class="line">	list</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line"> for name in word1 word2 ...</span><br><span class="line"> do</span><br><span class="line"> 	list</span><br><span class="line"> done</span><br><span class="line">或者</span><br><span class="line"> for name</span><br><span class="line"> do</span><br><span class="line"> 	list</span><br><span class="line"> done</span><br><span class="line">相当于</span><br><span class="line">for name in $1 $2 ...</span><br><span class="line">do</span><br><span class="line">	list</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while condition</span><br><span class="line">do</span><br><span class="line">	list</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> for name in word1 word2 ...</span><br><span class="line"> do</span><br><span class="line"> 	list</span><br><span class="line"> done</span><br><span class="line">或者</span><br><span class="line"> for name</span><br><span class="line"> do</span><br><span class="line"> 	list</span><br><span class="line"> done</span><br><span class="line">相当于</span><br><span class="line">for name in $1 $2 ...</span><br><span class="line">do</span><br><span class="line">	list</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="seq"><a href="#seq" class="headerlink" title="seq"></a>seq</h3><p>用seq命令实现类似C语言中的for循环</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">for i in \`seq 1 254\`</span><br><span class="line">do</span><br><span class="line">	ping -c 1 -w 1 192.168.0.$i</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in \`seq 1 254\`</span><br><span class="line">do</span><br><span class="line">	ping -c 1 -w 1 192.168.0.$i</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 <p>人机交互时可直接写为一行：<br>for i in `seq1254`;do ping -c1 -w1 192.168.0.$i;done</p>
 <h3 id="break-continue-exit"><a href="#break-continue-exit" class="headerlink" title="break,continue,exit"></a>break,continue,exit</h3><ul>
 <li><p>内部命令break<br>循环结构for/while中使用，中止循环<br>例：break<br>  break2         # 中止两重循环</p>
@@ -1620,7 +1622,7 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <li>返回值为-1，标志操作失败，否则表示执行成功<br><code>int semop(int sem_id, struct sembuf *ops, int nops)</code></li>
 <li>信号灯操作（可能会导致调用进程在此睡眠）</li>
 <li>ops：有nops个元素的sembuf结构体数组，每个元素描述对某一信号灯操作</li>
-<li>返回值：-1，标志操作失败，否则表示执行成功<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sembuf</span> {</span></span><br><span class="line">	<span class="type">short</span> sem_num;<span class="comment">//信号灯在信号灯组中的编号</span></span><br><span class="line">	<span class="type">short</span> sem_op; <span class="comment">//信号灯操作，具有原子性</span></span><br><span class="line">	<span class="type">short</span> sem_flag;<span class="comment">//操作选项</span></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<li>返回值：-1，标志操作失败，否则表示执行成功<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sembuf</span> {</span></span><br><span class="line">	<span class="type">short</span> sem_num;<span class="comment">//信号灯在信号灯组中的编号</span></span><br><span class="line">	<span class="type">short</span> sem_op; <span class="comment">//信号灯操作，具有原子性</span></span><br><span class="line">	<span class="type">short</span> sem_flag;<span class="comment">//操作选项</span></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
 当sem_op&lt;0时，P操作；当sem_op&gt;0时，V操作<br>当sem_op=0时，不修改信号灯的值，等待直到变为非负数</li>
 </ul>
 <h2 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h2><ul>
@@ -2059,6 +2061,9 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -2074,31 +2079,6 @@ CPU收到外部信号后，停止原来工作，转去处理该事件，完毕�
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-    <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-    <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-    </style>
 
 
     </div>
