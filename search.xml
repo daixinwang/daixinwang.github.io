@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>机器学习期末复习</title>
+      <link href="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/"/>
+      <url>/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="机器学习概述"><a href="#机器学习概述" class="headerlink" title="机器学习概述"></a>机器学习概述</h1><h2 id="常见机器学习模型"><a href="#常见机器学习模型" class="headerlink" title="常见机器学习模型"></a>常见机器学习模型</h2><p>无监督学习模型<br>• 数据聚类（K-means）、数据降维方面的主成份分析（ PCA）<br>有监督学习模型<br>• 常见的分类模型如：线性分类器、支持向量机、朴素贝叶斯模型、K近邻、决策树等；<br>• 常见的回归模型如：线性回归、支持向量机回归、K近邻、回归树等<br>• 定量输出称为回归，或者说是连续变量预测；定性输出称为分类，或者说是离散变量预测。分类模型和回归模型本质一样，分类模型是将回归模型的输出离散化。</p><h1 id="几何模型"><a href="#几何模型" class="headerlink" title="几何模型"></a>几何模型</h1><h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h2 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/Fisher.png"></p><h2 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/SVM.png"></p><h2 id="最近邻算法"><a href="#最近邻算法" class="headerlink" title="最近邻算法"></a>最近邻算法</h2><p>K近邻算法（KNN）是一种常用的最近邻分类器。<br>训练阶段，仅仅存储训练数据， 没有显式的学习过程。典型的lazy learning。<br>判断阶段：（1）选择和输入最近的K个有标签的样本，（2）然后在根据特定规则确定输入的最终分类，如选择概率最大的类作为目标输出，即选择K个样本中“大多数”样本属于的类。</p><h2 id="K-均值聚类"><a href="#K-均值聚类" class="headerlink" title="K-均值聚类"></a>K-均值聚类</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/kmeans.png"><br>改进方法：</p><ol><li>改变中心点的选择方法：K均值++初始化</li><li>并行化计算</li><li>Mini-bach K均值</li><li>减少不必要的距离的计算</li></ol><h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><h2 id="神经元模型"><a href="#神经元模型" class="headerlink" title="神经元模型"></a>神经元模型</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/sigmoid.png"></p><h2 id="单层神经网络"><a href="#单层神经网络" class="headerlink" title="单层神经网络"></a>单层神经网络</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/perceptron.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/xue-xi-fa-ze.png"></p><h2 id="两层神经网络"><a href="#两层神经网络" class="headerlink" title="两层神经网络"></a>两层神经网络</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/two-layer.png"></p><h2 id="多层网络（BP）"><a href="#多层网络（BP）" class="headerlink" title="多层网络（BP）"></a>多层网络（BP）</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/BP.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/forward.png"><br>反向传播算法：</p><ol><li>计算第L层偏导</li><li>计算第L-1层偏导</li><li>计算其他层偏导</li><li>调整各层权值矩阵和偏置矩阵</li><li>迭代训练<br><a href="https://juejin.cn/post/6844903574078504974">反向传播算法详细推导</a></li></ol><h1 id="模型评估与选择"><a href="#模型评估与选择" class="headerlink" title="模型评估与选择"></a>模型评估与选择</h1><h2 id="测试集和训练集"><a href="#测试集和训练集" class="headerlink" title="测试集和训练集"></a>测试集和训练集</h2><h2 id="经验误差与泛化误差"><a href="#经验误差与泛化误差" class="headerlink" title="经验误差与泛化误差"></a>经验误差与泛化误差</h2><p>模型在训练集上的误差称为“训练误差”（training error）或者“经验误差”（empirical error）。<br>在测试集上的误差称为“测试误差”（testing error），在新样本上的误差称为“泛化误差”（generalization error）</p><h2 id="过拟合和欠拟合"><a href="#过拟合和欠拟合" class="headerlink" title="过拟合和欠拟合"></a>过拟合和欠拟合</h2><p><strong>过拟合</strong>：泛化误差&gt;测试误差<br>原因：</p><ol><li>有噪声</li><li>训练数据量过少</li><li>模型过于复杂<br>处理方法：</li><li>早停</li><li>数据集扩增</li><li>正则化</li><li>Dropout</li><li>选择合适的模型<br><strong>欠拟合</strong>：训练误差和测试误差、泛化误差都很大<br>原因：模型不能很好的捕捉数据特征<br>处理方法：</li><li>添加其他特征项，特征组合、多项式特征等</li><li>减少正则化参数</li><li>增加模型复杂性</li></ol><h2 id="测试集数据获取方法"><a href="#测试集数据获取方法" class="headerlink" title="测试集数据获取方法"></a>测试集数据获取方法</h2><ol><li>留出法</li><li>m折交叉验证<br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/jiao-cha-yan-zheng.png"></li><li>自助法：</li><li>每次随机从D中挑选一个样本，将其拷贝放入D’，然后再将该样本放回原始数据集D中；重复上述步骤，直到我们得到包含M个样本的数据集D’显然，D中有一部分样本会在D’ 中多次出现，而另一部分样本不出现。</li></ol><h2 id="模型性能度量"><a href="#模型性能度量" class="headerlink" title="模型性能度量"></a>模型性能度量</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/MSE.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/er-fen-lei.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/PR.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/ROC.png"></p><h2 id="回归模型的泛化误差分解"><a href="#回归模型的泛化误差分解" class="headerlink" title="回归模型的泛化误差分解"></a>回归模型的泛化误差分解</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/fan-hua-wu-cha.png"></p><h1 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h1><h2 id="概念学习"><a href="#概念学习" class="headerlink" title="概念学习"></a>概念学习</h2><p>概念学习定义为：利用有关某个布尔函数的输入输出训练样例，推断该布尔函数的学习过程。<br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/concept1.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/concept2.png"></p><h2 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h2><p>假设空间：全部可能的概念构成的空间。<br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/jia-she-sort.png"></p><h2 id="FINDS-算法"><a href="#FINDS-算法" class="headerlink" title="FINDS 算法"></a>FINDS 算法</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/FINDS.png"></p><h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/juece-tree.png"></p><h3 id="ID3算法"><a href="#ID3算法" class="headerlink" title="ID3算法"></a>ID3算法</h3><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/ID3-1.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/ID3-2.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/ID3-3.png"></p><h2 id="基尼系数"><a href="#基尼系数" class="headerlink" title="基尼系数"></a>基尼系数</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/Gini.png"></p><h1 id="计算学习理论"><a href="#计算学习理论" class="headerlink" title="计算学习理论"></a>计算学习理论</h1><h2 id="PAC可学习"><a href="#PAC可学习" class="headerlink" title="PAC可学习"></a>PAC可学习</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/PAC.png"></p><h2 id="VC维"><a href="#VC维" class="headerlink" title="VC维"></a>VC维</h2><p>VC维是一种衡量模型学习能力的方法，VC维越高，模型的学习能力通常越强，但也可能越容易过拟合。<br>想象一下，你有一堆不同颜色的球，你的任务是用一条线（在二维空间中）或一个平面（在三维空间中）将它们分开，红色的在一边，蓝色的在另一边。</p><ul><li>如果你用一条直线就能完美地分开任何排列的球，那么这个“分开球”的模型的VC维至少是2（因为在二维空间中你需要两个点来定义一条线）。</li><li>如果你需要一个平面来分开球，那么这个模型的VC维至少是3（因为在三维空间中你需要三个点来定义一个平面）。<br><strong>假设空间H的VC维就是能够被H打散(数据的随机化处理)的最大示例集的大小。</strong><br><strong>N维感知器的VC维是N+1</strong></li></ul><h1 id="概率模型"><a href="#概率模型" class="headerlink" title="概率模型"></a>概率模型</h1><h2 id="概率模型的定义和分类"><a href="#概率模型的定义和分类" class="headerlink" title="概率模型的定义和分类"></a>概率模型的定义和分类</h2><p>概率模型（probabilistic model）就是将学习任务归结为<strong>计算变量的概率分布</strong>的机器学习模型。<br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/pro-model.png"><br>逻辑斯蒂回归模型是判别概率模型<br>朴素贝叶斯模型是生成概率模型</p><h2 id="贝叶斯决策"><a href="#贝叶斯决策" class="headerlink" title="贝叶斯决策"></a>贝叶斯决策</h2><p>对于分类任务而言，在知道所有概率分布的理想情况下，贝叶斯决策论是基于<strong>概率分布</strong>和<strong>误判损失</strong>选择最优类别标签的基本方法。<br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/bei-ye-si.png"></p><h3 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h3><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/beiyesi1.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/beiyesi2.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/beiyesi3.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/beiyesi4.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/beiyesi5.png"></p><h2 id="逻辑斯蒂回归"><a href="#逻辑斯蒂回归" class="headerlink" title="逻辑斯蒂回归"></a>逻辑斯蒂回归</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/logistic.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/logit.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/jiao-cha-shang.png"></p><h2 id="高斯混合模型"><a href="#高斯混合模型" class="headerlink" title="高斯混合模型"></a>高斯混合模型</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/EM.png"></p><h1 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h1><h2 id="卷积运算"><a href="#卷积运算" class="headerlink" title="卷积运算"></a>卷积运算</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/jvan-ji.png"></p><h2 id="在机器学习中的卷积层的表示"><a href="#在机器学习中的卷积层的表示" class="headerlink" title="在机器学习中的卷积层的表示"></a>在机器学习中的卷积层的表示</h2><p>卷积神经网络卷积层常使用的激活函数为ReLU函数。ReLU函数称为整流 函数，定义为<br>𝑓(𝑥) = max(0, 𝑥)</p><ol><li>Sigmoid激活函数很容易导致梯度消失</li><li>Sigmoid激活函数计算复杂</li></ol><h3 id="多层卷积"><a href="#多层卷积" class="headerlink" title="多层卷积"></a>多层卷积</h3><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/duocengjvanji.png"></p><h3 id="多通道卷积"><a href="#多通道卷积" class="headerlink" title="多通道卷积"></a>多通道卷积</h3><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/duotongdaojvanji.png"><br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/Pooling.png"></p><h2 id="CNN的优势"><a href="#CNN的优势" class="headerlink" title="CNN的优势"></a>CNN的优势</h2><ol><li>部分连接</li><li>权值共享</li><li>多层卷积融合特征</li><li>可通过池化进一步提取特征，压缩图像</li></ol><h1 id="循环神经网络"><a href="#循环神经网络" class="headerlink" title="循环神经网络"></a>循环神经网络</h1><h2 id="简单RNN"><a href="#简单RNN" class="headerlink" title="简单RNN"></a>简单RNN</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/RNN.png"></p><h2 id="梯度爆炸和梯度消失"><a href="#梯度爆炸和梯度消失" class="headerlink" title="梯度爆炸和梯度消失"></a>梯度爆炸和梯度消失</h2><p>梯度消失：梯度在深层网络中反向传播时逐渐变小，直到几乎消失的情况。当梯度变得非常小，它就不再能有效地更新网络的权重，导致学习过程停滞。<br>解决方法：</p><ol><li>初始化权重，是每个参数的值不要过大或过小</li><li>使用ReLU代替tanh作为激活函数</li><li>改变网络结构<br>梯度爆炸：在网络的反向传播过程中梯度变得异常大。这种情况下，梯度的大值会导致权重更新过猛，使得网络模型无法收敛，甚至可能导致数值计算上的溢出。<br>解决方法：在算法中设置一个梯度阈值，当梯度超过这个阈值时对梯度进行截取。</li></ol><h1 id="集成模型"><a href="#集成模型" class="headerlink" title="集成模型"></a>集成模型</h1><h2 id="Bagging算法"><a href="#Bagging算法" class="headerlink" title="Bagging算法"></a>Bagging算法</h2><p>1）将数据集分成多个不同的子集，子集可以是样本数据集的一部分，也可以是样本特征的一部分；<br>2）独立使用每个子集分别训练一个弱学习器；<br>3）集成多个弱学习器的各自决策结果生成最终输出结果。</p><h3 id="自助采样Bagging算法"><a href="#自助采样Bagging算法" class="headerlink" title="自助采样Bagging算法"></a>自助采样Bagging算法</h3><ol><li>有放回的随机采样，使得数据具有携带了原始数据分布的能力，又具有多样性。</li><li>对单个学习器进行训练。</li><li>采用投票法集成各个学习器的结果（分类问题）； 采用均值法集成各个学习器的结果。（回归问题）</li></ol><h3 id="随机森林Bagging算法"><a href="#随机森林Bagging算法" class="headerlink" title="随机森林Bagging算法"></a>随机森林Bagging算法</h3><ol><li>在样本采样的同时还可以引入特征属性采样，进一步增加个体学习器之间的多样性。</li><li>训练单个学习器。</li><li>集成。</li></ol><h2 id="Boosting算法"><a href="#Boosting算法" class="headerlink" title="Boosting算法"></a>Boosting算法</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/Boosting.png"></p><h3 id="AdaBoost算法"><a href="#AdaBoost算法" class="headerlink" title="AdaBoost算法"></a>AdaBoost算法</h3><ol><li>初始化训练数据权值分布</li><li>进行迭代<ol><li>选取误差率最低的弱分类器作为基本分类器，计算误差为e</li><li>计算权重</li><li>更新权值分布</li></ol></li><li>按弱分类器权重组合各个弱分类器<br><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/AdaBoost.png"><br><a href="https://zhuanlan.zhihu.com/p/41536315">示例</a></li></ol><h1 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h1><h2 id="Q-Learning算法"><a href="#Q-Learning算法" class="headerlink" title="Q-Learning算法"></a>Q-Learning算法</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/QLearning.png"></p><h2 id="SARSA算法"><a href="#SARSA算法" class="headerlink" title="SARSA算法"></a>SARSA算法</h2><p><img src="/2024/01/11/ji-qi-xue-xi-qi-mo-fu-xi/SARSA.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 期末复习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 期末复习 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法设计与分析期末复习</title>
       <link href="/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/"/>
       <url>/2024/01/09/suan-fa-she-ji-yu-fen-xi-qi-mo-fu-xi/</url>
@@ -20,9 +49,9 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> 期末复习 </tag>
+            
+            <tag> 笔记 </tag>
             
             <tag> 算法 </tag>
             
@@ -49,9 +78,9 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> 期末复习 </tag>
+            
+            <tag> 笔记 </tag>
             
             <tag> 操作系统 </tag>
             
@@ -105,11 +134,11 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
+            <tag> Linux </tag>
             
             <tag> 期末复习 </tag>
             
-            <tag> Linux </tag>
+            <tag> 笔记 </tag>
             
         </tags>
       
@@ -190,9 +219,9 @@
             
             <tag> 大数据技术基础 </tag>
             
-            <tag> 笔记 </tag>
-            
             <tag> 期末复习 </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
